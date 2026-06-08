@@ -567,6 +567,10 @@
           "type": "string",
           "description": "Tag HTML del elemento (e.g. 'div', 'span', 'section', 'aside', 'article')."
         },
+        "template": {
+          "type": "string",
+          "description": "Ruta relativa a una plantilla Jinja2 para renderizar la directiva. Excluye el uso de 'tag' y 'style'."
+        },
         "className":  { "$ref": "#/$defs/classNameValue" },
         "style":      { "$ref": "#/$defs/cssProperties" },
         "attributes": {
@@ -744,6 +748,21 @@
         "style": {
           "type": "string",
           "description": "Nombre del estilo de párrafo DOCX (predefinido o personalizado). e.g. 'Heading1', 'Normal', 'CodeBlock'. Tiene precedencia sobre las propiedades individuales de run y paragraph."
+        },
+        "fieldSequence": {
+          "type": "array",
+          "description": "Secuencia de campos a renderizar en DOCX, con su modo de renderizado.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "renderAs"],
+            "properties": {
+              "field":    { "type": "string" },
+              "renderAs": { "type": "string" },
+              "level":    { "type": "integer" },
+              "prefix":   { "type": "string" }
+            }
+          }
         },
         "run":       { "$ref": "#/$defs/docxRunConfig" },
         "paragraph": { "$ref": "#/$defs/docxParagraphConfig" }
@@ -933,6 +952,19 @@
               "description": "Nombre del atributo que determina qué variante aplicar."
             },
             "values": { "$ref": "#/$defs/directiveVariantMap" }
+          }
+        },
+        "fields": {
+          "type": "object",
+          "description": "Definición de campos estructurados que extrae el parser de la directiva (título, secciones marcadas, resto del cuerpo).",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "marker":   { "type": "string" },
+              "type":     { "type": "string" },
+              "required": { "type": "boolean" }
+            }
           }
         },
         "html": { "$ref": "#/$defs/htmlConfig" },

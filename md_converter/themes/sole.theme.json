@@ -363,7 +363,8 @@
         "targetBlank": false
       },
       "docx": {
-        "run": { "color": "{{colors.primary-light}}", "underline": true }
+        "color": "{{colors.primary-light}}",
+        "underline": { "type": "single" }
       }
     },
 
@@ -548,22 +549,29 @@
       "description": "Tarjeta de sección de propuesta con borde y fondo suave",
       "label": "",
       "allowedContent": "all",
-      "html": {
-        "tag": "div",
-        "style": {
-          "backgroundColor": "{{colors.neutral-light}}",
-          "border": "{{borders.subtle}}",
-          "borderTop": "4px solid {{colors.primary}}",
-          "borderRadius": "6px",
-          "padding": "1.25rem 1.5rem",
-          "marginBottom": "1.5rem"
-        }
+
+      "fields": {
+        "title":      { "marker": "heading" },
+        "para_quien": { "marker": "**Para quién:**" },
+        "sabras":     { "marker": "**Al terminar esta parte sabrás:**" },
+        "_body":      { "type": "remainder" }
       },
+
+      "html": {
+        "template": "directives/card-propuesta.html.jinja2"
+      },
+
       "docx": {
+        "fieldSequence": [
+          { "field": "title",      "renderAs": "heading",     "level": 2 },
+          { "field": "para_quien", "renderAs": "bold-prefix", "prefix": "Para quién" },
+          { "field": "_body",      "renderAs": "paragraph" },
+          { "field": "sabras",     "renderAs": "bold-prefix", "prefix": "Al terminar esta parte sabrás" }
+        ],
         "paragraph": {
           "shading": { "type": "clear", "fill": "F5F5F5" },
-          "border": { "top": { "style": "single", "size": 24, "space": 4, "color": "{{colors.primary}}" } },
-          "indent": { "left": 360, "right": 360 }
+          "border":  { "top": { "style": "single", "size": 24, "space": 4, "color": "{{colors.primary}}" } },
+          "indent":  { "left": 360, "right": 360 }
         }
       }
     },
@@ -572,21 +580,31 @@
       "description": "Bloque de caso de estudio con borde izquierdo de acento",
       "label": "",
       "allowedContent": "all",
-      "html": {
-        "tag": "div",
-        "style": {
-          "borderLeft": "4px solid {{colors.accent}}",
-          "backgroundColor": "{{colors.caso-bg}}",
-          "padding": "1rem 1.25rem",
-          "marginBottom": "1.25rem",
-          "borderRadius": "0 6px 6px 0"
-        }
+
+      "fields": {
+        "title":     { "marker": "**Caso:**",       "required": true },
+        "situacion": { "marker": "**Situación →**", "required": false },
+        "accion":    { "marker": "**Acción →**",    "required": false },
+        "resultado": { "marker": "**Resultado →**", "required": false },
+        "_body":     { "type": "remainder" }
       },
+
+      "html": {
+        "template": "directives/caso.html.jinja2"
+      },
+
       "docx": {
+        "fieldSequence": [
+          { "field": "title",     "renderAs": "bold-prefix", "prefix": "Caso" },
+          { "field": "situacion", "renderAs": "bold-prefix", "prefix": "Situación →" },
+          { "field": "accion",    "renderAs": "bold-prefix", "prefix": "Acción →" },
+          { "field": "resultado", "renderAs": "bold-prefix", "prefix": "Resultado →" },
+          { "field": "_body",     "renderAs": "paragraph" }
+        ],
         "paragraph": {
           "shading": { "type": "clear", "fill": "{{colors.caso-bg}}" },
-          "border": { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.accent}}" } },
-          "indent": { "left": 360 }
+          "border":  { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.accent}}" } },
+          "indent":  { "left": 360 }
         }
       }
     },
@@ -637,6 +655,34 @@
       },
       "docx": {
         "paragraph": { "indent": { "left": 720 } }
+      }
+    },
+
+    "cover": {
+      "description": "Portada del documento. Extrae título, subtítulo, autor, lista de metadatos y contenido libre.",
+      "label": "",
+      "allowedContent": "all",
+
+      "fields": {
+        "title":    { "marker": "heading",       "required": true },
+        "subtitle": { "marker": "italic-line" },
+        "author":   { "marker": "bold-line" },
+        "meta":     { "type": "labeled-list" },
+        "_body":    { "type": "remainder" }
+      },
+
+      "html": {
+        "template": "directives/cover.html.jinja2"
+      },
+
+      "docx": {
+        "fieldSequence": [
+          { "field": "title",    "renderAs": "heading",       "level": 1 },
+          { "field": "subtitle", "renderAs": "paragraph" },
+          { "field": "author",   "renderAs": "paragraph" },
+          { "field": "meta",     "renderAs": "labeled-list" },
+          { "field": "_body",    "renderAs": "paragraph" }
+        ]
       }
     }
 
