@@ -25,7 +25,7 @@ _LABELED_RE = re.compile(r"^\*\*([^*]+):\*\*\s*(.+)$")
 @dataclass
 class FieldResult:
     fields: dict[str, Any] = field(default_factory=dict)
-    unmatched: list = field(default_factory=list)
+    unmatched: list[Any] = field(default_factory=list)
 
 
 def extract(block: Block, fields_schema: dict) -> FieldResult:
@@ -79,7 +79,7 @@ def extract(block: Block, fields_schema: dict) -> FieldResult:
         # Extract raw text
         if isinstance(child, Block):
             inline = first_inline(child)
-            raw_text = inline.content if inline else ""
+            raw_text = get_inline_text(inline) if inline else ""
         elif isinstance(child, Token) and child.type == "inline":
             raw_text = child.content
         else:
