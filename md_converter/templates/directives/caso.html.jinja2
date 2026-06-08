@@ -1,0 +1,28 @@
+{% set steps = [("situacion", "Situación"), ("accion", "Acción"), ("resultado", "Resultado")] %}
+<article class="md-card caso">
+  <header class="caso-header">
+    <span class="caso-badge">Caso</span>
+    <h3 class="caso-title">{{ fields.get("title", "") }}</h3>
+  </header>
+  <div class="caso-body">
+    <div class="caso-steps">
+      {% for key, label in steps %}
+        {% if fields.get(key) %}
+        <div class="caso-step step-s{{ loop.index }}">
+          <div class="step-indicator">
+            <div class="step-dot">{{ "◉" if loop.last else "→" }}</div>
+            {% if not loop.last %}<div class="step-connector"></div>{% endif %}
+          </div>
+          <div class="step-content">
+            <div class="step-label-row">
+              <span class="step-label">{{ label }}</span>
+            </div>
+            <p class="step-text">{{ fields[key] }}</p>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if fields.get("_body") %}{{ fields["_body"] }}{% endif %}
+  </div>
+</article>

@@ -1,0 +1,43 @@
+{% set title = fields.get("title", "") %}
+{% set para_quien = fields.get("para_quien", "") %}
+{% set sabras = fields.get("sabras", "") %}
+{% set body_html = fields.get("_body", "") %}
+{# Extract part number from title like "Parte 1 — ..." #}
+{% set part_label = "01" %}
+{% set words = title.split() %}
+{% for i in range(words | length) %}
+  {% if words[i] in ("Parte", "parte") and i + 1 < (words | length) %}
+    {% set n = words[i + 1] | int(0) %}
+    {% if n > 0 %}
+      {% set part_label = ("0" ~ n) if n < 10 else (n | string) %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+<article class="md-card card-propuesta">
+  <div class="cp-inner">
+    <div class="cp-top">
+      <h2>{{ title }}</h2>
+      <span class="cp-chip">Parte {{ part_label }}</span>
+    </div>
+    {% if para_quien %}
+    <div class="cp-para-quien">
+      <span class="cp-pq-label">Para quién</span>
+      <span class="cp-pq-text">{{ para_quien }}</span>
+    </div>
+    {% endif %}
+    <div class="cp-body">{{ body_html }}</div>
+  </div>
+  {% if sabras %}
+  <footer class="cp-footer">
+    <div class="cp-footer-icon">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+        <path d="M6.5 1L8.2 4.5L12 5.1L9.25 7.8L9.9 11.6L6.5 9.8L3.1 11.6L3.75 7.8L1 5.1L4.8 4.5L6.5 1Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="cp-footer-content">
+      <div class="cp-footer-label">Al terminar esta parte sabrás</div>
+      <p class="cp-footer-text">{{ sabras }}</p>
+    </div>
+  </footer>
+  {% endif %}
+</article>

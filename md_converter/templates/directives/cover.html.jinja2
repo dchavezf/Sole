@@ -1,0 +1,42 @@
+{% set title    = fields.get("title", "") %}
+{% set subtitle = fields.get("subtitle", "") %}
+{% set author   = fields.get("author", "") %}
+{% set meta     = fields.get("meta", []) %}
+{% set body_html = fields.get("_body", "") %}
+<article class="card-cover">
+  <div class="cover-hero">
+    <div class="cover-corners">
+      <span class="cover-corner tl"></span><span class="cover-corner tr"></span>
+      <span class="cover-corner bl"></span><span class="cover-corner br"></span>
+    </div>
+    {% if author %}
+    <div class="cover-eyebrow">
+      <span class="cover-eyebrow-line"></span>
+      <span class="cover-eyebrow-text">{{ author }}</span>
+    </div>
+    {% endif %}
+    <h1 class="cover-title">{{ title }}</h1>
+    {% if subtitle or author %}
+    <div class="cover-project-row">
+      {% if author %}<span class="cover-project-name">{{ author }}</span>{% endif %}
+      {% if author and subtitle %}<span class="cover-project-sep"></span>{% endif %}
+      {% if subtitle %}<span class="cover-project-type">{{ subtitle }}</span>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+  {% if meta or body_html %}
+  <div class="cover-meta">
+    {% if meta %}
+    <dl class="meta-grid">
+      {% for item in meta %}
+      <div class="meta-item">
+        <dt class="meta-label">{{ item.label }}</dt>
+        <dd><span class="meta-primary">{{ item.value }}</span></dd>
+      </div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+    {% if body_html %}{{ body_html }}{% endif %}
+  </div>
+  {% endif %}
+</article>
