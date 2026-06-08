@@ -26,6 +26,7 @@ from core.ast_walker import (
     get_inline_text,
     first_inline,
 )
+from core.field_extractor import extract
 
 try:
     from docx import Document
@@ -63,14 +64,7 @@ _ALIGN_MAP = {
 
 _CHECKBOX_UNCHECKED = "☐"
 _CHECKBOX_CHECKED   = "☑"
-_CALLOUT_DEFAULT_LABELS = {
-    "note":      "Nota",
-    "tip":       "Consejo",
-    "warning":   "Advertencia",
-    "caution":   "Precaución",
-    "important": "Importante",
-    "danger":    "Peligro",
-}
+
 class DocxExporter:
     def __init__(self, theme: Theme, base_dir: Path | None = None) -> None:
         self.theme = theme
@@ -222,18 +216,18 @@ class DocxExporter:
         ct = callout_type(block)
         cfg = self.theme.get_callout(ct)
         docx_cfg = cfg.get("docx", {})
-        label = cfg.get("label") or _CALLOUT_DEFAULT_LABELS.get(ct, ct.upper())
+        label = cfg.get("label") or ""
 
-        # Title paragraph
-        title_p = doc.add_paragraph()
-        title_run = title_p.add_run(f"  {label.upper()}")
-        title_run.bold = True
-        _apply_callout_border(title_p, docx_cfg, is_title=True)
         shading = docx_cfg.get("paragraph", {}).get("shading", {})
-        if shading:
-            _apply_shading(title_p, shading)
 
-        # Body paragraphs
+        if label:
+            title_p = doc.add_paragraph()
+            title_run = title_p.add_run(f"  {label.upper()}")
+            title_run.bold = True
+            _apply_callout_border(title_p, docx_cfg, is_title=True)
+            if shading:
+                _apply_shading(title_p, shading)
+
         for child in block.children:
             p = doc.add_paragraph()
             if isinstance(child, Token) and child.type == "inline":
@@ -250,8 +244,14 @@ class DocxExporter:
         name = directive_name(block)
         cfg = self.theme.get_directive(name)
         docx_cfg = cfg.get("docx", {})
-        label = cfg.get("label", "")
+        fields_schema = cfg.get("fields", {})
 
+        if fields_schema and docx_cfg.get("fieldSequence"):
+            self._render_directive_with_fields(doc, block, cfg)
+            return
+
+        # Generic fallback
+        label = cfg.get("label", "")
         if label:
             lp = doc.add_paragraph()
             lp.add_run(label).bold = True
@@ -269,6 +269,67 @@ class DocxExporter:
             if shading:
                 _apply_shading(p, shading)
             _apply_callout_border(p, docx_cfg, is_title=False)
+
+    def _render_directive_with_fields(
+        self, doc: "Document", block: Block, cfg: dict
+    ) -> None:
+        result = extract(block, cfg.get("fields", {}))
+        fields = result.fields
+        unmatched = result.unmatched
+
+        docx_cfg = cfg.get("docx", {})
+        para_cfg = docx_cfg.get("paragraph", {})
+        field_sequence = docx_cfg.get("fieldSequence", [])
+
+        for seq_item in field_sequence:
+            field_key = seq_item["field"]
+            render_as = seq_item.get("renderAs", "paragraph")
+
+            if field_key == "_body":
+                for child in unmatched:
+                    p = doc.add_paragraph()
+                    if isinstance(child, Token) and child.type == "inline":
+                        self._render_inline_token(p, child)
+                    elif isinstance(child, Block):
+                        inner = first_inline(child)
+                        if inner:
+                            self._render_inline_token(p, inner)
+                    if para_cfg:
+                        _apply_paragraph_cfg(p, para_cfg)
+                continue
+
+            value = fields.get(field_key)
+            if not value:
+                continue
+
+            if render_as == "heading":
+                level = seq_item.get("level", 2)
+                try:
+                    p = doc.add_heading("", level=level)
+                except Exception:
+                    p = doc.add_paragraph()
+                p.add_run(str(value)).bold = True
+
+            elif render_as == "bold-prefix":
+                prefix = seq_item.get("prefix", field_key)
+                p = doc.add_paragraph()
+                p.add_run(f"{prefix}: ").bold = True
+                p.add_run(str(value))
+                if para_cfg:
+                    _apply_paragraph_cfg(p, para_cfg)
+
+            elif render_as == "labeled-list":
+                for entry in (value if isinstance(value, list) else []):
+                    p = doc.add_paragraph()
+                    p.add_run(f"{entry['label']}: ").bold = True
+                    p.add_run(entry["value"])
+                    if para_cfg:
+                        _apply_paragraph_cfg(p, para_cfg)
+
+            elif render_as == "paragraph":
+                p = doc.add_paragraph(str(value))
+                if para_cfg:
+                    _apply_paragraph_cfg(p, para_cfg)
 
     def _render_blockquote(self, doc: "Document", block: Block) -> None:
         for child in block.children:
