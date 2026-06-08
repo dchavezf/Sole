@@ -7,12 +7,10 @@ The Jinja2 template (base.html.jinja2) provides the outer HTML shell.
 
 from __future__ import annotations
 
-import re
-import textwrap
 from pathlib import Path
 from typing import Any
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, ChoiceLoader
 from markdown_it import MarkdownIt
 from markdown_it.token import Token
 
@@ -27,31 +25,19 @@ from core.ast_walker import (
     first_inline,
     css_dict_to_string, merge_css_classes
 )
+from core.field_extractor import extract
 
 _TEMPLATES_DIR = Path(__file__).parent.parent / "templates"
-_CALLOUT_DEFAULT_ICONS = {
-    "note":      "â„¹ï¸",
-    "tip":       "ðŸ’¡",
-    "warning":   "âš ï¸",
-    "caution":   "ðŸ”´",
-    "important": "â—",
-    "danger":    "ðŸš¨",
-}
-_CALLOUT_DEFAULT_LABELS = {
-    "note":      "Nota",
-    "tip":       "Consejo",
-    "warning":   "Advertencia",
-    "caution":   "PrecauciÃ³n",
-    "important": "Importante",
-    "danger":    "Peligro",
-}
 
 
 class HtmlExporter:
     def __init__(self, theme: Theme) -> None:
         self.theme = theme
         self._jinja = Environment(
-            loader=FileSystemLoader(str(_TEMPLATES_DIR)),
+            loader=ChoiceLoader([
+                FileSystemLoader(str(theme.base_dir)),
+                FileSystemLoader(str(_TEMPLATES_DIR)),
+            ]),
             autoescape=False,
         )
 
@@ -299,41 +285,64 @@ class HtmlExporter:
         ct = callout_type(block)
         cfg = self.theme.get_callout(ct)
         icon_cfg = cfg.get("icon", {})
-        icon_html = icon_cfg.get("html") or icon_cfg.get("unicode") or _CALLOUT_DEFAULT_ICONS.get(ct, "")
-        label = cfg.get("label") or _CALLOUT_DEFAULT_LABELS.get(ct, ct.upper())
+        icon_html = icon_cfg.get("html") or icon_cfg.get("unicode") or ""
+        label = cfg.get("label") or ""
+
+        title_content = f"{icon_html} {label}".strip()
+        title_html = f'  <div class="callout-title">{title_content}</div>\n' if title_content else ""
 
         body = "".join(self._render_item(c) for c in block.children)
         return (
             f'<div class="callout callout-{ct}">\n'
-            f'  <div class="callout-title">{icon_html} {label}</div>\n'
+            f'{title_html}'
             f'  <div class="callout-body">\n{body}</div>\n'
             f'</div>\n'
         )
 
     def _render_directive(self, block: Block) -> str:
         name = directive_name(block)
-        
-        if name == "card-propuesta":
-            return self._render_card_propuesta(block)
-        if name == "caso":
-            return self._render_caso(block)
-        if name == "cover":
-            return self._render_cover(block)
+
         if name == "pagebreak":
             return '<div class="page-break"></div>\n'
-            
+
         cfg = self.theme.get_directive(name)
         html_cfg = cfg.get("html", {})
+        template_path = html_cfg.get("template")
+        fields_schema = cfg.get("fields", {})
+
+        if template_path and fields_schema:
+            return self._render_directive_templated(block, cfg, template_path, fields_schema)
+
+        # Generic fallback: styled div
         tag = html_cfg.get("tag", "div")
         base_cls = merge_css_classes(f"directive directive-{name}", html_cfg.get("className", ""))
-        
         label = cfg.get("label", "")
         icon_cfg = cfg.get("icon", {})
         icon = icon_cfg.get("html") or icon_cfg.get("unicode") or ""
         header = f'  <div class="directive-header">{icon} {label}</div>\n' if (label or icon) else ""
-        
         body = "".join(self._render_item(c) for c in block.children)
         return f'<{tag} class="{base_cls}">\n{header}{body}</{tag}>\n'
+
+    def _render_directive_templated(
+        self, block: Block, cfg: dict, template_path: str, fields_schema: dict
+    ) -> str:
+        result = extract(block, fields_schema)
+
+        # Pre-render unmatched blocks for _body/remainder fields
+        body_html = "".join(self._render_item(b) for b in result.unmatched)
+
+        fields = dict(result.fields)
+        for field_name, field_cfg in fields_schema.items():
+            if field_cfg.get("type") == "remainder":
+                fields[field_name] = body_html
+                break
+
+        template = self._jinja.get_template(template_path)
+        return template.render(
+            fields=fields,
+            directive_name=directive_name(block),
+            theme_vars=self.theme.get_variables(),
+        )
 
     def _render_table(self, block: Block) -> str:
         res = ['<div class="md-table-container">\n<table class="md-table">\n']
@@ -341,271 +350,4 @@ class HtmlExporter:
             res.append(self._render_item(child))
         res.append("</table>\n</div>\n")
         return "".join(res)
-
-    # ------------------------------------------------------------------
-    # Card Components Logic
-    # ------------------------------------------------------------------
-
-    def _render_card_propuesta(self, block: Block) -> str:
-        """Specialized renderer for the 'card-propuesta' component."""
-        title = ""
-        para_quien = ""
-        sabras = ""
-        body_parts = []
-        
-        # Extract lines
-        for child in block.children:
-            if isinstance(child, Block) and is_heading(child.open):
-                title = "".join(self._render_item(c) for c in child.children).strip()
-                continue
-            
-            text = ""
-            if isinstance(child, Block):
-                inline = first_inline(child)
-                if inline: text = inline.content
-            elif isinstance(child, Token) and child.type == "inline":
-                text = child.content
-            
-            if text:
-                lines = [l.strip() for l in text.split("\n") if l.strip()]
-                remaining_lines = []
-                for line in lines:
-                    if line.startswith("**Para quiÃ©n:**"):
-                        para_quien = line.replace("**Para quiÃ©n:**", "").strip()
-                    elif line.startswith("**Al terminar esta parte sabrÃ¡s:**"):
-                        sabras = line.replace("**Al terminar esta parte sabrÃ¡s:**", "").strip()
-                    else:
-                        remaining_lines.append(line)
-                if remaining_lines:
-                    # Re-render the non-field lines as paragraphs or just text
-                    body_parts.append("<p>" + " ".join(remaining_lines) + "</p>")
-            else:
-                # Other tokens (not inlines/paragraphs)
-                body_parts.append(self._render_item(child))
-
-        body_html = "".join(body_parts)
-        
-        import re
-        m = re.search(r"Parte\s+(\d+)", title, re.I)
-        part_num = m.group(1) if m else "01"
-        if len(part_num) == 1: part_num = "0" + part_num
-
-        return (
-            f'<article class="md-card card-propuesta">\n'
-            f'  <div class="cp-inner">\n'
-            f'    <div class="cp-top">\n'
-            f'      <h2>{title}</h2>\n'
-            f'      <span class="cp-chip">Parte {part_num}</span>\n'
-            f'    </div>\n'
-            f'    <div class="cp-para-quien">\n'
-            f'      <span class="cp-pq-label">Para quiÃ©n</span>\n'
-            f'      <span class="cp-pq-text">{para_quien}</span>\n'
-            f'    </div>\n'
-            f'    <div class="cp-body">{body_html}</div>\n'
-            f'  </div>\n'
-            f'  <footer class="cp-footer">\n'
-            f'    <div class="cp-footer-icon">\n'
-            f'      <svg width="13" height="13" viewBox="0 0 13 13" fill="none">\n'
-            f'        <path d="M6.5 1L8.2 4.5L12 5.1L9.25 7.8L9.9 11.6L6.5 9.8L3.1 11.6L3.75 7.8L1 5.1L4.8 4.5L6.5 1Z" fill="currentColor"/>\n'
-            f'      </svg>\n'
-            f'    </div>\n'
-            f'    <div class="cp-footer-content">\n'
-            f'      <div class="cp-footer-label">Al terminar esta parte sabrÃ¡s</div>\n'
-            f'      <p class="cp-footer-text">{sabras}</p>\n'
-            f'    </div>\n'
-            f'  </footer>\n'
-            f'</article>\n'
-        )
-
-    def _render_caso(self, block: Block) -> str:
-        """Specialized renderer for the 'caso' component."""
-        case_title = ""
-        steps = [] # list of (label, text)
-        
-        for child in block.children:
-            text = ""
-            if isinstance(child, Block):
-                inline = first_inline(child)
-                if inline: text = inline.content
-            elif isinstance(child, Token) and child.type == "inline":
-                text = child.content
-            
-            if text:
-                lines = [l.strip() for l in text.split("\n") if l.strip()]
-                for line in lines:
-                    if line.startswith("**Caso:**"):
-                        case_title = line.replace("**Caso:**", "").strip()
-                        continue
-                    
-                    found_step = False
-                    for label in ["SituaciÃ³n", "AcciÃ³n", "Resultado"]:
-                        marker = f"**{label} â†’**"
-                        if line.startswith(marker):
-                            steps.append((label, line.replace(marker, "").strip()))
-                            found_step = True
-                            break
-                    if found_step: continue
-        
-        steps_html = ""
-        for i, (label, text) in enumerate(steps):
-            step_idx = i + 1
-            dot = "â—" if label == "Resultado" else "â†’"
-            connector = f'<div class="step-connector"></div>' if label != "Resultado" else ""
-            steps_html += (
-                f'        <div class="caso-step step-s{step_idx}">\n'
-                f'          <div class="step-indicator">\n'
-                f'            <div class="step-dot">{dot}</div>\n'
-                f'            {connector}\n'
-                f'          </div>\n'
-                f'          <div class="step-content">\n'
-                f'            <div class="step-label-row">\n'
-                f'              <span class="step-label">{label}</span>\n'
-                f'            </div>\n'
-                f'            <p class="step-text">{text}</p>\n'
-                f'          </div>\n'
-                f'        </div>\n'
-            )
-
-        return (
-            f'<article class="md-card caso">\n'
-            f'  <header class="caso-header">\n'
-            f'    <span class="caso-badge">Caso</span>\n'
-            f'    <h3 class="caso-title">{case_title}</h3>\n'
-            f'  </header>\n'
-            f'  <div class="caso-body">\n'
-            f'    <div class="caso-steps">\n'
-            f'{steps_html}'
-            f'    </div>\n'
-            f'  </div>\n'
-            f'</article>\n'
-        )
-
-    def _render_cover(self, block: Block) -> str:
-        """Specialized renderer for the 'cover' component."""
-        title = ""
-        project_name = ""
-        project_type = ""
-        meta_items = [] # list of (label, primary, secondary)
-        fundamento = None # {label, quote, source}
-
-        # First, extract all raw lines from the children
-        raw_lines = []
-        for child in block.children:
-            if isinstance(child, Block) and is_heading(child.open):
-                title = "".join(self._render_item(c) for c in child.children).strip()
-                title = title.replace("Obligatorio", "<em>Obligatorio</em>")
-                continue
-            
-            # Extract text from paragraphs or bare inlines
-            text = ""
-            if isinstance(child, Block):
-                inline = first_inline(child)
-                if inline: text = inline.content
-            elif isinstance(child, Token) and child.type == "inline":
-                text = child.content
-            
-            if text:
-                # Split by actual newlines if markdown-it merged them
-                raw_lines.extend([l.strip() for l in text.split("\n") if l.strip()])
-
-        # Process lines
-        for line in raw_lines:
-            # Metadata items
-            found_meta = False
-            for label in ["Presentado por", "Contacto", "Calidad", "Fecha"]:
-                marker = f"**{label}:**"
-                if line.startswith(marker):
-                    val = line.replace(marker, "").strip()
-                    parts = val.split("Â·") if "Â·" in val else [val]
-                    primary = parts[0].strip()
-                    secondary = " Â· ".join(parts[1:]).strip() if len(parts) > 1 else ""
-                    # Special case for Fecha: split by comma
-                    if label == "Fecha" and "," in primary:
-                        f_parts = primary.split(",", 1)
-                        primary = f_parts[0].strip()
-                        secondary = f_parts[1].strip()
-                    meta_items.append((label, primary, secondary))
-                    found_meta = True
-                    break
-            if found_meta: continue
-
-            # Fundamento
-            if line.startswith("**Fundamento:**"):
-                val = line.replace("**Fundamento:**", "").strip()
-                # val looks like: "Art. 99... *(Â«quoteÂ»)*"
-                import re
-                m = re.search(r"^(.*?)\s*[\*]?\((.*)\)[\*]?$", val)
-                if m:
-                    source = m.group(1).strip().strip("*").strip()
-                    quote = m.group(2).strip().strip("Â«Â»")
-                    fundamento = {"label": "Fundamento", "quote": quote, "source": source}
-                continue
-
-            # Project info (if not already found)
-            if line.startswith("**") and line.endswith("**") and not project_name:
-                project_name = line.replace("**", "").strip()
-                continue
-            if line.startswith("*") and line.endswith("*") and not project_type:
-                project_type = line.replace("*", "").strip()
-                continue
-
-        # Build Meta Grid HTML
-        meta_html = ""
-        for label, primary, secondary in meta_items:
-            sec_html = f'<span class="meta-secondary">{secondary}</span>' if secondary else ""
-            meta_html += (
-                f'        <div class="meta-item">\n'\
-                f'          <dt class="meta-label">{label}</dt>\n'\
-                f'          <dd>\n'\
-                f'            <span class="meta-primary">{primary}</span>\n'\
-                f'            {sec_html}\n'\
-                f'          </dd>\n'\
-                f'        </div>\n'
-            )
-
-        # Build Citation HTML
-        citation_html = ""
-        if fundamento:
-            citation_html = (
-                f'      <div class="cover-citation">\n'\
-                f'        <span class="citation-chip">{fundamento["label"]}</span>\n'\
-                f'        <div class="citation-body">\n'\
-                f'          <span class="citation-fundamento">Reglamento Interno â€” Base legal de convocatoria</span>\n'\
-                f'          <blockquote class="citation-quote">\n'\
-                f'            Â«{fundamento["quote"]}Â»\n'\
-                f'            <cite class="citation-source">{fundamento["source"]}</cite>\n'\
-                f'          </blockquote>\n'\
-                f'        </div>\n'\
-                f'      </div>\n'
-            )
-
-        # Eyebrow (derived from project info)
-        eyebrow_text = f"{project_name} Â· Junio 2026"
-
-        return (
-            f'<article class="card-cover">\n'\
-            f'  <div class="cover-hero">\n'\
-            f'    <div class="cover-corners">\n'\
-            f'      <span class="cover-corner tl"></span><span class="cover-corner tr"></span>\n'\
-            f'      <span class="cover-corner bl"></span><span class="cover-corner br"></span>\n'\
-            f'    </div>\n'\
-            f'    <span class="cover-doctype-badge">Propuesta Â· Reglamento Interno</span>\n'\
-            f'    <div class="cover-eyebrow">\n'\
-            f'      <span class="cover-eyebrow-line"></span>\n'\
-            f'      <span class="cover-eyebrow-text">{eyebrow_text}</span>\n'\
-            f'    </div>\n'\
-            f'    <h1 class="cover-title">{title}</h1>\n'\
-            f'    <div class="cover-project-row">\n'\
-            f'      <span class="cover-project-name">{project_name}</span>\n'\
-            f'      <span class="cover-project-sep"></span>\n'\
-            f'      <span class="cover-project-type">{project_type}</span>\n'\
-            f'    </div>\n'\
-            f'  </div>\n'\
-            f'  <div class="cover-meta">\n'\
-            f'    <dl class="meta-grid">\n'\
-            f'{meta_html}\n'\
-            f'    </dl>\n'\
-            f'{citation_html}\n'\
-            f'  </div>\n'\
-            f'</article>\n'
-        )
+
