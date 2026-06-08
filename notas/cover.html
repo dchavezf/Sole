@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Arquitectónico — Fraccionamiento Solé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Design Tokens (extended from system) ─── */
+    :root {
+      --bg:            #F4F1EB;
+      --surface:       #FFFFFE;
+      --primary:       #1B2C3E;
+      --primary-70:    #3D5168;
+      --muted:         #7A8796;
+      --border:        #DDD8CE;
+      --border-light:  #EDE9E2;
+
+      /* Gold — cover exclusive */
+      --gold:          #C4A22A;
+      --gold-bright:   #D4B340;
+      --gold-dim:      rgba(196,162,42,0.12);
+      --gold-line:     rgba(196,162,42,0.35);
+
+      /* Shared accents */
+      --p-accent:      #28573F;
+      --p-accent-dim:  #EDF4EF;
+      --p-accent-mid:  #80B595;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', system-ui, sans-serif;
+      --font-mono:  'DM Mono', 'Fira Mono', monospace;
+
+      --r:       6px;
+      --r-lg:    14px;
+      --shadow:  0 2px 20px rgba(27,44,62,0.07);
+      --shadow-xl: 0 8px 48px rgba(27,44,62,0.18), 0 2px 12px rgba(27,44,62,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 70% 50% at 50% -5%, rgba(196,162,42,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 100% 110%, rgba(27,44,62,0.05) 0%, transparent 60%);
+      color: var(--primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 740px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+
+    /* ════════════════════════════════════
+       COMPONENT: :::cover
+       ════════════════════════════════════ */
+
+    .card-cover {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+
+    /* ── Hero Zone (dark) ── */
+    .cover-hero {
+      background-color: var(--primary);
+      background-image:
+        /* Architectural grid */
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        /* Diagonal vignette */
+        radial-gradient(ellipse 90% 80% at 20% 30%, rgba(196,162,42,0.07) 0%, transparent 60%);
+      background-size: 48px 48px, 48px 48px, 100% 100%;
+      padding: 3.25rem 3rem 3rem;
+      position: relative;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    /* Gold bottom rule */
+    .cover-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right,
+        transparent 0%,
+        var(--gold-line) 20%,
+        var(--gold) 50%,
+        var(--gold-line) 80%,
+        transparent 100%);
+    }
+
+    /* Architectural corner marks */
+    .cover-corners {
+      position: absolute;
+      inset: 1.25rem;
+      pointer-events: none;
+    }
+
+    .cover-corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: var(--gold-line);
+      border-style: solid;
+    }
+    .cover-corner.tl { top: 0; left: 0;  border-width: 1px 0 0 1px; }
+    .cover-corner.tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+    .cover-corner.bl { bottom: 0; left: 0;  border-width: 0 0 1px 1px; }
+    .cover-corner.br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+    /* Document type badge — top right */
+    .cover-doctype-badge {
+      position: absolute;
+      top: 2.25rem;
+      right: 2.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      user-select: none;
+    }
+
+    /* Eyebrow label */
+    .cover-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .cover-eyebrow-line {
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .cover-eyebrow-text {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Main title */
+    .cover-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 4.5vw, 2.55rem);
+      font-weight: 600;
+      color: rgba(255,255,255,0.94);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .cover-title em {
+      font-style: italic;
+      color: var(--gold-bright);
+      font-weight: 500;
+    }
+
+    /* Project identifier */
+    .cover-project-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cover-project-name {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.02em;
+    }
+
+    .cover-project-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .cover-project-type {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+    }
+
+
+    /* ── Metadata Zone (light) ── */
+    .cover-meta {
+      background: var(--surface);
+      padding: 2.25rem 3rem;
+    }
+
+    /* 2-col definition list */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2rem;
+      row-gap: 1.35rem;
+      margin-bottom: 2rem;
+    }
+
+    .meta-item {}
+
+    .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .meta-primary {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary);
+      line-height: 1.45;
+      display: block;
+    }
+
+    .meta-secondary {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    /* Legal citation */
+    .cover-citation {
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 1rem;
+      align-items: flex-start;
+    }
+
+    .citation-chip {
+      font-family: var(--font-mono);
+      font-size: 0.59rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--p-accent);
+      background: var(--p-accent-dim);
+      border: 1px solid var(--p-accent-mid);
+      border-radius: 3px;
+      padding: 0.22rem 0.6rem;
+      white-space: nowrap;
+      margin-top: 0.1rem;
+    }
+
+    .citation-body {}
+
+    .citation-fundamento {
+      font-family: var(--font-mono);
+      font-size: 0.59rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .citation-quote {
+      font-size: 0.85rem;
+      color: var(--primary-70);
+      line-height: 1.75;
+      font-style: italic;
+      border-left: 2px solid var(--border);
+      padding-left: 0.85rem;
+      margin: 0;
+    }
+
+    .citation-quote strong {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    .citation-source {
+      display: block;
+      font-size: 0.77rem;
+      font-style: normal;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-family: var(--font-mono);
+    }
+
+
+    /* ─── Animation ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+
+    /* ─── Responsive ─── */
+    @media (max-width: 580px) {
+      body { padding: 2.5rem 1rem 4rem; }
+
+      .cover-hero         { padding: 2.5rem 1.5rem 2.25rem; min-height: 240px; }
+      .cover-doctype-badge { display: none; }
+      .cover-corners      { inset: 0.85rem; }
+
+      .cover-meta  { padding: 1.75rem 1.5rem; }
+      .meta-grid   { grid-template-columns: 1fr; row-gap: 1.1rem; }
+
+      .cover-citation { grid-template-columns: 1fr; gap: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ═══════════════════════════════
+       :::cover
+       ═══════════════════════════════ -->
+  <article class="card-cover">
+
+    <!-- ── Hero Zone ── -->
+    <div class="cover-hero">
+
+      <!-- Corner marks -->
+      <div class="cover-corners">
+        <span class="cover-corner tl"></span>
+        <span class="cover-corner tr"></span>
+        <span class="cover-corner bl"></span>
+        <span class="cover-corner br"></span>
+      </div>
+
+      <!-- Rotated doctype label -->
+      <span class="cover-doctype-badge">Propuesta · Reglamento Interno</span>
+
+      <!-- Eyebrow -->
+      <div class="cover-eyebrow">
+        <span class="cover-eyebrow-line"></span>
+        <span class="cover-eyebrow-text">Fraccionamiento Solé &mdash; El Toro &nbsp;·&nbsp; Junio 2026</span>
+      </div>
+
+      <!-- Title (h1) -->
+      <h1 class="cover-title">
+        Control Arquitectónico <em>Obligatorio</em><br>
+        y Manual de Imagen Urbana
+      </h1>
+
+      <!-- Project identifier -->
+      <div class="cover-project-row">
+        <span class="cover-project-name">Fraccionamiento Solé &mdash; El Toro</span>
+        <span class="cover-project-sep"></span>
+        <span class="cover-project-type">Propuesta de Reforma al Reglamento</span>
+      </div>
+
+    </div><!-- /cover-hero -->
+
+
+    <!-- ── Metadata Zone ── -->
+    <div class="cover-meta">
+
+      <dl class="meta-grid">
+
+        <div class="meta-item">
+          <dt class="meta-label">Presentado por</dt>
+          <dd>
+            <span class="meta-primary">Daniel Chávez Flores</span>
+            <span class="meta-secondary">Circuito de los Robles 136-B</span>
+          </dd>
+        </div>
+
+        <div class="meta-item">
+          <dt class="meta-label">Contacto</dt>
+          <dd>
+            <span class="meta-primary">Tel. 444-105-8700</span>
+            <span class="meta-secondary">dchavezf@gmail.com</span>
+          </dd>
+        </div>
+
+        <div class="meta-item">
+          <dt class="meta-label">Calidad</dt>
+          <dd>
+            <span class="meta-primary">Condómino del Fraccionamiento Solé</span>
+          </dd>
+        </div>
+
+        <div class="meta-item">
+          <dt class="meta-label">Fecha</dt>
+          <dd>
+            <span class="meta-primary">Junio 2026</span>
+            <span class="meta-secondary">San Luis Potosí, S.L.P.</span>
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- Legal citation / Fundamento -->
+      <div class="cover-citation">
+
+        <span class="citation-chip">Fundamento</span>
+
+        <div class="citation-body">
+          <span class="citation-fundamento">Reglamento Interno — Base legal de convocatoria</span>
+          <blockquote class="citation-quote">
+            «LOS CONDÓMINOS podrán convocar a <strong>ASAMBLEA GENERAL DE CONDÓMINOS</strong>
+            [...] cuando representen por lo menos el <strong>25% del total de los CONDÓMINOS</strong>»
+            <cite class="citation-source">Art. 99 del Reglamento Interno</cite>
+          </blockquote>
+        </div>
+
+      </div>
+
+    </div><!-- /cover-meta -->
+
+  </article>
+
+</div>
+
+</body>
+</html>

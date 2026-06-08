@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reforma al Reglamento — Residencial Solé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Design Tokens ─── */
+    :root {
+      --bg:            #F4F1EB;
+      --surface:       #FFFFFE;
+      --primary:       #1B2C3E;
+      --primary-70:    #3D5168;
+      --muted:         #7A8796;
+      --border:        #DDD8CE;
+      --border-light:  #EDE9E2;
+
+      /* card-propuesta */
+      --p-accent:      #28573F;
+      --p-accent-dim:  #EDF4EF;
+      --p-accent-mid:  #80B595;
+      --p-accent-text: #1E4430;
+
+      /* caso */
+      --c-header:      #6E2615;
+      --c-accent:      #8B3220;
+      --c-accent-dim:  #FAF0EC;
+      --c-accent-mid:  #C97563;
+
+      /* flow steps */
+      --s1:            #29528A;
+      --s1-bg:         #EBF1FA;
+      --s2:            #5E3080;
+      --s2-bg:         #F2EBF8;
+      --s3:            #28573F;
+      --s3-bg:         #EDF4EF;
+
+      --font-serif:    'Cormorant Garamond', Georgia, serif;
+      --font-sans:     'DM Sans', system-ui, sans-serif;
+      --font-mono:     'DM Mono', 'Fira Mono', monospace;
+
+      --r:             6px;
+      --r-lg:          14px;
+      --shadow:        0 2px 20px rgba(27, 44, 62, 0.07);
+      --shadow-lg:     0 4px 32px rgba(27, 44, 62, 0.11);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(40, 87, 63, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(110, 38, 21, 0.04) 0%, transparent 60%);
+      color: var(--primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    /* ─── Noise grain overlay ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 740px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Document Header ─── */
+    .doc-header {
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.55s ease both;
+    }
+
+    .doc-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .doc-eyebrow-rule {
+      width: 32px;
+      height: 1.5px;
+      background: var(--p-accent);
+      flex-shrink: 0;
+    }
+
+    .doc-eyebrow-text {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--p-accent);
+    }
+
+    .doc-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .doc-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── Shared card base ─── */
+    .md-card {
+      border-radius: var(--r-lg);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* ════════════════════════════════════
+       COMPONENT: card-propuesta
+       ════════════════════════════════════ */
+    .card-propuesta {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--p-accent);
+      padding: 0;
+      animation: fadeUp 0.55s ease 0.08s both;
+      position: relative;
+    }
+
+    /* large ghost number */
+    .card-propuesta::before {
+      content: '01';
+      font-family: var(--font-serif);
+      font-size: 9rem;
+      font-weight: 700;
+      color: var(--p-accent);
+      opacity: 0.04;
+      position: absolute;
+      top: -1.5rem;
+      right: 1.75rem;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .card-propuesta .cp-inner {
+      padding: 2rem 2.25rem 2rem;
+      position: relative;
+    }
+
+    .cp-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.4rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cp-chip {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--p-accent-text);
+      background: var(--p-accent-dim);
+      border: 1px solid var(--p-accent-mid);
+      border-radius: 3px;
+      padding: 0.22rem 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .card-propuesta h2 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    /* "Para quién" row */
+    .cp-para-quien {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      background: var(--bg);
+      border-radius: var(--r);
+      border: 1px solid var(--border-light);
+      padding: 0.8rem 1.1rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .cp-pq-label {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--p-accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    .cp-pq-text {
+      font-size: 0.9rem;
+      color: var(--primary-70);
+      line-height: 1.6;
+    }
+
+    .cp-body {
+      font-size: 0.93rem;
+      color: var(--primary-70);
+      line-height: 1.8;
+      margin-bottom: 1.6rem;
+    }
+
+    /* "Al terminar sabrás" footer */
+    .cp-footer {
+      border-top: 1px solid var(--border-light);
+      padding: 1.25rem 2.25rem;
+      background: linear-gradient(to right, var(--p-accent-dim), #f7fbf8);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .cp-footer-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--p-accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .cp-footer-content {}
+
+    .cp-footer-label {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--p-accent);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .cp-footer-text {
+      font-size: 0.88rem;
+      color: var(--p-accent-text);
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    /* ════════════════════════════════════
+       COMPONENT: caso
+       ════════════════════════════════════ */
+    .caso {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      animation: fadeUp 0.55s ease 0.16s both;
+    }
+
+    /* Header band */
+    .caso-header {
+      background: var(--c-header);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .caso-header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 260px; height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.04));
+      pointer-events: none;
+    }
+
+    .caso-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 3px;
+      padding: 0.2rem 0.55rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+
+    .caso-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      font-style: italic;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.45;
+    }
+
+    /* Flow steps */
+    .caso-body {
+      padding: 2rem 2.25rem;
+    }
+
+    .caso-steps {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .caso-step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      column-gap: 1.1rem;
+    }
+
+    /* Indicator column */
+    .step-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      border: 1.5px solid currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .caso-step:hover .step-dot {
+      transform: scale(1.08);
+    }
+
+    .step-connector {
+      width: 2px;
+      flex: 1;
+      min-height: 1.75rem;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    /* Content column */
+    .step-content {
+      padding-bottom: 2rem;
+    }
+
+    .caso-step:last-child .step-content {
+      padding-bottom: 0;
+    }
+
+    .step-label-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: 0.55rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .step-arrow {
+      font-size: 0.7rem;
+      opacity: 0.5;
+    }
+
+    .step-text {
+      font-size: 0.925rem;
+      color: var(--primary-70);
+      line-height: 1.78;
+    }
+
+    /* Step-specific colors */
+    .step-s1 .step-dot        { color: var(--s1); background: var(--s1-bg); }
+    .step-s1 .step-connector  { background: linear-gradient(to bottom, var(--s1), var(--s2)); opacity: 0.25; }
+    .step-s1 .step-label      { color: var(--s1); }
+    .step-s1 .step-arrow      { color: var(--s1); }
+
+    .step-s2 .step-dot        { color: var(--s2); background: var(--s2-bg); }
+    .step-s2 .step-connector  { background: linear-gradient(to bottom, var(--s2), var(--s3)); opacity: 0.25; }
+    .step-s2 .step-label      { color: var(--s2); }
+    .step-s2 .step-arrow      { color: var(--s2); }
+
+    .step-s3 .step-dot        { color: var(--s3); background: var(--s3-bg); }
+    .step-s3 .step-label      { color: var(--s3); }
+
+    /* Resultado highlight */
+    .step-s3 .step-text {
+      background: var(--s3-bg);
+      border-left: 3px solid var(--s3);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 0.85rem 1rem;
+      margin-left: -0.25rem;
+      font-size: 0.9rem;
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 560px) {
+      body { padding: 2.5rem 1rem 4rem; }
+
+      .card-propuesta .cp-inner { padding: 1.5rem 1.25rem 1.5rem; }
+      .cp-footer  { padding: 1rem 1.25rem; }
+      .cp-top     { flex-direction: column; gap: 0.75rem; }
+
+      .caso-header { padding: 1rem 1.25rem; flex-direction: column; gap: 0.5rem; }
+      .caso-body   { padding: 1.5rem 1.25rem; }
+
+      .card-propuesta::before { font-size: 6rem; right: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ─── Page header ─── -->
+  <header class="doc-header">
+    <div class="doc-eyebrow">
+      <div class="doc-eyebrow-rule"></div>
+      <span class="doc-eyebrow-text">Residencial Solé · Documentación vecinal</span>
+    </div>
+    <h1 class="doc-title">Reforma al Reglamento</h1>
+    <p class="doc-subtitle">Cinco propuestas de cambio — guía para vecinos</p>
+  </header>
+
+
+  <!-- ═══════════════════════════════
+       :::card-propuesta
+       ═══════════════════════════════ -->
+  <article class="md-card card-propuesta">
+    <div class="cp-inner">
+
+      <div class="cp-top">
+        <h2>Parte 1 — Introducción y resumen</h2>
+        <span class="cp-chip">Parte 01</span>
+      </div>
+
+      <div class="cp-para-quien">
+        <span class="cp-pq-label">Para quién</span>
+        <span class="cp-pq-text">Cualquier vecino que quiera entender de qué se trata antes de decidir si profundizar.</span>
+      </div>
+
+      <p class="cp-body">
+        Explica por qué la imagen del fraccionamiento tiene valor económico concreto,
+        qué problema específico tiene el Reglamento actual, y resume en una página
+        las cinco propuestas de cambio con su situación actual y el resultado esperado
+        de cada una.
+      </p>
+
+    </div>
+
+    <footer class="cp-footer">
+      <div class="cp-footer-icon">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.5 1L8.2 4.5L12 5.1L9.25 7.8L9.9 11.6L6.5 9.8L3.1 11.6L3.75 7.8L1 5.1L4.8 4.5L6.5 1Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="cp-footer-content">
+        <div class="cp-footer-label">Al terminar esta parte sabrás</div>
+        <p class="cp-footer-text">
+          Qué se propone, por qué importa y cuánto puede valer
+          la diferencia en el valor de tu casa.
+        </p>
+      </div>
+    </footer>
+  </article>
+
+
+  <!-- ═══════════════════════════════
+       :::caso
+       ═══════════════════════════════ -->
+  <article class="md-card caso">
+
+    <header class="caso-header">
+      <span class="caso-badge">Caso</span>
+      <h3 class="caso-title">
+        Un propietario quiere instalar un aljibe en el frente de su casa
+      </h3>
+    </header>
+
+    <div class="caso-body">
+      <div class="caso-steps">
+
+        <!-- Situación -->
+        <div class="caso-step step-s1">
+          <div class="step-indicator">
+            <div class="step-dot">→</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label-row">
+              <span class="step-label">Situación</span>
+            </div>
+            <p class="step-text">
+              Un propietario planea instalar un aljibe en la parte frontal de su lote
+              para resolver el abasto de agua. No sabe si necesita permiso, si afecta
+              la imagen del fraccionamiento, a quién consultarlo ni en qué plazo
+              recibirá una respuesta.
+            </p>
+          </div>
+        </div>
+
+        <!-- Acción -->
+        <div class="caso-step step-s2">
+          <div class="step-indicator">
+            <div class="step-dot">→</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label-row">
+              <span class="step-label">Acción</span>
+            </div>
+            <p class="step-text">
+              Pregunta al Administrador. No hay un proceso escrito definido ni criterios
+              claros sobre qué elementos pueden instalarse en el frente del lote.
+              Le dicen que "habría que verlo" pero sin que nadie tenga autoridad formal
+              para resolverlo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="caso-step step-s3">
+          <div class="step-indicator">
+            <div class="step-dot">●</div>
+          </div>
+          <div class="step-content">
+            <div class="step-label-row">
+              <span class="step-label">Resultado</span>
+            </div>
+            <p class="step-text">
+              El propietario queda en una zona gris: si instala el aljibe sin
+              autorización asume el riesgo de que más adelante alguien objete.
+              Si espera, no sabe cuánto ni ante quién. El Reglamento vigente no
+              le da una respuesta clara porque el proceso no está definido.
+              Este es exactamente el vacío que la propuesta busca cerrar.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </article>
+
+</div>
+
+</body>
+</html>

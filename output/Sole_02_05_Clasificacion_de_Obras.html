@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasificacion de Obras</title>
+  <meta name="author" content="Daniel Chávez Flores">
+  <meta name="description" content="Tema institucional para la propuesta de Gobernanza Arquitectónica del Fraccionamiento Solé">
+  <style>
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; padding: 2rem; }
+.md-document { max-width: 860px; margin: 0 auto; }
+h1 { font-family: Calibri, Arial, sans-serif; font-size: 2rem; font-weight: 700; color: #1B3A6B; border-bottom: 3px solid #C8860A; padding-bottom: 0.4rem; margin-top: 2rem; margin-bottom: 1rem; text-align: center }
+h2 { font-family: Calibri, Arial, sans-serif; font-size: 1.5rem; font-weight: 700; color: #1B3A6B; border-left: 4px solid #C8860A; padding-left: 0.75rem; margin-top: 1.75rem; margin-bottom: 0.75rem }
+h3 { font-family: Calibri, Arial, sans-serif; font-size: 1.2rem; font-weight: 700; color: #2C5282; margin-top: 1.5rem; margin-bottom: 0.5rem }
+h4 { font-family: Calibri, Arial, sans-serif; font-size: 1.05rem; font-weight: 700; color: #4A4A4A; margin-top: 1.25rem; margin-bottom: 0.4rem }
+h5 { font-family: Calibri, Arial, sans-serif; font-size: 1rem; font-weight: 700; color: #4A4A4A; margin-top: 1rem; margin-bottom: 0.3rem }
+h6 { font-family: Calibri, Arial, sans-serif; font-size: 0.95rem; font-weight: 700; color: #4A4A4A; margin-top: 1rem; margin-bottom: 0.3rem }
+p { font-family: Georgia, 'Times New Roman', serif; font-size: 1rem; line-height: 1.7; color: #1A1A1A; margin-top: 0; margin-bottom: 0.85rem }
+blockquote { border-left: 4px solid #D0D0D0; margin-left: 0; padding-left: 1rem; color: #666; font-style: italic; margin-bottom: 1rem }
+hr { border: none; border-top: 2px solid #D0D0D0; margin: 2rem 0 }
+em { font-style: italic }
+strong { font-weight: 700; color: #1B3A6B }
+s { text-decoration: line-through; color: #888 }
+code:not(pre code) { font-family: 'Courier New', Courier, monospace; font-size: 0.875em; background-color: #F8F8F8; border: 1px solid #D0D0D0; border-radius: 3px; padding: 0.1em 0.35em; color: #1B3A6B }
+pre { font-family: 'Courier New', Courier, monospace; font-size: 0.875rem; background-color: #F8F8F8; border: 1px solid {{colors.border}}; border-left: 4px solid #2C5282; border-radius: 4px; padding: 1rem; overflow-x: auto; margin-bottom: 1rem }
+pre code { font-family: 'Courier New', Courier, monospace; font-size: 0.875rem }
+.md-table-container { overflow-x: auto; margin-bottom: 1.25rem }
+.md-table thead { background-color: #1B3A6B; color: #FFFFFF }
+.md-table th { font-family: Calibri, Arial, sans-serif; font-weight: 700; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.875rem; letter-spacing: 0.03em }
+.md-table td { font-family: Georgia, 'Times New Roman', serif; padding: 0.5rem 0.75rem; border-bottom: 1px solid {{colors.border}}; font-size: 0.9rem; vertical-align: top }
+.md-table tbody tr:nth-child(even) { background-color: #F5F5F5 }
+.callout { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid }
+.callout-note { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #EBF4FF; border-left-color: #3182CE }
+.callout-tip { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #F0FFF4; border-left-color: #38A169 }
+.callout-warning { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFFBEB; border-left-color: #D69E2E }
+.callout-caution { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF5F5; border-left-color: #E53E3E }
+.callout-important { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF3E0; border-left-color: #DD6B20 }
+.callout-danger { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF5F5; border-left-color: #C53030 }
+.callout-title { font-family: Calibri, Arial, sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em }
+.callout-body { font-family: Georgia, 'Times New Roman', serif; font-size: 0.95rem; line-height: 1.65 }
+.directive { overflow: hidden; }
+.directive-card-propuesta { background-color: #F5F5F5; border: 1px solid {{colors.border}}; border-top: 4px solid #1B3A6B; border-radius: 6px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem }
+.directive-caso { border-left: 4px solid #C8860A; background-color: #FFFDF7; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-radius: 0 6px 6px 0 }
+.directive-example { background-color: #F9FAFB; border: 1px solid {{colors.border}}; border-radius: 4px; padding: 1rem; margin-bottom: 1rem }
+.directive-details { background-color: #F5F5F5; border: 1px solid {{colors.border}}; border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1rem }
+.page-break { height: 0; overflow: hidden; }
+@media print { .page-break { page-break-before: always; break-before: page; } }
+.task-list-item input[type=checkbox] { margin-right: 0.5rem }
+a { color: #2C5282; text-decoration: underline }
+a:hover { color: #C8860A }
+img { max-width: 100%; height: auto; display: block; margin: 1rem auto; max-width: 100% }
+  </style>
+</head>
+<body>
+  <div class="md-document">
+<h2>5. Clasificación de obras y proceso de revisión</h2>
+<h3>5.1 Las tres categorías</h3>
+<p><strong>Obra Pequeña (Categoría I)</strong></p>
+<p>Mantenimiento o cambios de acabados que no afectan estructura, distribución interna, fachada ni superficie construida. Ejemplos: repintar recámaras, cambiar azulejos en baño.</p>
+<p><em>Excepción:</em> si la obra incluye algo visible desde calle o áreas comunes, sube a Obra Mediana.</p>
+<ul>
+<li><strong>Trámite:</strong> aviso al Administrador <strong>48 horas antes</strong> (Formato C-1)</li>
+<li><strong>Costo:</strong> sin cuota ni depósito</li>
+<li>Si el Administrador detecta que la obra no encuadra en esta categoría, lo notifica en <strong>24 horas</strong></li>
+</ul>
+<hr />
+<p><strong>Obra Mediana (Categoría II)</strong></p>
+<p>Cambios en apariencia exterior, elementos visibles desde calle o distribución interna sin tocar estructura. Ejemplos: repintar fachada, cambiar ventanas, paneles solares, toldos, jardinería frontal.</p>
+<ul>
+<li><strong>Trámite:</strong> solicitud escrita al Consejo con materiales referenciados al Manual</li>
+<li><strong>Plazo:</strong> el Consejo responde en <strong>5 días hábiles</strong>; si no responde, se considera <strong>aprobado automáticamente</strong></li>
+<li>Toda respuesta es por escrito con su fundamento</li>
+<li><strong>Costo:</strong> $1,500 cuota de revisión + $3,000 depósito reembolsable al concluir <em>(montos en pesos conforme al Artículo C; independientes de la multa por inicio sin autorización del Catálogo de Multas)</em></li>
+</ul>
+<hr />
+<p><strong>Obra Grande (Categoría III)</strong></p>
+<p>Ampliaciones de superficie, nuevos volúmenes, cambios estructurales, adición de niveles, o cualquier obra que requiera permiso municipal.</p>
+<ul>
+<li><strong>Trámite:</strong> DRO con registro vigente + autorización previa del Consejo + permisos de la Dirección de Desarrollo Urbano de Soledad; visitas de supervisión durante la obra</li>
+<li><strong>No hay aprobación automática</strong> por silencio del Consejo en esta categoría</li>
+<li><strong>Costo:</strong> $1,500 cuota + <strong>15% del presupuesto</strong> (mín. $10,000) como depósito reembolsable al concluir satisfactoriamente <em>(montos en pesos conforme al Artículo C; independientes de la multa por inicio sin autorización del Catálogo de Multas)</em></li>
+</ul>
+<h3>5.2 Proceso de apelación</h3>
+<ol>
+<li>El condómino tiene <strong>10 días hábiles</strong> para apelar ante el Comité de Representantes.</li>
+<li>El Comité verifica únicamente si la resolución está fundada en el Manual. Si no lo está, la revierte de inmediato sin evaluar el fondo.</li>
+<li>Para debates técnicos: árbitro externo designado por el <strong>Colegio de Arquitectos del Estado de SLP</strong> o el <strong>Registro de DROs del Municipio</strong>. Ninguna parte lo elige.</li>
+<li>Los honorarios del árbitro los paga el fondo de mantenimiento si el Consejo se equivocó, o el condómino si el Consejo tenía razón.</li>
+</ol>
+<h3>5.3 Política de devolución de cuota de revisión</h3>
+<div class="md-table-container" style="overflow-x: auto; margin-bottom: 1.25rem">
+<table class="md-table">
+<thead>
+<tr>
+<th>Escenario</th>
+<th>Devolución</th>
+<th>Fundamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Obra aprobada en tiempo y forma</td>
+<td>0%</td>
+<td>El servicio fue prestado correctamente</td>
+</tr>
+<tr>
+<td>Aprobación automática por silencio del Consejo</td>
+<td>100%</td>
+<td>El servicio no fue prestado en el plazo establecido</td>
+</tr>
+<tr>
+<td>Rechazo revertido en apelación</td>
+<td>75%</td>
+<td>La resolución fue incorrecta; se retiene 25% por costos del proceso</td>
+</tr>
+<tr>
+<td>Rechazo confirmado en apelación</td>
+<td>0%</td>
+<td>El proceso fue correcto</td>
+</tr>
+<tr>
+<td>Expediente devuelto por incompleto</td>
+<td>100%</td>
+<td>No se inició la revisión</td>
+</tr>
+</tbody>
+</table>
+<h3>5.4 Obligación de restitución</h3>
+<p>Para que un sistema de reglas sea efectivo, sus consecuencias deben ser proporcionales al impacto de la acción. Cuando el costo de seguir el proceso es mayor que el de omitirlo, el sistema tiende a no usarse.</p>
+<div class="callout callout-warning">
+  <div class="callout-title">⚠️ Advertencia</div>
+  <div class="callout-body">
+<p><strong>La obligación de restitución establece una estructura de incentivos clara.</strong> Una obra realizada sin el proceso correspondiente puede quedar sujeta a la obligación de devolver el inmueble a su estado anterior, con el costo a cargo de quien la realizó. Si no se atiende en el plazo establecido, el Comité de Representantes puede contratar los trabajos necesarios y recuperar el costo del condómino responsable. Seguir el proceso es, en todos los casos, la opción que mejor protege el patrimonio propio.</p>
+  </div>
+</div>
+<div class="directive directive-caso" style="border-left: 4px solid #C8860A; background-color: #FFFDF7; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-radius: 0 6px 6px 0">
+<p><strong>Caso A — Obra Pequeña:</strong> Pintar recámaras sin trámite</p>
+<p><strong>Situación →</strong> Un propietario quiere repintar las recámaras de su casa en colores distintos a los actuales. Se pregunta si necesita permiso.</p>
+<p><strong>Acción →</strong> Consulta la clasificación: es una Obra Pequeña. Los cambios son interiores y no afectan fachada ni estructura. Notifica al Administrador con 48 horas de anticipación usando el Formato C-1.</p>
+<p><strong>Resultado →</strong> La obra inicia sin cuota, sin depósito, sin esperar resolución del Consejo. El sistema reconoce que no toda intervención en la casa requiere el mismo nivel de revisión.</p>
+</div>
+<div class="directive directive-caso" style="border-left: 4px solid #C8860A; background-color: #FFFDF7; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-radius: 0 6px 6px 0">
+<p><strong>Caso B — Obra Grande sin proceso:</strong> La obligación de restitución</p>
+<p><strong>Situación →</strong> Un propietario construye un cuarto adicional en su azotea sin notificar al Administrador, sin DRO y sin autorización del Consejo.</p>
+<p><strong>Acción →</strong> Al activarse el sistema, la obra queda registrada como no autorizada. El propietario recibe notificación formal de que la obra está sujeta a obligación de restitución si no inicia el proceso de regularización en el plazo establecido.</p>
+<p><strong>Resultado →</strong> El costo total es significativamente mayor que si hubiera seguido el proceso desde el inicio. Se acumulan tres conceptos independientes: (1) la <strong>multa por inicio sin autorización</strong> del Catálogo de Multas (88 UMAs ≈ $10,323 al valor 2026), (2) la <strong>cuota de revisión</strong> para regularización ($1,500), y (3) el <strong>depósito en garantía</strong> (15% del presupuesto, mínimo $10,000). Si no atiende la notificación en el plazo establecido, el Comité puede contratar los trabajos de restitución y recuperar el costo del propietario responsable. Seguir el proceso desde el principio es, en todos los casos, la opción que mejor protege el patrimonio propio.</p>
+</div>
+<hr />
+
+  </div>
+</body>
+</html>

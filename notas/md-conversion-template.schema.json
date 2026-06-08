@@ -1,0 +1,840 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/md-conversion-template.schema.json",
+  "title": "MarkdownConversionTemplate",
+  "description": "Esquema de configuración de plantillas para conversión Markdown (GFM) → HTML / DOCX / PDF. Cubre todos los elementos GFM estándar y directivas personalizadas tipo :::.",
+  "type": "object",
+  "required": ["version", "elements"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "$schema": {
+      "type": "string",
+      "description": "URI del schema. Permite que los archivos de template se auto-validen."
+    },
+
+    "version": {
+      "type": "string",
+      "description": "Versión semántica del template (semver).",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "examples": ["1.0.0", "2.1.3"]
+    },
+
+    "meta": {
+      "type": "object",
+      "description": "Metadatos del template.",
+      "additionalProperties": false,
+      "properties": {
+        "name":        { "type": "string", "description": "Nombre del template." },
+        "author":      { "type": "string" },
+        "description": { "type": "string" },
+        "created":     { "type": "string", "format": "date" },
+        "updated":     { "type": "string", "format": "date" },
+        "tags":        { "type": "array", "items": { "type": "string" } },
+        "targets": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["html", "docx", "pdf"] },
+          "description": "Formatos de salida soportados por este template."
+        }
+      }
+    },
+
+    "variables": {
+      "type": "object",
+      "description": "Variables globales reutilizables. Se referencian en cualquier valor string con la sintaxis {{variable_name}}.",
+      "additionalProperties": false,
+      "properties": {
+        "colors": {
+          "type": "object",
+          "description": "Paleta de colores nombrada.",
+          "additionalProperties": { "$ref": "#/$defs/colorValue" },
+          "examples": [{ "primary": "#1a73e8", "danger": "#dc3545", "muted": "#6c757d" }]
+        },
+        "fonts": {
+          "type": "object",
+          "description": "Familias tipográficas nombradas.",
+          "additionalProperties": { "type": "string" },
+          "examples": [{ "body": "Inter, sans-serif", "mono": "JetBrains Mono, monospace" }]
+        },
+        "spacing": {
+          "type": "object",
+          "description": "Valores de espaciado nombrados (CSS units o números).",
+          "additionalProperties": { "type": ["string", "number"] }
+        },
+        "borders": {
+          "type": "object",
+          "description": "Definiciones de borde reutilizables en formato shorthand CSS.",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+
+    "elements": {
+      "type": "object",
+      "description": "Configuración de cada elemento Markdown GFM estándar.",
+      "additionalProperties": false,
+      "properties": {
+
+        "heading": {
+          "type": "object",
+          "description": "Encabezados por nivel (# → h1 … ###### → h6).",
+          "additionalProperties": false,
+          "properties": {
+            "h1": { "$ref": "#/$defs/elementTemplate" },
+            "h2": { "$ref": "#/$defs/elementTemplate" },
+            "h3": { "$ref": "#/$defs/elementTemplate" },
+            "h4": { "$ref": "#/$defs/elementTemplate" },
+            "h5": { "$ref": "#/$defs/elementTemplate" },
+            "h6": { "$ref": "#/$defs/elementTemplate" }
+          }
+        },
+
+        "paragraph": {
+          "$ref": "#/$defs/elementTemplate",
+          "description": "Párrafo de texto."
+        },
+
+        "emphasis": {
+          "$ref": "#/$defs/inlineTemplate",
+          "description": "Énfasis (*texto* o _texto_) → cursiva."
+        },
+
+        "strong": {
+          "$ref": "#/$defs/inlineTemplate",
+          "description": "Negrita (**texto** o __texto__)."
+        },
+
+        "strikethrough": {
+          "$ref": "#/$defs/inlineTemplate",
+          "description": "Tachado (~~texto~~)."
+        },
+
+        "inlineCode": {
+          "$ref": "#/$defs/inlineTemplate",
+          "description": "Código en línea (`código`)."
+        },
+
+        "codeBlock": {
+          "type": "object",
+          "description": "Bloque de código (fenced code block con triple backtick).",
+          "additionalProperties": false,
+          "properties": {
+            "container": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Elemento contenedor externo. Útil para agregar scroll horizontal o una barra de cabecera con el nombre del lenguaje."
+            },
+            "pre": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Elemento <pre> que envuelve el código."
+            },
+            "code": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Elemento <code> con el contenido textual."
+            },
+            "lineNumbers": {
+              "type": "object",
+              "description": "Configuración de numeración de líneas.",
+              "additionalProperties": false,
+              "properties": {
+                "enabled":   { "type": "boolean", "default": false },
+                "startFrom": { "type": "integer", "minimum": 0, "default": 1 },
+                "html":      { "$ref": "#/$defs/htmlConfig" }
+              }
+            },
+            "languageOverrides": {
+              "type": "object",
+              "description": "Overrides de estilos por lenguaje. La clave es el identificador tal como aparece en el fence (e.g. 'sql', 'python', 'bash'). Los overrides se aplican encima de los estilos base.",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "description": "Etiqueta visible en el header del bloque (e.g. 'SQL', 'Python 3', 'Bash')."
+                  },
+                  "html":  { "$ref": "#/$defs/htmlConfig" },
+                  "docx":  { "$ref": "#/$defs/docxConfig" },
+                  "pdf":   { "$ref": "#/$defs/pdfConfig" }
+                }
+              }
+            }
+          }
+        },
+
+        "unorderedList": {
+          "type": "object",
+          "description": "Lista con viñetas (-, *, +).",
+          "additionalProperties": false,
+          "properties": {
+            "list":    { "$ref": "#/$defs/elementTemplate" },
+            "item":    { "$ref": "#/$defs/elementTemplate" },
+            "nesting": { "$ref": "#/$defs/nestingConfig" }
+          }
+        },
+
+        "orderedList": {
+          "type": "object",
+          "description": "Lista numerada.",
+          "additionalProperties": false,
+          "properties": {
+            "list":      { "$ref": "#/$defs/elementTemplate" },
+            "item":      { "$ref": "#/$defs/elementTemplate" },
+            "nesting":   { "$ref": "#/$defs/nestingConfig" },
+            "startFrom": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 1,
+              "description": "Número de inicio de la secuencia."
+            }
+          }
+        },
+
+        "taskList": {
+          "type": "object",
+          "description": "Lista de tareas GFM (- [ ] pendiente / - [x] completado).",
+          "additionalProperties": false,
+          "properties": {
+            "list": { "$ref": "#/$defs/elementTemplate" },
+            "item": { "$ref": "#/$defs/elementTemplate" },
+            "checkedItem": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Override de estilos para ítems marcados (- [x])."
+            },
+            "checkbox": {
+              "type": "object",
+              "description": "Apariencia del checkbox en cada formato de salida.",
+              "additionalProperties": false,
+              "properties": {
+                "html": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "tag":          { "type": "string", "default": "input" },
+                    "className":    { "$ref": "#/$defs/classNameValue" },
+                    "style":        { "$ref": "#/$defs/cssProperties" },
+                    "checkedStyle": { "$ref": "#/$defs/cssProperties" },
+                    "disabled":     { "type": "boolean", "default": true }
+                  }
+                },
+                "docx": {
+                  "type": "object",
+                  "description": "Representación en DOCX mediante símbolo Unicode.",
+                  "additionalProperties": false,
+                  "properties": {
+                    "uncheckedSymbol": { "type": "string", "default": "☐" },
+                    "checkedSymbol":   { "type": "string", "default": "☑" },
+                    "font":            { "type": "string", "description": "Fuente del símbolo (e.g. 'Segoe UI Symbol')." }
+                  }
+                },
+                "pdf": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "uncheckedSymbol": { "type": "string", "default": "☐" },
+                    "checkedSymbol":   { "type": "string", "default": "☑" },
+                    "css":             { "$ref": "#/$defs/cssProperties" }
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "blockquote": {
+          "$ref": "#/$defs/elementTemplate",
+          "description": "Cita estándar Markdown (>). No confundir con callouts GFM ([!NOTE], etc.)."
+        },
+
+        "callout": {
+          "type": "object",
+          "description": "Callouts y alertas GFM: > [!NOTE] / > [!TIP] / > [!WARNING] / > [!CAUTION].",
+          "additionalProperties": false,
+          "properties": {
+            "base": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Estilos base compartidos por todos los tipos de callout."
+            },
+            "title": {
+              "$ref": "#/$defs/inlineTemplate",
+              "description": "Estilos de la línea de título (e.g. 'NOTE', 'TIP')."
+            },
+            "body": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Estilos del contenido del callout."
+            },
+            "note":    { "$ref": "#/$defs/calloutVariantTemplate" },
+            "tip":     { "$ref": "#/$defs/calloutVariantTemplate" },
+            "warning": { "$ref": "#/$defs/calloutVariantTemplate" },
+            "caution": { "$ref": "#/$defs/calloutVariantTemplate" }
+          }
+        },
+
+        "table": {
+          "type": "object",
+          "description": "Tabla GFM.",
+          "additionalProperties": false,
+          "properties": {
+            "container": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Contenedor externo de la tabla. Úsalo para agregar overflow-x: auto en HTML responsive."
+            },
+            "caption": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Leyenda de la tabla (<caption> en HTML, párrafo precedente en DOCX/PDF)."
+            },
+            "thead":       { "$ref": "#/$defs/elementTemplate" },
+            "tbody":       { "$ref": "#/$defs/elementTemplate" },
+            "tr":          { "$ref": "#/$defs/elementTemplate" },
+            "trAlternate": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Estilos para filas pares en tbody (row striping). Se aplica a filas con índice impar (base 0)."
+            },
+            "th": { "$ref": "#/$defs/elementTemplate" },
+            "td": { "$ref": "#/$defs/elementTemplate" },
+            "columns": {
+              "type": "object",
+              "description": "Configuración por índice de columna (base 0). Permite controlar ancho y alineación columna a columna.",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "width": {
+                    "type": "string",
+                    "description": "Ancho de la columna en CSS (e.g. '200px', '25%', 'auto')."
+                  },
+                  "docxWidth": {
+                    "type": "number",
+                    "description": "Ancho en twips para DOCX. 1440 twips = 1 pulgada."
+                  },
+                  "alignment": {
+                    "type": "string",
+                    "enum": ["left", "center", "right"],
+                    "description": "Alineación de contenido de la columna."
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "horizontalRule": {
+          "$ref": "#/$defs/elementTemplate",
+          "description": "Regla horizontal (---, ***, ___)."
+        },
+
+        "link": {
+          "type": "object",
+          "description": "Enlace Markdown [texto](url).",
+          "additionalProperties": false,
+          "properties": {
+            "html": {
+              "type": "object",
+              "description": "Configuración HTML extendida con estados interactivos.",
+              "additionalProperties": false,
+              "properties": {
+                "tag":          { "type": "string", "default": "a" },
+                "className":    { "$ref": "#/$defs/classNameValue" },
+                "style":        { "$ref": "#/$defs/cssProperties" },
+                "hoverStyle":   { "$ref": "#/$defs/cssProperties", "description": "Estilos CSS para el estado :hover." },
+                "visitedStyle": { "$ref": "#/$defs/cssProperties", "description": "Estilos CSS para el estado :visited." },
+                "activeStyle":  { "$ref": "#/$defs/cssProperties", "description": "Estilos CSS para el estado :active." },
+                "attributes":   { "type": "object", "additionalProperties": { "type": "string" } },
+                "targetBlank": {
+                  "type": "boolean",
+                  "description": "Si true, agrega target='_blank' y rel='noopener noreferrer' automáticamente."
+                },
+                "nofollow": {
+                  "type": "boolean",
+                  "description": "Si true, agrega rel='nofollow'."
+                }
+              }
+            },
+            "docx": { "$ref": "#/$defs/docxRunConfig" },
+            "pdf":  { "$ref": "#/$defs/pdfConfig" }
+          }
+        },
+
+        "image": {
+          "type": "object",
+          "description": "Imagen Markdown ![alt](src).",
+          "additionalProperties": false,
+          "properties": {
+            "container": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Contenedor de la imagen (útil para centrado, figure wrapper o responsive)."
+            },
+            "img":     { "$ref": "#/$defs/elementTemplate" },
+            "caption": {
+              "$ref": "#/$defs/elementTemplate",
+              "description": "Estilo del texto alt/caption renderizado debajo de la imagen."
+            },
+            "maxWidth": {
+              "type": "string",
+              "description": "Ancho máximo de la imagen en CSS (e.g. '100%', '800px')."
+            },
+            "docxMaxWidthEmu": {
+              "type": "integer",
+              "description": "Ancho máximo en EMU para DOCX. 914400 EMU = 1 pulgada."
+            },
+            "lazy": {
+              "type": "boolean",
+              "default": true,
+              "description": "Agrega loading='lazy' al <img> en HTML."
+            }
+          }
+        },
+
+        "htmlPassthrough": {
+          "type": "object",
+          "description": "Comportamiento del HTML inline incluido directamente en el Markdown fuente.",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true,
+              "description": "Si false, el HTML inline es escapado como texto plano."
+            },
+            "sanitize": {
+              "type": "boolean",
+              "default": false,
+              "description": "Si true, aplica sanitización (allowlist) antes del output."
+            },
+            "allowedTags": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Tags HTML permitidos cuando sanitize es true."
+            },
+            "allowedAttributes": {
+              "type": "object",
+              "description": "Atributos permitidos por tag cuando sanitize es true. La clave es el tag (o '*' para todos).",
+              "additionalProperties": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+
+      }
+    },
+
+    "customDirectives": {
+      "type": "object",
+      "description": "Plantillas para directivas personalizadas tipo :::nombre. La clave es el nombre exacto de la directiva tal como aparece en el Markdown (e.g. 'sidebar', 'definition', 'exercise', 'figure', 'badge').",
+      "additionalProperties": { "$ref": "#/$defs/directiveTemplate" },
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9\\-_]*$",
+        "description": "El nombre debe ser lowercase, comenzar con letra y solo contener letras, dígitos, guiones o underscores."
+      }
+    }
+
+  },
+
+  "$defs": {
+
+    "colorValue": {
+      "type": "string",
+      "description": "Valor de color: hex (#RRGGBB / #RRGGBBAA), rgb(), rgba(), hsl(), nombre CSS, transparent, o referencia {{colors.nombre}}.",
+      "examples": ["#1a73e8", "rgba(220,53,69,0.15)", "transparent", "{{colors.primary}}"]
+    },
+
+    "classNameValue": {
+      "description": "Clase CSS: string simple o array de strings.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      ]
+    },
+
+    "cssProperties": {
+      "type": "object",
+      "description": "Propiedades CSS como clave-valor. Acepta camelCase (backgroundColor) o kebab-case (background-color).",
+      "additionalProperties": { "type": "string" }
+    },
+
+    "htmlConfig": {
+      "type": "object",
+      "description": "Configuración de renderizado para un elemento HTML.",
+      "additionalProperties": false,
+      "properties": {
+        "tag": {
+          "type": "string",
+          "description": "Tag HTML del elemento (e.g. 'div', 'span', 'section', 'aside', 'article')."
+        },
+        "className":  { "$ref": "#/$defs/classNameValue" },
+        "style":      { "$ref": "#/$defs/cssProperties" },
+        "attributes": {
+          "type": "object",
+          "description": "Atributos HTML adicionales (clave-valor).",
+          "additionalProperties": { "type": "string" }
+        },
+        "wrapper": {
+          "type": "object",
+          "description": "Elemento HTML envolvente adicional. Útil para scroll containers, figure wrappers, centrado, etc.",
+          "additionalProperties": false,
+          "properties": {
+            "tag":        { "type": "string" },
+            "className":  { "$ref": "#/$defs/classNameValue" },
+            "style":      { "$ref": "#/$defs/cssProperties" },
+            "attributes": { "type": "object", "additionalProperties": { "type": "string" } }
+          }
+        }
+      }
+    },
+
+    "docxBorder": {
+      "type": "object",
+      "description": "Definición de borde en DOCX (WordprocessingML).",
+      "additionalProperties": false,
+      "properties": {
+        "style": {
+          "type": "string",
+          "enum": ["none", "single", "double", "thick", "dotted", "dashed", "dotDash", "wave", "dashSmallGap"],
+          "default": "single"
+        },
+        "size": {
+          "type": "integer",
+          "description": "Grosor del borde en octavos de punto.",
+          "minimum": 0
+        },
+        "space": {
+          "type": "integer",
+          "description": "Espacio entre el borde y el contenido en puntos.",
+          "minimum": 0
+        },
+        "color": { "$ref": "#/$defs/colorValue" }
+      }
+    },
+
+    "docxRunConfig": {
+      "type": "object",
+      "description": "Propiedades de run (texto inline) en DOCX. Se usa para elementos inline como emphasis, strong, inlineCode, link.",
+      "additionalProperties": false,
+      "properties": {
+        "font": {
+          "type": "string",
+          "description": "Nombre de la fuente (e.g. 'Calibri', 'JetBrains Mono')."
+        },
+        "size": {
+          "type": "number",
+          "description": "Tamaño de fuente en medios-puntos (half-points). 24 = 12pt, 28 = 14pt.",
+          "minimum": 1
+        },
+        "bold":         { "type": "boolean" },
+        "italic":       { "type": "boolean" },
+        "strike":       { "type": "boolean", "description": "Tachado simple." },
+        "doubleStrike": { "type": "boolean", "description": "Tachado doble." },
+        "underline": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["none", "single", "double", "thick", "dotted", "dashed", "wave", "wavyDouble"]
+            },
+            "color": { "$ref": "#/$defs/colorValue" }
+          }
+        },
+        "color": {
+          "$ref": "#/$defs/colorValue",
+          "description": "Color del texto."
+        },
+        "highlight": {
+          "type": "string",
+          "enum": [
+            "yellow", "green", "cyan", "magenta", "blue", "red",
+            "darkBlue", "darkCyan", "darkGreen", "darkMagenta",
+            "darkRed", "darkYellow", "darkGray", "lightGray", "black", "none"
+          ],
+          "description": "Color de resaltado WordprocessingML (valores predefinidos de la spec)."
+        },
+        "verticalAlign": {
+          "type": "string",
+          "enum": ["superscript", "subscript", "baseline"]
+        },
+        "characterSpacing": {
+          "type": "integer",
+          "description": "Espaciado entre caracteres en veinteavos de punto (twips). Positivo expande, negativo comprime."
+        },
+        "vanish": {
+          "type": "boolean",
+          "description": "Si true, el run es invisible en el documento (útil para metadatos embebidos)."
+        }
+      }
+    },
+
+    "docxParagraphConfig": {
+      "type": "object",
+      "description": "Propiedades de párrafo en DOCX. Los valores de spacing e indent están en veinteavos de punto (twips). 240 twips = 12pt, 1440 twips = 1 pulgada.",
+      "additionalProperties": false,
+      "properties": {
+        "alignment": {
+          "type": "string",
+          "enum": ["left", "center", "right", "justify", "distribute"]
+        },
+        "spacing": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "before":   { "type": "number", "minimum": 0, "description": "Espacio antes del párrafo en twips." },
+            "after":    { "type": "number", "minimum": 0, "description": "Espacio después del párrafo en twips." },
+            "line":     { "type": "number", "minimum": 0, "description": "Interlineado en twips." },
+            "lineRule": { "type": "string", "enum": ["auto", "exact", "atLeast"], "default": "auto" }
+          }
+        },
+        "indent": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "left":      { "type": "number", "minimum": 0 },
+            "right":     { "type": "number", "minimum": 0 },
+            "firstLine": { "type": "number" },
+            "hanging":   { "type": "number", "minimum": 0 }
+          }
+        },
+        "border": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "top":     { "$ref": "#/$defs/docxBorder" },
+            "bottom":  { "$ref": "#/$defs/docxBorder" },
+            "left":    { "$ref": "#/$defs/docxBorder" },
+            "right":   { "$ref": "#/$defs/docxBorder" },
+            "between": { "$ref": "#/$defs/docxBorder" }
+          }
+        },
+        "shading": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type":  { "type": "string", "description": "Patrón WordprocessingML (e.g. 'clear', 'solid', 'horzStripe')." },
+            "color": { "$ref": "#/$defs/colorValue", "description": "Color del patrón." },
+            "fill":  { "$ref": "#/$defs/colorValue", "description": "Color de relleno del fondo." }
+          }
+        },
+        "keepNext": {
+          "type": "boolean",
+          "description": "Mantiene este párrafo unido al siguiente (evita salto de página entre ambos)."
+        },
+        "keepLines": {
+          "type": "boolean",
+          "description": "Mantiene todas las líneas del párrafo en la misma página."
+        },
+        "pageBreakBefore": { "type": "boolean" },
+        "outlineLevel": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9,
+          "description": "Nivel del párrafo en el outline del documento (0 = nivel más alto). Necesario para que aparezca en el panel de navegación de Word."
+        }
+      }
+    },
+
+    "docxConfig": {
+      "type": "object",
+      "description": "Configuración de renderizado DOCX para un elemento de bloque.",
+      "additionalProperties": false,
+      "properties": {
+        "style": {
+          "type": "string",
+          "description": "Nombre del estilo de párrafo DOCX (predefinido o personalizado). e.g. 'Heading1', 'Normal', 'CodeBlock'. Tiene precedencia sobre las propiedades individuales de run y paragraph."
+        },
+        "run":       { "$ref": "#/$defs/docxRunConfig" },
+        "paragraph": { "$ref": "#/$defs/docxParagraphConfig" }
+      }
+    },
+
+    "pdfConfig": {
+      "type": "object",
+      "description": "Configuración de renderizado PDF mediante CSS. Compatible con WeasyPrint, Prince XML y Puppeteer/Chrome headless.",
+      "additionalProperties": false,
+      "properties": {
+        "css": { "$ref": "#/$defs/cssProperties" },
+        "pageBreak": {
+          "type": "object",
+          "description": "Control de saltos de página CSS (break-before, break-after, break-inside).",
+          "additionalProperties": false,
+          "properties": {
+            "before": { "type": "string", "enum": ["auto", "always", "avoid", "left", "right"] },
+            "after":  { "type": "string", "enum": ["auto", "always", "avoid", "left", "right"] },
+            "inside": { "type": "string", "enum": ["auto", "avoid"] }
+          }
+        },
+        "orphans": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Mínimo de líneas huérfanas permitidas al inicio de una página."
+        },
+        "widows": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Mínimo de líneas viudas permitidas al final de una página."
+        }
+      }
+    },
+
+    "elementTemplate": {
+      "type": "object",
+      "description": "Plantilla completa de estilos para un elemento de bloque en los tres formatos de salida.",
+      "additionalProperties": false,
+      "properties": {
+        "html": { "$ref": "#/$defs/htmlConfig" },
+        "docx": { "$ref": "#/$defs/docxConfig" },
+        "pdf":  { "$ref": "#/$defs/pdfConfig" }
+      }
+    },
+
+    "inlineTemplate": {
+      "type": "object",
+      "description": "Plantilla de estilos para un elemento inline. En DOCX usa docxRunConfig en lugar de docxConfig (los inline son runs, no párrafos).",
+      "additionalProperties": false,
+      "properties": {
+        "html": { "$ref": "#/$defs/htmlConfig" },
+        "docx": { "$ref": "#/$defs/docxRunConfig" },
+        "pdf":  { "$ref": "#/$defs/pdfConfig" }
+      }
+    },
+
+    "nestingConfig": {
+      "type": "object",
+      "description": "Overrides de estilos por nivel de anidamiento de lista. La clave es el nivel en base 0 (0 = primer nivel, 1 = primer nivel anidado, etc.).",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "html": { "$ref": "#/$defs/htmlConfig" },
+          "docx": { "$ref": "#/$defs/docxConfig" },
+          "pdf":  { "$ref": "#/$defs/pdfConfig" }
+        }
+      }
+    },
+
+    "calloutVariantTemplate": {
+      "type": "object",
+      "description": "Configuración de una variante de callout GFM (NOTE / TIP / WARNING / CAUTION). Extiende los estilos base definidos en callout.base.",
+      "additionalProperties": false,
+      "properties": {
+        "icon": {
+          "type": "object",
+          "description": "Icono asociado al callout.",
+          "additionalProperties": false,
+          "properties": {
+            "unicode":   { "type": "string", "description": "Carácter Unicode (e.g. 'ℹ️', '💡', '⚠️', '🚨')." },
+            "html":      { "type": "string", "description": "HTML del icono: SVG inline, <img>, o emoji." },
+            "className": { "type": "string", "description": "Clase de icon font (e.g. 'fa fa-info-circle')." }
+          }
+        },
+        "label": {
+          "type": "string",
+          "description": "Texto de la etiqueta visible (e.g. 'Nota', 'Consejo', 'Advertencia', 'Precaución')."
+        },
+        "html": { "$ref": "#/$defs/htmlConfig" },
+        "docx": { "$ref": "#/$defs/docxConfig" },
+        "pdf":  { "$ref": "#/$defs/pdfConfig" }
+      }
+    },
+
+    "directiveAttributeDefinition": {
+      "type": "object",
+      "description": "Definición de un atributo que acepta una directiva personalizada (:::nombre {atributo=valor}).",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["string", "number", "boolean", "enum"],
+          "description": "Tipo de dato del atributo."
+        },
+        "description": { "type": "string" },
+        "required":    { "type": "boolean", "default": false },
+        "default":     { "description": "Valor por defecto si el atributo no se proporciona en el Markdown." },
+        "enum": {
+          "type": "array",
+          "items": {},
+          "description": "Valores permitidos. Obligatorio cuando type es 'enum'."
+        }
+      },
+      "if":   { "properties": { "type": { "const": "enum" } }, "required": ["type"] },
+      "then": { "required": ["enum"] }
+    },
+
+    "directiveVariantMap": {
+      "type": "object",
+      "description": "Mapa de valor de atributo → overrides de estilos. Permite que una directiva cambie su apariencia según el valor de un atributo (e.g. type=success, type=error).",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "icon": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "unicode":   { "type": "string" },
+              "html":      { "type": "string" },
+              "className": { "type": "string" }
+            }
+          },
+          "label": { "type": "string" },
+          "html":  { "$ref": "#/$defs/htmlConfig" },
+          "docx":  { "$ref": "#/$defs/docxConfig" },
+          "pdf":   { "$ref": "#/$defs/pdfConfig" }
+        }
+      }
+    },
+
+    "directiveTemplate": {
+      "type": "object",
+      "description": "Plantilla completa para una directiva personalizada tipo :::nombre.",
+      "additionalProperties": false,
+      "required": ["html"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Propósito de la directiva (documentación interna del template)."
+        },
+        "icon": {
+          "type": "object",
+          "description": "Icono por defecto de la directiva.",
+          "additionalProperties": false,
+          "properties": {
+            "unicode":   { "type": "string" },
+            "html":      { "type": "string" },
+            "className": { "type": "string" }
+          }
+        },
+        "label": {
+          "type": "string",
+          "description": "Etiqueta visible en el encabezado de la directiva renderizada."
+        },
+        "allowedContent": {
+          "type": "string",
+          "enum": ["text", "inline", "blocks", "all"],
+          "default": "all",
+          "description": "Tipo de contenido Markdown permitido dentro de la directiva. 'text' = solo texto plano. 'inline' = elementos inline. 'blocks' = elementos de bloque. 'all' = cualquier Markdown válido."
+        },
+        "attributes": {
+          "type": "object",
+          "description": "Esquema de los atributos que acepta la directiva (:::nombre {clave=valor clave2=valor2}).",
+          "additionalProperties": { "$ref": "#/$defs/directiveAttributeDefinition" }
+        },
+        "variantStyles": {
+          "type": "object",
+          "description": "Overrides de estilos por valor de un atributo. Permite variantes visuales (e.g. type=success, type=error, type=warning) sin definir directivas separadas.",
+          "additionalProperties": false,
+          "properties": {
+            "attribute": {
+              "type": "string",
+              "description": "Nombre del atributo que determina qué variante aplicar."
+            },
+            "values": { "$ref": "#/$defs/directiveVariantMap" }
+          }
+        },
+        "html": { "$ref": "#/$defs/htmlConfig" },
+        "docx": { "$ref": "#/$defs/docxConfig" },
+        "pdf":  { "$ref": "#/$defs/pdfConfig" }
+      }
+    }
+
+  }
+}

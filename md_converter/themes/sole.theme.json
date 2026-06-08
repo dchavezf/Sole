@@ -1,0 +1,644 @@
+{
+  "$schema": "../../templates/md-conversion-template.schema.json",
+  "version": "1.0.0",
+
+  "meta": {
+    "name": "Fraccionamiento Solé — El Toro",
+    "author": "Daniel Chávez Flores",
+    "description": "Tema institucional para la propuesta de Gobernanza Arquitectónica del Fraccionamiento Solé",
+    "created": "2026-06-07",
+    "updated": "2026-06-07",
+    "tags": ["sole", "condominio", "normativo"],
+    "targets": ["html", "pdf", "docx"]
+  },
+
+  "variables": {
+    "colors": {
+      "primary":       "#1B2C3E",
+      "primary-light": "#3D5168",
+      "accent":        "#C8860A",
+      "accent-light":  "#F6E7C1",
+      "neutral":       "#7A8796",
+      "muted":         "#7A8796",
+      "neutral-light": "#FFFFFF",
+      "bg":            "#FFFFFF",
+      "border":        "#E2E8F0",
+      "border-light":  "#F1F5F9",
+      "white":         "#FFFFFF",
+      "surface":       "#FFFFFF",
+      "text":          "#1B2C3E",
+
+      "p-accent":      "#28573F",
+      "p-accent-dim":  "#EDF4EF",
+      "p-accent-mid":  "#80B595",
+      "p-accent-text": "#1E4430",
+
+      "c-header":      "#6E2615",
+      "c-accent":      "#8B3220",
+      "c-accent-dim":  "#FAF0EC",
+      "c-accent-mid":  "#C97563",
+      "caso-bg":       "#FFFDF7",
+      "example-bg":    "#F9FAFB",
+
+      "s1":            "#29528A",
+      "s1-bg":         "#EBF1FA",
+      "s2":            "#5E3080",
+      "s2-bg":         "#F2EBF8",
+      "s3":            "#28573F",
+      "s3-bg":         "#EDF4EF",
+
+      "note-bg":       "#EBF4FF",
+      "note-border":   "#3182CE",
+      "tip-bg":        "#F0FFF4",
+      "tip-border":    "#38A169",
+      "warning-bg":    "#FFFBEB",
+      "warning-border":"#D69E2E",
+      "caution-bg":    "#FFF5F5",
+      "caution-border":"#E53E3E",
+      "important-bg":  "#FFF3E0",
+      "important-border":"#DD6B20",
+      "danger-bg":     "#FFF5F5",
+      "danger-border": "#C53030",
+      "code-bg":       "#F8F8F8",
+
+      "gold":          "#C4A22A",
+      "gold-bright":   "#D4B340",
+      "gold-dim":      "rgba(196,162,42,0.12)",
+      "gold-line":     "rgba(196,162,42,0.35)"
+    },
+    "fonts": {
+      "serif": "'Cormorant Garamond', Georgia, serif",
+      "body":  "'DM Sans', system-ui, sans-serif",
+      "sans":  "'DM Sans', system-ui, sans-serif",
+      "mono":  "'DM Mono', 'Fira Mono', monospace",
+      "docx-body": "Calibri",
+      "docx-mono": "Courier New"
+    },
+    "spacing": {
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem"
+    },
+    "borders": {
+      "subtle": "1px solid {{colors.border}}",
+      "accent": "4px solid {{colors.accent}}"
+    }
+  },
+
+  "styles": {
+    "tokens": {
+      "r": "6px",
+      "r-lg": "14px",
+      "shadow": "0 2px 20px rgba(27, 44, 62, 0.07)",
+      "shadow-lg": "0 4px 32px rgba(27, 44, 62, 0.11)",
+      "shadow-xl": "0 8px 48px rgba(27,44,62,0.18), 0 2px 12px rgba(27,44,62,0.1)"
+    },
+    "cssFiles": ["sole.css"],
+    "pdf": {
+      "page": { "size": "A4" },
+      "headerStyle": { "fontSize": "9pt", "color": "{{colors.neutral}}" },
+      "headerRightStyle": { "fontStyle": "italic" },
+      "footerStyle": { "fontSize": "9pt", "color": "{{colors.neutral}}" },
+      "manualPageBreakStyle": {
+        "pageBreakBefore": "always",
+        "breakBefore": "page",
+        "height": "0",
+        "overflow": "hidden"
+      },
+      "screenOverrides": {
+        ".md-document": { "maxWidth": "none", "margin": "0", "padding": "0" },
+        "body": { "padding": "0" }
+      },
+      "avoidBreakInside": [".md-table-container", "pre", ".callout", ".directive"]
+    },
+    "docx": {
+      "headerRun": { "size": 16, "color": "{{colors.neutral}}" },
+      "headerRightRun": { "size": 16, "color": "{{colors.neutral}}", "italic": true },
+      "footerRun": { "size": 16, "color": "{{colors.neutral}}" },
+      "pageNumberRun": { "size": 16, "color": "{{colors.neutral}}" },
+      "pageNumberSeparator": " / ",
+      "rightTabPos": 9354,
+      "headerSeparatorBorder": {
+        "bottom": { "style": "single", "size": 4, "space": 1, "color": "{{colors.border}}" }
+      }
+    }
+  },
+
+  "elements": {
+
+    "heading": {
+      "h1": {
+        "html": {
+          "tag": "h1",
+          "style": {
+            "fontFamily": "{{fonts.sans}}",
+            "fontSize": "2rem",
+            "fontWeight": "700",
+            "color": "{{colors.primary}}",
+            "borderBottom": "3px solid {{colors.accent}}",
+            "paddingBottom": "0.4rem",
+            "marginTop": "2rem",
+            "marginBottom": "1rem",
+            "textAlign": "center"
+          }
+        },
+        "docx": {
+          "style": "Heading 1",
+          "run": { "bold": true, "size": 48, "color": "{{colors.primary}}" },
+          "paragraph": { "alignment": "center", "spacing": { "before": 480, "after": 240 } }
+        },
+        "pdf": { "css": { "page-break-after": "avoid" } }
+      },
+      "h2": {
+        "html": {
+          "tag": "h2",
+          "style": {
+            "fontFamily": "{{fonts.sans}}",
+            "fontSize": "1.5rem",
+            "fontWeight": "700",
+            "color": "{{colors.primary}}",
+            "borderLeft": "4px solid {{colors.accent}}",
+            "paddingLeft": "0.75rem",
+            "marginTop": "1.75rem",
+            "marginBottom": "0.75rem"
+          }
+        },
+        "docx": {
+          "style": "Heading 2",
+          "run": { "bold": true, "size": 36, "color": "{{colors.primary}}" },
+          "paragraph": { "spacing": { "before": 360, "after": 180 } }
+        },
+        "pdf": { "css": { "page-break-after": "avoid" } }
+      },
+      "h3": {
+        "html": {
+          "tag": "h3",
+          "style": {
+            "fontFamily": "{{fonts.sans}}",
+            "fontSize": "1.2rem",
+            "fontWeight": "700",
+            "color": "{{colors.primary-light}}",
+            "marginTop": "1.5rem",
+            "marginBottom": "0.5rem"
+          }
+        },
+        "docx": {
+          "style": "Heading 3",
+          "run": { "bold": true, "size": 28, "color": "{{colors.primary-light}}" },
+          "paragraph": { "spacing": { "before": 300, "after": 120 } }
+        },
+        "pdf": { "css": { "page-break-after": "avoid" } }
+      },
+      "h4": {
+        "html": {
+          "tag": "h4",
+          "style": {
+            "fontFamily": "{{fonts.sans}}",
+            "fontSize": "1.05rem",
+            "fontWeight": "700",
+            "color": "{{colors.neutral}}",
+            "marginTop": "1.25rem",
+            "marginBottom": "0.4rem"
+          }
+        },
+        "docx": {
+          "style": "Heading 4",
+          "run": { "bold": true, "size": 24 },
+          "paragraph": { "spacing": { "before": 240, "after": 120 } }
+        }
+      },
+      "h5": {
+        "html": {
+          "tag": "h5",
+          "style": {
+            "fontFamily": "{{fonts.sans}}",
+            "fontSize": "1rem",
+            "fontWeight": "700",
+            "color": "{{colors.neutral}}",
+            "marginTop": "1rem",
+            "marginBottom": "0.3rem"
+          }
+        },
+        "docx": { "style": "Heading 5", "run": { "bold": true, "size": 22 } }
+      },
+      "h6": {
+        "html": {
+          "tag": "h6",
+          "style": {
+            "fontFamily": "{{fonts.sans}}",
+            "fontSize": "0.95rem",
+            "fontWeight": "700",
+            "color": "{{colors.neutral}}",
+            "marginTop": "1rem",
+            "marginBottom": "0.3rem"
+          }
+        },
+        "docx": { "style": "Heading 6", "run": { "bold": true, "size": 20 } }
+      }
+    },
+
+    "paragraph": {
+      "html": {
+        "tag": "p",
+        "style": {
+          "fontFamily": "{{fonts.body}}",
+          "fontSize": "1rem",
+          "lineHeight": "1.7",
+          "color": "{{colors.text}}",
+          "marginTop": "0",
+          "marginBottom": "0.85rem"
+        }
+      },
+      "docx": {
+        "run": { "font": "{{fonts.docx-body}}", "size": 24 },
+        "paragraph": { "spacing": { "after": 160, "line": 360, "lineRule": "auto" } }
+      }
+    },
+
+    "emphasis": {
+      "html": { "tag": "em", "style": { "fontStyle": "italic" } },
+      "docx": { "italic": true }
+    },
+
+    "strong": {
+      "html": { "tag": "strong", "style": { "fontWeight": "700", "color": "{{colors.primary}}" } },
+      "docx": { "bold": true }
+    },
+
+    "strikethrough": {
+      "html": { "tag": "s", "style": { "textDecoration": "line-through", "color": "{{colors.neutral}}" } },
+      "docx": { "strike": true }
+    },
+
+    "inlineCode": {
+      "html": {
+        "tag": "code",
+        "style": {
+          "fontFamily": "{{fonts.mono}}",
+          "fontSize": "0.875em",
+          "backgroundColor": "{{colors.code-bg}}",
+          "border": "1px solid {{colors.border}}",
+          "borderRadius": "3px",
+          "padding": "0.1em 0.35em",
+          "color": "{{colors.primary}}"
+        }
+      },
+      "docx": { "font": "{{fonts.docx-mono}}", "size": 20 }
+    },
+
+    "codeBlock": {
+      "pre": {
+        "html": {
+          "tag": "pre",
+          "style": {
+            "fontFamily": "{{fonts.mono}}",
+            "fontSize": "0.875rem",
+            "backgroundColor": "{{colors.code-bg}}",
+            "border": "{{borders.subtle}}",
+            "borderLeft": "4px solid {{colors.primary-light}}",
+            "borderRadius": "4px",
+            "padding": "1rem",
+            "overflowX": "auto",
+            "marginBottom": "1rem"
+          }
+        },
+        "pdf": { "pageBreak": { "inside": "avoid" } }
+      },
+      "code": {
+        "html": { "tag": "code", "style": { "fontFamily": "{{fonts.mono}}", "fontSize": "0.875rem" } },
+        "docx": {
+          "style": "",
+          "run": { "font": "{{fonts.docx-mono}}", "size": 20 },
+          "paragraph": {
+            "shading": { "type": "clear", "color": "auto", "fill": "{{colors.code-bg}}" },
+            "indent": { "left": 360 }
+          }
+        }
+      }
+    },
+
+    "blockquote": {
+      "html": {
+        "tag": "blockquote",
+        "style": {
+          "borderLeft": "4px solid {{colors.border}}",
+          "marginLeft": "0",
+          "paddingLeft": "1rem",
+          "color": "{{colors.neutral}}",
+          "fontStyle": "italic",
+          "marginBottom": "1rem"
+        }
+      },
+      "docx": {
+        "paragraph": {
+          "indent": { "left": 720 },
+          "border": { "left": { "style": "single", "size": 12, "space": 8, "color": "{{colors.border}}" } }
+        }
+      }
+    },
+
+    "horizontalRule": {
+      "html": {
+        "tag": "hr",
+        "style": {
+          "border": "none",
+          "borderTop": "2px solid {{colors.border}}",
+          "margin": "2rem 0"
+        }
+      },
+      "docx": {
+        "paragraph": {
+          "border": { "bottom": { "style": "single", "size": 6, "space": 1, "color": "{{colors.border}}" } }
+        }
+      }
+    },
+
+    "link": {
+      "html": {
+        "tag": "a",
+        "style": { "color": "{{colors.primary-light}}", "textDecoration": "underline" },
+        "hoverStyle": { "color": "{{colors.accent}}" },
+        "targetBlank": false
+      },
+      "docx": {
+        "run": { "color": "{{colors.primary-light}}", "underline": true }
+      }
+    },
+
+    "image": {
+      "img": { "html": { "tag": "img", "style": { "maxWidth": "100%", "height": "auto", "display": "block", "margin": "1rem auto" } } },
+      "maxWidth": "100%",
+      "docxMaxWidthEmu": 5943600,
+      "lazy": true
+    },
+
+    "unorderedList": {
+      "list": { "html": { "tag": "ul", "style": { "paddingLeft": "1.5rem", "marginBottom": "0.85rem" } } },
+      "item": { "html": { "tag": "li", "style": { "marginBottom": "0.25rem", "lineHeight": "1.6" } } }
+    },
+
+    "orderedList": {
+      "list": { "html": { "tag": "ol", "style": { "paddingLeft": "1.5rem", "marginBottom": "0.85rem" } } },
+      "item": { "html": { "tag": "li", "style": { "marginBottom": "0.25rem", "lineHeight": "1.6" } } }
+    },
+
+    "taskList": {
+      "list": { "html": { "tag": "ul", "style": { "listStyle": "none", "paddingLeft": "0.5rem" } } },
+      "item": { "html": { "tag": "li", "style": { "marginBottom": "0.3rem" } } },
+      "checkbox": {
+        "html": { "tag": "input", "style": { "marginRight": "0.5rem" }, "disabled": true },
+        "docx": { "uncheckedSymbol": "☐", "checkedSymbol": "☑", "font": "Segoe UI Symbol" }
+      }
+    },
+
+    "table": {
+      "container": {
+        "html": { "tag": "div", "style": { "overflowX": "auto", "marginBottom": "1.25rem" } }
+      },
+      "thead": {
+        "html": { "tag": "thead", "style": { "backgroundColor": "{{colors.primary}}", "color": "{{colors.white}}" } }
+      },
+      "tbody": {
+        "html": { "tag": "tbody" }
+      },
+      "tr": {
+        "html": { "tag": "tr" }
+      },
+      "trAlternate": {
+        "html": { "style": { "backgroundColor": "{{colors.neutral-light}}" } }
+      },
+      "th": {
+        "html": {
+          "tag": "th",
+          "style": {
+            "fontFamily": "{{fonts.sans}}",
+            "fontWeight": "700",
+            "padding": "0.6rem 0.75rem",
+            "textAlign": "left",
+            "fontSize": "0.875rem",
+            "letterSpacing": "0.03em"
+          }
+        }
+      },
+      "td": {
+        "html": {
+          "tag": "td",
+          "style": {
+            "fontFamily": "{{fonts.body}}",
+            "padding": "0.5rem 0.75rem",
+            "borderBottom": "{{borders.subtle}}",
+            "fontSize": "0.9rem",
+            "verticalAlign": "top"
+          }
+        }
+      }
+    },
+
+    "callout": {
+      "base": {
+        "html": {
+          "tag": "div",
+          "style": {
+            "borderRadius": "6px",
+            "padding": "1rem 1.25rem",
+            "marginBottom": "1.25rem",
+            "borderLeft": "5px solid"
+          }
+        }
+      },
+      "title": {
+        "html": { "style": { "fontFamily": "{{fonts.sans}}", "fontWeight": "700", "fontSize": "0.9rem", "marginBottom": "0.4rem", "textTransform": "uppercase", "letterSpacing": "0.05em" } }
+      },
+      "body": {
+        "html": { "style": { "fontFamily": "{{fonts.body}}", "fontSize": "0.95rem", "lineHeight": "1.65" } }
+      },
+      "note": {
+        "icon": { "unicode": "ℹ️" },
+        "label": "Nota",
+        "html": { "style": { "backgroundColor": "{{colors.note-bg}}", "borderLeftColor": "{{colors.note-border}}" } },
+        "docx": {
+          "paragraph": {
+            "shading": { "type": "clear", "fill": "{{colors.note-bg}}" },
+            "border": { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.note-border}}" } }
+          }
+        }
+      },
+      "tip": {
+        "icon": { "unicode": "💡" },
+        "label": "Consejo",
+        "html": { "style": { "backgroundColor": "{{colors.tip-bg}}", "borderLeftColor": "{{colors.tip-border}}" } },
+        "docx": {
+          "paragraph": {
+            "shading": { "type": "clear", "fill": "{{colors.tip-bg}}" },
+            "border": { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.tip-border}}" } }
+          }
+        }
+      },
+      "warning": {
+        "icon": { "unicode": "⚠️" },
+        "label": "Advertencia",
+        "html": { "style": { "backgroundColor": "{{colors.warning-bg}}", "borderLeftColor": "{{colors.warning-border}}" } },
+        "docx": {
+          "paragraph": {
+            "shading": { "type": "clear", "fill": "{{colors.warning-bg}}" },
+            "border": { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.warning-border}}" } }
+          }
+        }
+      },
+      "caution": {
+        "icon": { "unicode": "🔴" },
+        "label": "Precaución",
+        "html": { "style": { "backgroundColor": "{{colors.caution-bg}}", "borderLeftColor": "{{colors.caution-border}}" } },
+        "docx": {
+          "paragraph": {
+            "shading": { "type": "clear", "fill": "{{colors.caution-bg}}" },
+            "border": { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.caution-border}}" } }
+          }
+        }
+      },
+      "important": {
+        "icon": { "unicode": "❗" },
+        "label": "Importante",
+        "html": { "style": { "backgroundColor": "{{colors.important-bg}}", "borderLeftColor": "{{colors.important-border}}" } },
+        "docx": {
+          "paragraph": {
+            "shading": { "type": "clear", "fill": "{{colors.important-bg}}" },
+            "border": { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.important-border}}" } }
+          }
+        }
+      },
+      "danger": {
+        "icon": { "unicode": "🚨" },
+        "label": "Peligro",
+        "html": { "style": { "backgroundColor": "{{colors.danger-bg}}", "borderLeftColor": "{{colors.danger-border}}" } },
+        "docx": {
+          "paragraph": {
+            "shading": { "type": "clear", "fill": "{{colors.danger-bg}}" },
+            "border": { "left": { "style": "single", "size": 24, "space": 8, "color": "{{colors.danger-border}}" } }
+          }
+        }
+      }
+    }
+
+  },
+
+  "layout": {
+    "autoPageBreakOnH1": true,
+    "margins": {
+      "docx": { "top": 2.5, "bottom": 2.5, "left": 2.5, "right": 2.0 },
+      "pdf":  { "top": "2.5cm", "bottom": "2.5cm", "left": "2cm", "right": "2cm" }
+    },
+    "header": {
+      "enabled": true,
+      "left":    "{{meta.author}}",
+      "right":   "{{title}}",
+      "separator": true
+    },
+    "footer": {
+      "enabled": true,
+      "center": "pageNumber"
+    }
+  },
+
+  "customDirectives": {
+
+    "card-propuesta": {
+      "description": "Tarjeta de sección de propuesta con borde y fondo suave",
+      "label": "",
+      "allowedContent": "all",
+      "html": {
+        "tag": "div",
+        "style": {
+          "backgroundColor": "{{colors.neutral-light}}",
+          "border": "{{borders.subtle}}",
+          "borderTop": "4px solid {{colors.primary}}",
+          "borderRadius": "6px",
+          "padding": "1.25rem 1.5rem",
+          "marginBottom": "1.5rem"
+        }
+      },
+      "docx": {
+        "paragraph": {
+          "shading": { "type": "clear", "fill": "F5F5F5" },
+          "border": { "top": { "style": "single", "size": 24, "space": 4, "color": "{{colors.primary}}" } },
+          "indent": { "left": 360, "right": 360 }
+        }
+      }
+    },
+
+    "caso": {
+      "description": "Bloque de caso de estudio con borde izquierdo de acento",
+      "label": "",
+      "allowedContent": "all",
+      "html": {
+        "tag": "div",
+        "style": {
+          "borderLeft": "4px solid {{colors.accent}}",
+          "backgroundColor": "{{colors.caso-bg}}",
+          "padding": "1rem 1.25rem",
+          "marginBottom": "1.25rem",
+          "borderRadius": "0 6px 6px 0"
+        }
+      },
+      "docx": {
+        "paragraph": {
+          "shading": { "type": "clear", "fill": "{{colors.caso-bg}}" },
+          "border": { "left": { "style": "single", "size": 20, "space": 8, "color": "{{colors.accent}}" } },
+          "indent": { "left": 360 }
+        }
+      }
+    },
+
+    "example": {
+      "description": "Bloque de ejemplo genérico",
+      "label": "Ejemplo",
+      "allowedContent": "all",
+      "html": {
+        "tag": "div",
+        "style": {
+          "backgroundColor": "{{colors.example-bg}}",
+          "border": "{{borders.subtle}}",
+          "borderRadius": "4px",
+          "padding": "1rem",
+          "marginBottom": "1rem"
+        }
+      },
+      "docx": {
+        "paragraph": {
+          "shading": { "type": "clear", "fill": "{{colors.example-bg}}" },
+          "indent": { "left": 360 }
+        }
+      }
+    },
+
+    "pagebreak": {
+      "description": "Salto de página manual. Usar como :::pagebreak en el Markdown.",
+      "label": "",
+      "allowedContent": "all",
+      "html": { "tag": "div", "style": {} },
+      "docx": {}
+    },
+
+    "details": {
+      "description": "Bloque de detalle colapsable (HTML) o indentado (DOCX/PDF)",
+      "label": "Detalle",
+      "allowedContent": "all",
+      "html": {
+        "tag": "details",
+        "style": {
+          "backgroundColor": "{{colors.neutral-light}}",
+          "border": "{{borders.subtle}}",
+          "borderRadius": "4px",
+          "padding": "0.75rem 1rem",
+          "marginBottom": "1rem"
+        }
+      },
+      "docx": {
+        "paragraph": { "indent": { "left": 720 } }
+      }
+    }
+
+  }
+}
