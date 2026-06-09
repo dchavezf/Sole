@@ -29,3 +29,6 @@ Y si tienes observaciones, correcciones o partes con las que no estás de acuerd
 ---
 
 *Esta propuesta no tiene efecto vinculante. Su aprobación, modificación o rechazo corresponde exclusivamente a la Asamblea General de Condóminos del Fraccionamiento Solé, conforme al Reglamento Interno vigente y la Ley sobre el Régimen de la Propiedad en Condominio del Estado de San Luis Potosí.*
+
+
+:::pagebreak

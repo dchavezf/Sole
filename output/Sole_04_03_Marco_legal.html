@@ -1,3 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraccionamiento Solé — El Toro</title>
+  <meta name="author" content="Daniel Chávez Flores">
+  <meta name="description" content="Tema institucional para la propuesta de Gobernanza Arquitectónica del Fraccionamiento Solé">
+  <style>
+:root {
+  --primary: #1B2C3E;
+  --primary-light: #3D5168;
+  --accent: #C8860A;
+  --accent-light: #F6E7C1;
+  --neutral: #7A8796;
+  --muted: #7A8796;
+  --neutral-light: #FFFFFF;
+  --bg: #FFFFFF;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
+  --white: #FFFFFF;
+  --surface: #FFFFFF;
+  --text: #1B2C3E;
+  --p-accent: #28573F;
+  --p-accent-dim: #EDF4EF;
+  --p-accent-mid: #80B595;
+  --p-accent-text: #1E4430;
+  --c-header: #6E2615;
+  --c-accent: #8B3220;
+  --c-accent-dim: #FAF0EC;
+  --c-accent-mid: #C97563;
+  --caso-bg: #FFFDF7;
+  --example-bg: #F9FAFB;
+  --s1: #29528A;
+  --s1-bg: #EBF1FA;
+  --s2: #5E3080;
+  --s2-bg: #F2EBF8;
+  --s3: #28573F;
+  --s3-bg: #EDF4EF;
+  --note-bg: #EBF4FF;
+  --note-border: #3182CE;
+  --tip-bg: #F0FFF4;
+  --tip-border: #38A169;
+  --warning-bg: #FFFBEB;
+  --warning-border: #D69E2E;
+  --caution-bg: #FFF5F5;
+  --caution-border: #E53E3E;
+  --important-bg: #FFF3E0;
+  --important-border: #DD6B20;
+  --danger-bg: #FFF5F5;
+  --danger-border: #C53030;
+  --code-bg: #F8F8F8;
+  --gold: #C4A22A;
+  --gold-bright: #D4B340;
+  --gold-dim: rgba(196,162,42,0.12);
+  --gold-line: rgba(196,162,42,0.35);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', 'Fira Mono', monospace;
+  --font-docx-body: Calibri;
+  --font-docx-mono: Courier New;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --border-subtle: 1px solid #E2E8F0;
+  --border-accent: 4px solid #C8860A;
+  --r: 6px;
+  --r-lg: 14px;
+  --shadow: 0 2px 20px rgba(27, 44, 62, 0.07);
+  --shadow-lg: 0 4px 32px rgba(27, 44, 62, 0.11);
+  --shadow-xl: 0 8px 48px rgba(27,44,62,0.18), 0 2px 12px rgba(27,44,62,0.1);
+}
+h1 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 2rem; font-weight: 700; color: #1B2C3E; border-bottom: 3px solid #C8860A; padding-bottom: 0.4rem; margin-top: 2rem; margin-bottom: 1rem; text-align: center }
+h2 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; color: #1B2C3E; border-left: 4px solid #C8860A; padding-left: 0.75rem; margin-top: 1.75rem; margin-bottom: 0.75rem }
+h3 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.2rem; font-weight: 700; color: #3D5168; margin-top: 1.5rem; margin-bottom: 0.5rem }
+h4 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.05rem; font-weight: 700; color: #7A8796; margin-top: 1.25rem; margin-bottom: 0.4rem }
+h5 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; font-weight: 700; color: #7A8796; margin-top: 1rem; margin-bottom: 0.3rem }
+h6 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.95rem; font-weight: 700; color: #7A8796; margin-top: 1rem; margin-bottom: 0.3rem }
+p { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; line-height: 1.7; color: #1B2C3E; margin-top: 0; margin-bottom: 0.85rem }
+blockquote { border-left: 4px solid #E2E8F0; margin-left: 0; padding-left: 1rem; color: #7A8796; font-style: italic; margin-bottom: 1rem }
+hr { border: none; border-top: 2px solid #E2E8F0; margin: 2rem 0 }
+em { font-style: italic }
+strong { font-weight: 700; color: #1B2C3E }
+s { text-decoration: line-through; color: #7A8796 }
+code:not(pre code) { font-family: 'DM Mono', 'Fira Mono', monospace; font-size: 0.875em; background-color: #F8F8F8; border: 1px solid #E2E8F0; border-radius: 3px; padding: 0.1em 0.35em; color: #1B2C3E }
+pre { font-family: 'DM Mono', 'Fira Mono', monospace; font-size: 0.875rem; background-color: #F8F8F8; border: 1px solid #E2E8F0; border-left: 4px solid #3D5168; border-radius: 4px; padding: 1rem; overflow-x: auto; margin-bottom: 1rem }
+pre code { font-family: 'DM Mono', 'Fira Mono', monospace; font-size: 0.875rem }
+.md-table-container { overflow-x: auto; margin-bottom: 1.25rem }
+.md-table thead { background-color: #1B2C3E; color: #FFFFFF }
+.md-table th { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 700; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.875rem; letter-spacing: 0.03em }
+.md-table td { font-family: 'DM Sans', system-ui, sans-serif; padding: 0.5rem 0.75rem; border-bottom: 1px solid #E2E8F0; font-size: 0.9rem; vertical-align: top }
+.md-table tbody tr:nth-child(even) { background-color: #FFFFFF }
+.callout { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid }
+.callout-note { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #EBF4FF; border-left-color: #3182CE }
+.callout-tip { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #F0FFF4; border-left-color: #38A169 }
+.callout-warning { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFFBEB; border-left-color: #D69E2E }
+.callout-caution { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF5F5; border-left-color: #E53E3E }
+.callout-important { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF3E0; border-left-color: #DD6B20 }
+.callout-danger { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF5F5; border-left-color: #C53030 }
+.callout-title { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em }
+.callout-body { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.95rem; line-height: 1.65 }
+.directive-example { background-color: #F9FAFB; border: 1px solid #E2E8F0; border-radius: 4px; padding: 1rem; margin-bottom: 1rem }
+.directive-details { background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1rem }
+.task-list-item input[type=checkbox] { margin-right: 0.5rem }
+a { color: #3D5168; text-decoration: underline }
+a:hover { color: #C8860A }
+img { max-width: 100%; height: auto; display: block; margin: 1rem auto; max-width: 100% }
+.no-page-break { page-break-before: avoid !important; break-before: avoid !important; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -101,3 +212,59 @@ body::before {
     background-image: none !important;
   }
 }
+
+  </style>
+</head>
+<body>
+  <div class="md-document">
+<h2>3. Marco legal de referencia</h2>
+<h3>Normatividad del condominio</h3>
+<ul>
+<li>
+Reglamento del Régimen de Propiedad en Condominio El Toro — Fraccionamiento Solé (Escritura 94589)</li>
+<li>
+Escritura constitutiva No. 94589, PROMOCIONES HABI, S.A. de C.V.</li>
+</ul>
+<h3>Legislación estatal</h3>
+<ul>
+<li>
+<strong>Ley sobre el Régimen de la Propiedad en Condominio del Estado de SLP</strong> — Arts. 16, 29 (fracs. I y IV), 33, 42, 61 (frac. XI), 65, 66, 83, 85, 87, 90, 92, 97 (frac. l)</li>
+<li>
+Código Civil para el Estado de SLP — servidumbres, copropiedad y responsabilidad civil</li>
+<li>
+Ley de Desarrollo Urbano del Estado de SLP</li>
+<li>
+Ley de Transparencia y Acceso a la Información Pública del Estado de SLP</li>
+</ul>
+<h3>Legislación federal</h3>
+<ul>
+<li>
+<strong>Constitución Política de los Estados Unidos Mexicanos</strong> — Arts. 14 y 16 (debido proceso y seguridad jurídica)</li>
+<li>
+<strong>Código Civil Federal</strong> — Arts. 830 y 840 (límites al derecho de propiedad)</li>
+<li>
+<strong>Ley Federal de Protección al Consumidor</strong> — Arts. 73 y 73 BIS (obligaciones del proveedor de vivienda hacia el comprador)</li>
+</ul>
+<h3>Normatividad municipal</h3>
+<ul>
+<li>
+Reglamento de Construcción del Municipio de Soledad de Graciano Sánchez, SLP</li>
+<li>
+Normas de la Dirección de Administración y Desarrollo Urbano del Municipio de Soledad</li>
+</ul>
+<h3>Fuentes técnicas</h3>
+<ul>
+<li>
+Community Associations Institute (CAI). <em>How Does an HOA Increase Property Values?</em> 2025. hub.associaonline.com</li>
+<li>
+Cheung, R., Cunningham, C. y Meltzer, R. <em>Journal of Housing Economics</em>, Vol. 24, 2014</li>
+<li>
+Sociedad Hipotecaria Federal (SHF). <em>Índice SHF de Precios de la Vivienda</em>, 2T 2025. gob.mx/shf</li>
+<li>
+Buildium. <em>HOA Architectural Guidelines.</em> 2026. buildium.com</li>
+</ul>
+<hr />
+< />
+  </div>
+</body>
+</html>

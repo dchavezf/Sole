@@ -108,3 +108,6 @@ La Constancia entra en vigor para compraventas el **día 91 tras el cierre del p
 
 > [!NOTE]
 > Plazo de expedición: **máximo 5 días hábiles** desde la solicitud. Si el Administrador no la emite en ese plazo, se entiende que no existen observaciones registradas. El Administrador asume responsabilidad civil por constancias emitidas con información incorrecta derivada de negligencia grave.
+
+
+:::pagebreak

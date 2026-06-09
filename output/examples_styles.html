@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples Styles Test</title>
+  <meta name="author" content="Daniel Chávez Flores">
+  <meta name="description" content="Tema institucional para la propuesta de Gobernanza Arquitectónica del Fraccionamiento Solé">
+  <style>
+:root {
+  --primary: #1B2C3E;
+  --primary-light: #3D5168;
+  --accent: #C8860A;
+  --accent-light: #F6E7C1;
+  --neutral: #7A8796;
+  --muted: #7A8796;
+  --neutral-light: #FFFFFF;
+  --bg: #FFFFFF;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
+  --white: #FFFFFF;
+  --surface: #FFFFFF;
+  --text: #1B2C3E;
+  --p-accent: #28573F;
+  --p-accent-dim: #EDF4EF;
+  --p-accent-mid: #80B595;
+  --p-accent-text: #1E4430;
+  --c-header: #6E2615;
+  --c-accent: #8B3220;
+  --c-accent-dim: #FAF0EC;
+  --c-accent-mid: #C97563;
+  --caso-bg: #FFFDF7;
+  --example-bg: #F9FAFB;
+  --s1: #29528A;
+  --s1-bg: #EBF1FA;
+  --s2: #5E3080;
+  --s2-bg: #F2EBF8;
+  --s3: #28573F;
+  --s3-bg: #EDF4EF;
+  --note-bg: #EBF4FF;
+  --note-border: #3182CE;
+  --tip-bg: #F0FFF4;
+  --tip-border: #38A169;
+  --warning-bg: #FFFBEB;
+  --warning-border: #D69E2E;
+  --caution-bg: #FFF5F5;
+  --caution-border: #E53E3E;
+  --important-bg: #FFF3E0;
+  --important-border: #DD6B20;
+  --danger-bg: #FFF5F5;
+  --danger-border: #C53030;
+  --code-bg: #F8F8F8;
+  --gold: #C4A22A;
+  --gold-bright: #D4B340;
+  --gold-dim: rgba(196,162,42,0.12);
+  --gold-line: rgba(196,162,42,0.35);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', 'Fira Mono', monospace;
+  --font-docx-body: Calibri;
+  --font-docx-mono: Courier New;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --border-subtle: 1px solid #E2E8F0;
+  --border-accent: 4px solid #C8860A;
+  --r: 6px;
+  --r-lg: 14px;
+  --shadow: 0 2px 20px rgba(27, 44, 62, 0.07);
+  --shadow-lg: 0 4px 32px rgba(27, 44, 62, 0.11);
+  --shadow-xl: 0 8px 48px rgba(27,44,62,0.18), 0 2px 12px rgba(27,44,62,0.1);
+}
+h1 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 2rem; font-weight: 700; color: #1B2C3E; border-bottom: 3px solid #C8860A; padding-bottom: 0.4rem; margin-top: 2rem; margin-bottom: 1rem; text-align: center }
+h2 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; color: #1B2C3E; border-left: 4px solid #C8860A; padding-left: 0.75rem; margin-top: 1.75rem; margin-bottom: 0.75rem }
+h3 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.2rem; font-weight: 700; color: #3D5168; margin-top: 1.5rem; margin-bottom: 0.5rem }
+h4 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.05rem; font-weight: 700; color: #7A8796; margin-top: 1.25rem; margin-bottom: 0.4rem }
+h5 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; font-weight: 700; color: #7A8796; margin-top: 1rem; margin-bottom: 0.3rem }
+h6 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.95rem; font-weight: 700; color: #7A8796; margin-top: 1rem; margin-bottom: 0.3rem }
+p { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; line-height: 1.7; color: #1B2C3E; margin-top: 0; margin-bottom: 0.85rem }
+blockquote { border-left: 4px solid #E2E8F0; margin-left: 0; padding-left: 1rem; color: #7A8796; font-style: italic; margin-bottom: 1rem }
+hr { border: none; border-top: 2px solid #E2E8F0; margin: 2rem 0 }
+em { font-style: italic }
+strong { font-weight: 700; color: #1B2C3E }
+s { text-decoration: line-through; color: #7A8796 }
+code:not(pre code) { font-family: 'DM Mono', 'Fira Mono', monospace; font-size: 0.875em; background-color: #F8F8F8; border: 1px solid #E2E8F0; border-radius: 3px; padding: 0.1em 0.35em; color: #1B2C3E }
+pre { font-family: 'DM Mono', 'Fira Mono', monospace; font-size: 0.875rem; background-color: #F8F8F8; border: 1px solid #E2E8F0; border-left: 4px solid #3D5168; border-radius: 4px; padding: 1rem; overflow-x: auto; margin-bottom: 1rem }
+pre code { font-family: 'DM Mono', 'Fira Mono', monospace; font-size: 0.875rem }
+.md-table-container { overflow-x: auto; margin-bottom: 1.25rem }
+.md-table thead { background-color: #1B2C3E; color: #FFFFFF }
+.md-table th { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 700; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.875rem; letter-spacing: 0.03em }
+.md-table td { font-family: 'DM Sans', system-ui, sans-serif; padding: 0.5rem 0.75rem; border-bottom: 1px solid #E2E8F0; font-size: 0.9rem; vertical-align: top }
+.md-table tbody tr:nth-child(even) { background-color: #FFFFFF }
+.callout { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid }
+.callout-note { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #EBF4FF; border-left-color: #3182CE }
+.callout-tip { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #F0FFF4; border-left-color: #38A169 }
+.callout-warning { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFFBEB; border-left-color: #D69E2E }
+.callout-caution { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF5F5; border-left-color: #E53E3E }
+.callout-important { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF3E0; border-left-color: #DD6B20 }
+.callout-danger { border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 5px solid; background-color: #FFF5F5; border-left-color: #C53030 }
+.callout-title { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em }
+.callout-body { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.95rem; line-height: 1.65 }
+.directive-example { background-color: #F9FAFB; border: 1px solid #E2E8F0; border-radius: 4px; padding: 1rem; margin-bottom: 1rem }
+.directive-details { background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1rem }
+.task-list-item input[type=checkbox] { margin-right: 0.5rem }
+a { color: #3D5168; text-decoration: underline }
+a:hover { color: #C8860A }
+img { max-width: 100%; height: auto; display: block; margin: 1rem auto; max-width: 100% }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--primary);
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 4rem 1.5rem 6rem;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.md-document { max-width: 740px; margin: 0 auto; position: relative; z-index: 1; }
+.page-break { height: 0; overflow: hidden; margin: 0; padding: 0; }
+.md-card { border-radius: var(--r-lg); margin-bottom: 2rem; box-shadow: var(--shadow); overflow: hidden; background: var(--surface); }
+
+.card-propuesta { border: 1px solid var(--border-light); border-top: 3px solid var(--p-accent); padding: 0; position: relative; }
+.card-propuesta::before { content: "01"; font-family: var(--font-serif); font-size: 9rem; font-weight: 700; color: var(--p-accent); opacity: 0.04; position: absolute; top: -1.5rem; right: 1.75rem; line-height: 1; pointer-events: none; user-select: none; }
+.card-propuesta .cp-inner { padding: 1.25rem 2rem; position: relative; }
+.cp-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem; gap: 1rem; flex-wrap: wrap; }
+.cp-chip { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--p-accent-text); background: var(--p-accent-dim); border: 1px solid var(--p-accent-mid); border-radius: 3px; padding: 0.22rem 0.65rem; flex-shrink: 0; }
+.card-propuesta h2 { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 600; color: var(--primary); line-height: 1.2; letter-spacing: -0.01em; border: none; padding: 0; margin: 0; }
+.cp-para-quien { display: flex; align-items: baseline; gap: 0.75rem; background: var(--border-light); border-radius: var(--r); border: 1px solid var(--border-light); padding: 0.6rem 1rem; margin-bottom: 0.75rem; }
+.cp-pq-label { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--p-accent); white-space: nowrap; flex-shrink: 0; font-weight: 500; }
+.cp-pq-text { font-size: 0.9rem; color: var(--primary-light); line-height: 1.6; }
+.cp-body { font-size: 0.93rem; color: var(--primary-light); line-height: 1.8; margin-bottom: 0.75rem; }
+.cp-footer { border-top: 1px solid var(--border-light); padding: 1rem 2.25rem; background: linear-gradient(to right, var(--p-accent-dim), var(--white)); display: flex; align-items: flex-start; gap: 0.85rem; }
+.cp-footer-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--p-accent); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; margin-top: 0.1rem; }
+.cp-footer-label { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--p-accent); font-weight: 500; margin-bottom: 0.2rem; }
+.cp-footer-text { font-size: 0.88rem; color: var(--p-accent-text); line-height: 1.65; font-weight: 400; }
+
+.caso { border: 1px solid var(--border-light); }
+.caso-header { background: var(--c-header); padding: 0.75rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; position: relative; overflow: hidden; }
+.caso-header::after { content: ""; position: absolute; top: 0; right: 0; width: 260px; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.04)); pointer-events: none; }
+.caso-badge { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 3px; padding: 0.2rem 0.55rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.25rem; }
+.caso-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500; font-style: italic; color: rgba(255,255,255,0.92); line-height: 1.45; }
+.caso-body { padding: 1rem 1.5rem; }
+.caso-steps { display: flex; flex-direction: column; }
+.caso-step { display: grid; grid-template-columns: 38px 1fr; column-gap: 1.1rem; }
+.step-indicator { display: flex; flex-direction: column; align-items: center; }
+.step-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; border: 1.5px solid currentColor; transition: transform 0.2s ease; }
+.step-connector { width: 2px; flex: 1; min-height: 1rem; margin: 4px 0; border-radius: 2px; }
+.step-content { padding-bottom: 1rem; }
+.caso-step:last-child .step-content { padding-bottom: 0; }
+.step-label-row { display: flex; align-items: center; gap: 0.5rem; padding-top: 0.55rem; margin-bottom: 0.25rem; }
+.step-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+.step-text { font-size: 0.925rem; color: var(--primary-light); line-height: 1.78; }
+.step-s1 .step-dot { color: var(--s1); background: var(--s1-bg); }
+.step-s1 .step-connector { background: linear-gradient(to bottom, var(--s1), var(--s2)); opacity: 0.25; }
+.step-s1 .step-label { color: var(--s1); }
+.step-s2 .step-dot { color: var(--s2); background: var(--s2-bg); }
+.step-s2 .step-connector { background: linear-gradient(to bottom, var(--s2), var(--s3)); opacity: 0.25; }
+.step-s2 .step-label { color: var(--s2); }
+.step-s3 .step-dot { color: var(--s3); background: var(--s3-bg); }
+.step-s3 .step-label { color: var(--s3); }
+.step-s3 .step-text { background: var(--s3-bg); border-left: 3px solid var(--s3); border-radius: 0 var(--r) var(--r) 0; padding: 0.6rem 0.85rem; margin-left: -0.25rem; font-size: 0.9rem; }
+
+.card-cover { border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-xl); position: relative; }
+.cover-hero { background-color: var(--primary); background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px), radial-gradient(ellipse 90% 80% at 20% 30%, rgba(196,162,42,0.07) 0%, transparent 60%); background-size: 48px 48px, 48px 48px, 100% 100%; padding: 2rem 2.5rem 1.75rem; position: relative; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; }
+.cover-hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent 0%, var(--gold-line) 20%, var(--gold) 50%, var(--gold-line) 80%, transparent 100%); }
+.cover-corners { position: absolute; inset: 1.25rem; pointer-events: none; }
+.cover-corner { position: absolute; width: 14px; height: 14px; border-color: var(--gold-line); border-style: solid; }
+.cover-corner.tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.cover-corner.tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.cover-corner.bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.cover-corner.br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+.cover-doctype-badge { position: absolute; top: 2.25rem; right: 2.75rem; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); writing-mode: vertical-lr; transform: rotate(180deg); user-select: none; }
+.cover-eyebrow { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem; position: relative; }
+.cover-eyebrow-line { width: 24px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.cover-eyebrow-text { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.cover-title { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.55rem); font-weight: 600; color: rgba(255,255,255,0.94); line-height: 1.18; letter-spacing: 0; margin-bottom: 0.75rem; position: relative; border: none; padding: 0; text-align: left; }
+.cover-title em { font-style: italic; color: var(--gold-bright); font-weight: 500; }
+.cover-project-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.cover-project-name { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; }
+.cover-project-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.6; flex-shrink: 0; }
+.cover-project-type { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.45); font-style: italic; }
+.cover-meta { background: var(--white); padding: 1.5rem 2.5rem; }
+.meta-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; row-gap: 0.75rem; margin-bottom: 1.25rem; }
+.meta-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; display: block; }
+.meta-primary { font-size: 0.9rem; font-weight: 500; color: var(--primary); line-height: 1.45; display: block; }
+.meta-secondary { font-size: 0.82rem; font-weight: 300; color: var(--muted); display: block; margin-top: 0.1rem; }
+.cover-citation { border-top: 1px solid var(--border-light); padding-top: 1rem; display: grid; grid-template-columns: auto 1fr; gap: 0 1rem; align-items: flex-start; }
+.citation-chip { font-family: var(--font-mono); font-size: 0.59rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--p-accent); background: var(--p-accent-dim); border: 1px solid var(--p-accent-mid); border-radius: 3px; padding: 0.22rem 0.6rem; white-space: nowrap; margin-top: 0.1rem; }
+.citation-fundamento { font-family: var(--font-mono); font-size: 0.59rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.3rem; }
+.citation-quote { font-size: 0.85rem; color: var(--primary-light); line-height: 1.75; font-style: italic; border-left: 2px solid var(--border); padding-left: 0.85rem; margin: 0; }
+.citation-quote strong { font-style: normal; font-weight: 500; color: var(--primary); }
+.citation-source { display: block; font-size: 0.77rem; font-style: normal; color: var(--muted); margin-top: 0.4rem; font-family: var(--font-mono); }
+
+  </style>
+</head>
+<body>
+  <div class="md-document">
+
+
+
+
+
+<article class="card-cover">
+  <div class="cover-hero">
+    <div class="cover-corners">
+      <span class="cover-corner tl"></span><span class="cover-corner tr"></span>
+      <span class="cover-corner bl"></span><span class="cover-corner br"></span>
+    </div>
+    
+    <div class="cover-eyebrow">
+      <span class="cover-eyebrow-line"></span>
+      <span class="cover-eyebrow-text">Fraccionamiento Solé — El Toro</span>
+    </div>
+    
+    <h1 class="cover-title">Control Arquitectónico Obligatorio y Manual de Imagen Urbana</h1>
+    
+    <div class="cover-project-row">
+      <span class="cover-project-name">Fraccionamiento Solé — El Toro</span>
+      <span class="cover-project-sep"></span>
+      <span class="cover-project-type">Propuesta de Reforma al Reglamento</span>
+    </div>
+    
+  </div>
+  
+  <div class="cover-meta">
+    
+    <dl class="meta-grid">
+      
+      <div class="meta-item">
+        <dt class="meta-label">Presentado por</dt>
+        <dd><span class="meta-primary">Daniel Chávez Flores · Circuito de los Robles 136-B</span></dd>
+      </div>
+      
+      <div class="meta-item">
+        <dt class="meta-label">Contacto</dt>
+        <dd><span class="meta-primary">Tel. 444-105-8700 · dchavezf@gmail.com</span></dd>
+      </div>
+      
+      <div class="meta-item">
+        <dt class="meta-label">Calidad</dt>
+        <dd><span class="meta-primary">Condómino del Fraccionamiento Solé</span></dd>
+      </div>
+      
+      <div class="meta-item">
+        <dt class="meta-label">Fecha</dt>
+        <dd><span class="meta-primary">Junio 2026, San Luis Potosí, S.L.P.</span></dd>
+      </div>
+      
+      <div class="meta-item">
+        <dt class="meta-label">Fundamento</dt>
+        <dd><span class="meta-primary">Art. 99 del Reglamento Interno *(«LOS CONDÓMINOS podrán convocar a ASAMBLEA GENERAL DE CONDÓMINOS [...] cuando representen por lo menos el 25% del total de los CONDÓMINOS»)*</span></dd>
+      </div>
+      
+    </dl>
+    
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    
+    
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<article class="md-card card-propuesta">
+  <div class="cp-inner">
+    <div class="cp-top">
+      <h2>Parte 1 — Introducción y resumen</h2>
+      <span class="cp-chip">Parte 01</span>
+    </div>
+    
+    <div class="cp-para-quien">
+      <span class="cp-pq-label">Para quién</span>
+      <span class="cp-pq-text">cualquier vecino que quiera entender de qué se trata antes de decidir si profundizar.</span>
+    </div>
+    
+    <div class="cp-body"><p>
+Explica por qué la imagen del fraccionamiento tiene valor económico concreto, qué problema específico tiene el Reglamento actual, y resume en una página las cinco propuestas de cambio con su situación actual y el resultado esperado de cada una.</p>
+</div>
+  </div>
+  
+  <footer class="cp-footer">
+    <div class="cp-footer-icon">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+        <path d="M6.5 1L8.2 4.5L12 5.1L9.25 7.8L9.9 11.6L6.5 9.8L3.1 11.6L3.75 7.8L1 5.1L4.8 4.5L6.5 1Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="cp-footer-content">
+      <div class="cp-footer-label">Al terminar esta parte sabrás</div>
+      <p class="cp-footer-text">qué se propone, por qué importa y cuánto puede valer la diferencia en el valor de tu casa.</p>
+    </div>
+  </footer>
+  
+</article>
+<article class="md-card caso">
+  <header class="caso-header">
+    <span class="caso-badge">Caso</span>
+    <h3 class="caso-title">Un propietario quiere instalar un aljibe en el frente de su casa</h3>
+  </header>
+  <div class="caso-body">
+    <div class="caso-steps">
+      
+        
+        <div class="caso-step step-s1">
+          <div class="step-indicator">
+            <div class="step-dot">→</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label-row">
+              <span class="step-label">Situación</span>
+            </div>
+            <p class="step-text">Un propietario planea instalar un aljibe en la parte frontal de su lote para resolver el abasto de agua. No sabe si necesita permiso, si afecta la imagen del fraccionamiento, a quién consultarlo ni en qué plazo recibirá una respuesta.</p>
+          </div>
+        </div>
+        
+      
+        
+        <div class="caso-step step-s2">
+          <div class="step-indicator">
+            <div class="step-dot">→</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label-row">
+              <span class="step-label">Acción</span>
+            </div>
+            <p class="step-text">Pregunta al Administrador. No hay un proceso escrito definido ni criterios claros sobre qué elementos pueden instalarse en el frente del lote. Le dicen que "habría que verlo" pero sin que nadie tenga autoridad formal para resolverlo.</p>
+          </div>
+        </div>
+        
+      
+        
+        <div class="caso-step step-s3">
+          <div class="step-indicator">
+            <div class="step-dot">◉</div>
+            
+          </div>
+          <div class="step-content">
+            <div class="step-label-row">
+              <span class="step-label">Resultado</span>
+            </div>
+            <p class="step-text">El propietario queda en una zona gris: si instala el aljibe sin autorización asume el riesgo de que más adelante alguien objete. Si espera, no sabe cuánto ni ante quién. El Reglamento vigente no le da una respuesta clara porque el proceso no está definido. Este es exactamente el vacío que la propuesta busca cerrar.</p>
+          </div>
+        </div>
+        
+      
+    </div>
+    
+  </div>
+</article>
+  </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿"""
+"""
 HTML Exporter: renders a markdown-it token list to a self-contained HTML5 file.
 
 CSS is generated entirely from the theme JSON â€” no hardcoded styles anywhere.
@@ -189,6 +189,8 @@ class HtmlExporter:
             css = html_cfg.get("style", {})
             if css:
                 lines.append(f".directive-{name} {{ {css_dict_to_string(css)} }}")
+        if css:
+            lines.append(".directive-card { padding: 1rem; margin: 1rem 0; border: 1px solid var(--color-border, #ccc); border-radius: 8px; background: var(--color-bg, #fff); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }")
 
         # Task list checkboxes
         tl = self.theme.get_element("taskList")
@@ -217,6 +219,11 @@ class HtmlExporter:
                 style += f"; max-width: {max_w}"
             lines.append(f"img {{ {style.strip('; ')} }}")
 
+        # Prevent double page breaks on headings
+        lines.append(".md-table-container { overflow-x:auto; }")
+        lines.append(".md-table { width:100%; table-layout:fixed; }")
+        lines.append(".md-table th, .md-table td { word-wrap:break-word; overflow-wrap:break-word; }")
+
         extra_css = self.theme.get_extra_css()
         if extra_css:
             lines.append(extra_css)
@@ -241,9 +248,14 @@ class HtmlExporter:
             return self._render_block(item)
 
     def _render_token(self, tok: Token) -> str:
+        # Handle pagebreak token specially to avoid <pagebreak/> placeholder
+        if tok.type == "pagebreak":
+            # Skip if noPageBreak meta is set (double break handled elsewhere)
+            if tok.meta and tok.meta.get("noPageBreak"):
+                return ""
+            return '<div class="page-break"></div>\n'
         # Standard markdown-it-py renderer for simple tokens
         md = MarkdownIt()
-        # We need to render it as a list to avoid md.render(tok.content) which parses again
         return md.renderer.render([tok], md.options, {})
 
     def _render_block(self, block: Block) -> str:
@@ -274,7 +286,10 @@ class HtmlExporter:
         html_cfg = cfg.get("html", {})
         tag = html_cfg.get("tag", f"h{level}")
         class_attr = ""
-        classes = merge_css_classes(html_cfg.get("className", ""))
+        classes_list = [html_cfg.get("className", "")]
+        if block.open.meta and block.open.meta.get("noPageBreak"):
+            classes_list.append("no-page-break")
+        classes = merge_css_classes(*classes_list)
         if classes:
             class_attr = f' class="{classes}"'
         
@@ -302,7 +317,7 @@ class HtmlExporter:
     def _render_directive(self, block: Block) -> str:
         name = directive_name(block)
 
-        if name == "pagebreak":
+        if name in ("pagebreak", "breakpage"):
             return '<div class="page-break"></div>\n'
 
         cfg = self.theme.get_directive(name)

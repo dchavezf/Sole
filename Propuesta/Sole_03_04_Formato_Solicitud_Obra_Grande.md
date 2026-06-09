@@ -169,3 +169,6 @@ Firma de miembro 3: ________________________________
 ---
 
 *El propietario puede apelar una resolución desfavorable ante el Comité de Representantes dentro de los 10 días hábiles siguientes a la notificación. Ver Proceso de Apelación (Formato P-3).*
+
+
+:::pagebreak

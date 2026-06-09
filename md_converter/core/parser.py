@@ -35,7 +35,7 @@ except ImportError:
 # GitHub-style alerts are parsed manually since mdit_py_plugins.alerts
 # may not cover all six types. We post-process blockquote tokens instead.
 _ALERT_RE = re.compile(r"^\[!(NOTE|TIP|WARNING|CAUTION|IMPORTANT|DANGER)\]", re.IGNORECASE)
-_PAGEBREAK_RE = re.compile(r"<!--\s*pagebreak\s*-->", re.IGNORECASE)
+_PAGEBREAK_RE = re.compile(r"<!--\s*(pagebreak|breakpage)\s*-->", re.IGNORECASE)
 
 # Directive names we've registered — populated dynamically
 _REGISTERED_DIRECTIVES: set[str] = set()
@@ -95,6 +95,7 @@ def parse(sources: list[tuple[Path, str]], directives: list[str] | None = None) 
             combined_tokens.append(hr)
         combined_tokens.extend(tokens)
 
+    combined_tokens = _tag_no_page_break_on_headings(combined_tokens)
     return combined_tokens
 
 
@@ -205,39 +206,106 @@ def _strip_alert_marker(tokens: list[Token]) -> list[Token]:
 
 def _post_process_pagebreaks(tokens: list[Token]) -> list[Token]:
     """
-    Convert :::pagebreak directives (and <!-- pagebreak --> comments) to
+    Convert :::pagebreak and :::breakpage directives (and <!-- pagebreak --> or <!-- breakpage --> comments) to
+    a single self‑closing pagebreak token, removing the paired open/close.
+    Preserve any inner tokens and handle orphan containers gracefully.
+    """
+    result: list[Token] = []
+    i = 0
+    while i < len(tokens):
+        tok = tokens[i]
+        # Skip closing token of a pagebreak container if we encounter it directly
+        if tok.type.startswith("container_") and tok.type.endswith("_close"):
+            name = tok.type.replace("container_", "").replace("_close", "")
+            if name in ("pagebreak", "breakpage"):
+                i += 1
+                continue
+        # Check if it's a pagebreak or breakpage container opening
+        is_pb_container = False
+        name = None
+        if tok.type.startswith("container_") and tok.type.endswith("_open"):
+            name = tok.type.replace("container_", "").replace("_open", "")
+            if name in ("pagebreak", "breakpage"):
+                is_pb_container = True
+            elif name == "directive" and _is_pagebreak_info(tok.info):
+                is_pb_container = True
+        if is_pb_container:
+            # Look ahead to see if an H1 follows directly (skip intermediate containers)
+            next_idx = i + 1
+            while next_idx < len(tokens) and tokens[next_idx].type.startswith("container_"):
+                next_idx += 1
+            next_tok = tokens[next_idx] if next_idx < len(tokens) else None
+            is_h1_heading = next_tok is not None and next_tok.type == "heading_open" and next_tok.tag == "h1"
+            if not is_h1_heading:
+                result.append(Token("pagebreak", "", 0))
+            # Skip the opening token only
+            i += 1
+            continue
+        # Backwards‑compatible HTML comment pagebreaks
+        if tok.type in ("html_block", "html_inline") and _PAGEBREAK_RE.search(tok.content):
+            next_idx = i + 1
+            next_tok = tokens[next_idx] if next_idx < len(tokens) else None
+            is_h1_heading = next_tok is not None and next_tok.type == "heading_open" and next_tok.tag == "h1"
+            if not is_h1_heading:
+                result.append(Token("pagebreak", "", 0))
+            i += 1
+            continue
+        # Default: keep token as‑is
+        result.append(tok)
+        i += 1
+    return result
+    """
+    Convert :::pagebreak and :::breakpage directives (and <!-- pagebreak --> or <!-- breakpage --> comments) to
     a single self-closing pagebreak token, removing the paired open/close.
     """
     result: list[Token] = []
     i = 0
     while i < len(tokens):
         tok = tokens[i]
-        # :::pagebreak  →  single pagebreak token (skip the paired close)
-        if tok.type == "container_directive_open" and _is_pagebreak_info(tok.info):
-            pb = Token("pagebreak", "", 0)
-            result.append(pb)
-            # skip everything until the matching container_directive_close
-            depth = 1
+        
+        # Check if it's a pagebreak or breakpage container
+        is_pb_container = False
+        name = None
+        if tok.type.startswith("container_") and tok.type.endswith("_open"):
+            name = tok.type.replace("container_", "").replace("_open", "")
+            if name in ("pagebreak", "breakpage"):
+                is_pb_container = True
+            elif name == "directive" and _is_pagebreak_info(tok.info):
+                is_pb_container = True
+        
+        if is_pb_container:
+            # Look ahead to see if an H1 follows directly (skip intermediate containers)
+            next_idx = i + 1
+            while next_idx < len(tokens) and tokens[next_idx].type.startswith("container_"):
+                next_idx += 1
+            next_tok = tokens[next_idx] if next_idx < len(tokens) else None
+            is_h1_heading = next_tok is not None and next_tok.type == "heading_open" and next_tok.tag == "h1"
+            if not is_h1_heading:
+                result.append(Token("pagebreak", "", 0))
+            # Advance i past the opening token
             i += 1
-            while i < len(tokens) and depth > 0:
-                if tokens[i].type == "container_directive_open":
-                    depth += 1
-                elif tokens[i].type == "container_directive_close":
-                    depth -= 1
+            if i < len(tokens) and tokens[i].type == f"container_{name}_close":
+                # Skip the close token
                 i += 1
-            continue
-        # <!-- pagebreak -->  (kept for backwards compat)
+        
+        # Backwards‑compatible HTML comment pagebreaks
         if tok.type in ("html_block", "html_inline") and _PAGEBREAK_RE.search(tok.content):
-            result.append(Token("pagebreak", "", 0))
+            next_idx = i + 1
+            next_tok = tokens[next_idx] if next_idx < len(tokens) else None
+            is_h1_heading = next_tok is not None and next_tok.type == "heading_open" and next_tok.tag == "h1"
+            if not is_h1_heading:
+                result.append(Token("pagebreak", "", 0))
             i += 1
             continue
+        
+        # Default: keep token as‑is
         result.append(tok)
         i += 1
     return result
 
 
 def _is_pagebreak_info(info: str | None) -> bool:
-    return bool(info and info.strip().split()[0].lower() == "pagebreak")
+    return bool(info and info.strip().split()[0].lower() in ("pagebreak", "breakpage"))
 
 
 # ------------------------------------------------------------------
@@ -251,4 +319,34 @@ def _annotate_source(tokens: list[Token], path: Path) -> list[Token]:
             tok.meta = {}
         if isinstance(tok.meta, dict):
             tok.meta["_source"] = str(path)
+    return tokens
+
+
+def _tag_no_page_break_on_headings(tokens: list[Token]) -> list[Token]:
+    """
+    If a heading_open (tag h1) immediately follows a pagebreak token
+    (with only comments, whitespace, or document-separator hr in between),
+    tag it with meta['noPageBreak'] = True to prevent double page breaks.
+    """
+    for i, tok in enumerate(tokens):
+        if tok.type == "pagebreak":
+            for j in range(i + 1, len(tokens)):
+                t = tokens[j]
+                # Skip comments
+                if t.type in ("html_block", "html_inline") and t.content.strip().startswith("<!--") and t.content.strip().endswith("-->"):
+                    continue
+                # Skip empty inline
+                if t.type == "inline" and not t.content.strip():
+                    continue
+                # Skip document separator hr
+                if t.type == "hr" and t.attrGet("class") == "document-separator":
+                    continue
+                # If H1 heading_open, tag it
+                if t.type == "heading_open" and t.tag == "h1":
+                    if not hasattr(t, "meta") or t.meta is None:
+                        t.meta = {}
+                    t.meta["noPageBreak"] = True
+                    break
+                # Any other token stops the scan
+                break
     return tokens

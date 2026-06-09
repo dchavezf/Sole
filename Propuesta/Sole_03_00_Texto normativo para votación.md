@@ -45,3 +45,6 @@ Los formatos y manuales de proceso no son parte del Reglamento en sí, pero mues
 Puedes leer los artículos en orden, consultar un formato específico o llevar estos documentos impresos a la Asamblea para seguir el debate en tiempo real.
 
 **Al terminar esta sección sabrás** exactamente qué estarías votando y cómo operaría el sistema una vez aprobado.
+
+
+:::pagebreak

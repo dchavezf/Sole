@@ -297,3 +297,6 @@ La aprobación activa una secuencia en cinco etapas:
 | **5** | La Constancia de Estado de Modificaciones entra en vigor para compraventas | Día 91 post-amnistía |
 
 Todos los formatos para operar cada etapa están incluidos en la Sección 3.
+
+
+:::pagebreak

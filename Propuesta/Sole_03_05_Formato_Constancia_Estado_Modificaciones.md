@@ -89,3 +89,6 @@ Sello de la Administración:
 
 > [!NOTE]
 > Si el Administrador no emite esta Constancia dentro de los 5 días hábiles desde la solicitud, se entiende que no existen observaciones registradas sobre el lote, y el solicitante puede hacerlo constar así ante el notario o institución financiera correspondiente, anexando copia sellada de esta solicitud con la fecha de recepción.
+
+
+:::pagebreak

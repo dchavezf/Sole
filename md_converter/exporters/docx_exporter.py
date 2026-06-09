@@ -168,7 +168,8 @@ class DocxExporter:
         para_cfg = dict(docx_cfg.get("paragraph", {}))
         if level == 1:
             if self._h1_count > 0 and self.theme.get_layout().get("autoPageBreakOnH1", False):
-                para_cfg["pageBreakBefore"] = True
+                if not (block.open.meta and block.open.meta.get("noPageBreak")):
+                    para_cfg["pageBreakBefore"] = True
             self._h1_count += 1
 
         _apply_paragraph_cfg(p, para_cfg)

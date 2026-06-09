@@ -109,7 +109,8 @@
       },
       "screenOverrides": {
         ".md-document": { "maxWidth": "none", "margin": "0", "padding": "0" },
-        "body": { "padding": "0" }
+        "body": { "padding": "0" },
+        "body::before": { "display": "none", "content": "none", "backgroundImage": "none" }
       },
       "avoidBreakInside": [".md-table-container", "pre", ".callout", ".directive"]
     },

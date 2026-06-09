@@ -83,3 +83,6 @@ V. INCUMPLIMIENTO: Si el CONDÓMINO no elige ni ejecuta ninguna opción: (a) EL 
 ---
 
 *Propuesta ciudadana — Art. 99 Reglamento Interno · Junio 2026*
+
+
+:::pagebreak

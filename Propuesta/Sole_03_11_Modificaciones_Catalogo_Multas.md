@@ -49,11 +49,29 @@ La aprobación de los Artículos A–E introduce categorías de obra, requisitos
 
 El concepto No. 8 genérico se sustituye por tres conceptos diferenciados conforme a la clasificación del Artículo C:
 
-| No. | Motivo | Llamado / Multa directa | Monto (UMAs) | Equiv. aprox. 2025 | Reincidencia (UMAs) | Equiv. aprox. 2025 | Observación |
-|---|---|---|---|---|---|---|---|
-| 8-A | Iniciar Obra Categoría I sin notificación de 48 h al Administrador (Formato C-1) | 1 Llamado de atención | 5 UMAs | ~$566 | 9 UMAs | ~$1,018 | El Administrador otorga 24 h para regularizar la notificación antes de aplicar multa |
-| 8-B | Iniciar Obra Categoría II sin resolución favorable del Consejo de Diseño | Multa directa | 27 UMAs | ~$3,055 | 53 UMAs | ~$5,996 | Suspensión de obra inmediata; la multa es independiente de la cuota de revisión y del depósito en garantía del Artículo C |
-| 8-C | Iniciar Obra Categoría III sin autorización previa del Consejo de Diseño, sin DRO o sin permisos municipales | Multa directa | 88 UMAs | ~$9,956 | 133 UMAs | ~$15,048 | Suspensión de obra inmediata; la multa no sustituye el depósito en garantía ni las responsabilidades ante la Dirección de Desarrollo Urbano |
+:::card-propuesta
+**No. 8‑A – Iniciar Obra Categoría I sin notificación de 48 h al Administrador (Formato C‑1)**
+- **Llamado / Multa directa:** 1 Llamado de atención
+- **Monto (UMAs):** 5 UMAs (~$566)
+- **Equiv. aprox. 2025:** 9 UMAs (~$1,018)
+- **Observación:** El Administrador otorga 24 h para regularizar la notificación antes de aplicar multa
+:::
+
+:::card-propuesta
+**No. 8‑B – Iniciar Obra Categoría II sin resolución favorable del Consejo de Diseño**
+- **Llamado / Multa directa:** Multa directa
+- **Monto (UMAs):** 27 UMAs (~$3,055)
+- **Equiv. aprox. 2025:** 53 UMAs (~$5,996)
+- **Observación:** Suspensión de obra inmediata; la multa es independiente de la cuota de revisión y del depósito en garantía del Artículo C
+:::
+
+:::card-propuesta
+**No. 8‑C – Iniciar Obra Categoría III sin autorización previa del Consejo de Diseño, sin DRO o sin permisos municipales**
+- **Llamado / Multa directa:** Multa directa
+- **Monto (UMAs):** 88 UMAs (~$9,956)
+- **Equiv. aprox. 2025:** 133 UMAs (~$15,048)
+- **Observación:** Suspensión de obra inmediata; la multa no sustituye el depósito en garantía ni las responsabilidades ante la Dirección de Desarrollo Urbano
+:::
 
 > **Por qué montos distintos:** Una multa fija de $1,000 no disuade obras mayores cuyo costo puede superar los $200,000 MXN. Los nuevos montos en UMAs son proporcionales al depósito en garantía de cada categoría, de modo que evadir el proceso nunca resulte más económico que seguirlo. Al expresarse en UMAs se actualizan automáticamente con la inflación sin necesitar reforma al Catálogo.
 
@@ -62,11 +80,21 @@ El concepto No. 8 genérico se sustituye por tres conceptos diferenciados confor
 ## 2. Permanencia de los conceptos No. 9 y No. 10
 
 Los conceptos **No. 9** (materiales en vialidades) y **No. 10** (exceder horario de construcción) se mantienen en estructura. Se propone expresar sus montos también en UMAs para consistencia:
+:::card-propuesta
+**No. 9 – Materiales de construcción en vialidades**
+- **Llamado / Multa directa:** 1 Llamado de atención
+- **Monto (UMAs):** 5 UMAs (~$566)
+- **Equiv. aprox. 2025:** 9 UMAs (~$1,018)
+- **Observación:** Suspensión de obra en caso de reincidir
+:::
 
-| No. | Motivo | Llamado / Multa directa | Monto (UMAs) | Equiv. aprox. 2025 | Reincidencia (UMAs) | Equiv. aprox. 2025 | Observación |
-|---|---|---|---|---|---|---|---|
-| 9 | Materiales de construcción en vialidades | 1 Llamado de atención | 5 UMAs | ~$566 | 9 UMAs | ~$1,018 | Suspensión de obra en caso de reincidir |
-| 10 | Exceder el horario permitido para construcciones o instalaciones | 1 Llamado de atención | 9 UMAs | ~$1,018 | 18 UMAs | ~$2,037 | Suspensión de obra en caso de reincidir |
+:::card-propuesta
+**No. 10 – Exceder el horario permitido para construcciones o instalaciones**
+- **Llamado / Multa directa:** 1 Llamado de atención
+- **Monto (UMAs):** 9 UMAs (~$1,018)
+- **Equiv. aprox. 2025:** 18 UMAs (~$2,037)
+- **Observación:** Suspensión de obra en caso de reincidir
+:::
 
 Se aclara expresamente que ambos conceptos aplican **independientemente de si la obra cuenta o no con autorización** del Consejo de Diseño — una obra autorizada también incurre en estas multas si viola las condiciones operativas.
 
@@ -75,13 +103,35 @@ Se aclara expresamente que ambos conceptos aplican **independientemente de si la
 ## 3. Nuevos conceptos derivados del sistema de gobernanza
 
 Se propone agregar al Catálogo los siguientes conceptos:
+:::card-propuesta
+**No. 17 – Incumplir condiciones de obra impuestas por el Consejo de Diseño en su resolución escrita**
+- **Llamado / Multa directa:** 1 Llamado de atención
+- **Monto (UMAs):** 13 UMAs (~$1,471)
+- **Equiv. aprox. 2025:** 27 UMAs (~$3,055)
+- **Observación:** El Consejo puede ordenar suspensión de obra hasta verificar el cumplimiento
+:::
 
-| No. | Motivo | Llamado / Multa directa | Monto (UMAs) | Equiv. aprox. 2025 | Reincidencia (UMAs) | Equiv. aprox. 2025 | Observación |
-|---|---|---|---|---|---|---|---|
-| 17 | Incumplir condiciones de obra impuestas por el Consejo de Diseño en su resolución escrita | 1 Llamado de atención | 13 UMAs | ~$1,471 | 27 UMAs | ~$3,055 | El Consejo puede ordenar suspensión de obra hasta verificar el cumplimiento |
-| 18 | No regularizar obra no autorizada dentro del plazo de 15 días hábiles tras notificación, fuera del período de amnistía | Multa directa | Doble del depósito en garantía de la categoría correspondiente | — | — | — | Acumulable por cada período vencido; el Comité de Representantes puede contratar la restitución con cargo al infractor |
-| 19 | Obstaculizar o impedir visitas de supervisión del Consejo de Diseño durante obra autorizada de Categoría III | Multa directa | 18 UMAs | ~$2,037 | 36 UMAs | ~$4,073 | Suspensión de obra hasta que se permita la visita |
-| 20 | Proporcionar información falsa o documentación apócrifa en solicitudes de autorización de obra | Multa directa | 45 UMAs | ~$5,091 | Revocación de la autorización | — | Se da vista al Ministerio Público si la conducta constituye delito |
+:::card-propuesta
+**No. 18 – No regularizar obra no autorizada dentro del plazo de 15 días hábiles tras notificación, fuera del período de amnistía**
+- **Llamado / Multa directa:** Multa directa
+- **Monto (UMAs):** Doble del depósito de garantía de la categoría correspondiente
+- **Observación:** Acumulable por cada período vencido; el Comité de Representantes puede contratar la restitución con cargo al infractor
+:::
+
+:::card-propuesta
+**No. 19 – Obstaculizar o impedir visitas de supervisión del Consejo de Diseño durante obra autorizada de Categoría III**
+- **Llamado / Multa directa:** Multa directa
+- **Monto (UMAs):** 18 UMAs (~$2,037)
+- **Equiv. aprox. 2025:** 36 UMAs (~$4,073)
+- **Observación:** Suspensión de obra hasta que se permita la visita
+:::
+
+:::card-propuesta
+**No. 20 – Proporcionar información falsa o documentación apócrifa en solicitudes de autorización de obra**
+- **Llamado / Multa directa:** Multa directa
+- **Monto (UMAs):** 45 UMAs (~$5,091)
+- **Observación:** Revocación de la autorización; se da vista al Ministerio Público si la conducta constituye delito
+:::
 
 ---
 
@@ -108,3 +158,6 @@ Al expresar los montos en UMAs, la actualización es **automática**: cada febre
 ---
 
 *Propuesta ciudadana — Art. 99 Reglamento Interno · Junio 2026*
+
+
+:::pagebreak

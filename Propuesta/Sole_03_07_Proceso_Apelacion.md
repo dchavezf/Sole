@@ -106,8 +106,6 @@ Cuando el debate involucra criterios técnicos que el Comité de Representantes 
 
 &nbsp;
 
-&nbsp;
-
 **Resultado solicitado:**
 
 - [ ] Aprobación total de la solicitud original
@@ -128,7 +126,6 @@ Firma: ________________________________
 
 Fecha: ___/___/______
 
----
 
 **Para uso del Administrador:**
 
@@ -140,7 +137,6 @@ Fecha: ___/___/______
 
 Firma del Administrador: ________________________________
 
----
 
 **Para uso del Comité de Representantes:**
 
@@ -153,3 +149,5 @@ Firma del Administrador: ________________________________
 - [ ] Remisión a **árbitro externo** — motivo: ________________________________
 
 Firma del Presidente del Comité: ________________________________
+
+:::pagebreak

@@ -98,3 +98,6 @@ El Manual puede ser **más restrictivo**, nunca por debajo de los mínimos munic
 - Las resoluciones del Consejo que contradigan normativa municipal pueden ser revertidas ante la Dirección de Desarrollo Urbano
 
 ---
+
+
+:::pagebreak

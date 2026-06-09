@@ -14,3 +14,5 @@ El capítulo desarrolla cada componente en detalle: la base legal que respalda e
 > Se tiene conocimiento de que con posterioridad se celebró una asamblea en la que se adoptaron acuerdos, algunos de ellos relacionados con el Consejo de Diseño. Sin embargo, la minuta de dicha asamblea no ha sido publicada conforme lo exige el propio Reglamento — el Art. 83, frac. IV de la Ley de Condominio SLP obliga al Administrador a recabar y conservar la documentación del condominio, la cual en todo tiempo podrá ser consultada por los condóminos, y el acceso a esa documentación es un derecho de cada propietario.
 >
 > Cuando la minuta sea publicada conforme a lo establecido, se revisará su contenido y se realizarán los ajustes que correspondan a esta propuesta.
+
+:::pagebreak

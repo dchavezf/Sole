@@ -12,7 +12,7 @@
 | Especificación de acabados exteriores | Materiales, dimensiones, texturas y proveedores del proyecto original | HABI | — |
 | Planos de fachadas tipo | Fachadas de los prototipos con proporciones y elementos arquitectónicos | HABI | Municipio |
 
----
+:::pagebreak
 
 ## Carta A — Solicitud a HABI
 
@@ -56,7 +56,7 @@ Administración del Fraccionamiento Solé
 
 **Teléfono:** ________________________________
 
----
+:::pagebreak
 
 ## Carta B — Solicitud al Municipio de Soledad de Graciano Sánchez
 
@@ -119,3 +119,6 @@ Fraccionamiento Solé — El Toro
 
 > [!NOTE]
 > Si HABI no responde en un plazo razonable, el expediente del Municipio sirve como fuente alternativa, aunque puede estar incompleto en formatos digitales obsoletos. En ese caso, el Grupo de Trabajo redactor del Manual complementará con levantamiento fotográfico del estado original de las fachadas actualmente sin modificar.
+
+
+:::pagebreak

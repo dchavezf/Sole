@@ -24,3 +24,5 @@ HABI mantiene aproximadamente **90 unidades sin escriturar** de un total proyect
 > **Sobre la abstención voluntaria:** para las cláusulas que benefician directamente a HABI, una abstención voluntaria al votarse esas fracciones específicas refuerza la legitimidad del acuerdo para todos. Es una práctica de buena gobernanza que protege la validez del proceso.
 
 ---
+
+:::pagebreak

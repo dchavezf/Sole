@@ -59,3 +59,6 @@ La facultad del condominio para establecer lineamientos arquitectónicos de obse
 :::
 
 ---
+
+
+:::pagebreak

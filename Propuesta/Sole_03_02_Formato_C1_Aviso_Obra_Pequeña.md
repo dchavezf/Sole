@@ -87,3 +87,6 @@ Fecha de verificación: ___/___/______
 ---
 
 *Conserve este formato sellado como comprobante. El Administrador entregará copia al propietario al momento de recepción.*
+
+
+:::pagebreak

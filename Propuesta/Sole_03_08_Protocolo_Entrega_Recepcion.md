@@ -145,3 +145,6 @@ Fecha: ___/___/______
 
 > [!NOTE]
 > Este acta debe conservarse en el expediente permanente del fraccionamiento. Una copia debe quedar en poder del Comité de Representantes, independientemente de quién administre.
+
+
+:::pagebreak
