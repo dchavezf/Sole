@@ -3,6 +3,8 @@
 
 ### 5.1 Las tres categorías
 
+La clasificación está pensada para evitar burocracia innecesaria. No todo cambio en una casa merece el mismo nivel de revisión: una cosa es pintar una recámara y otra agregar un volumen visible desde la calle o modificar estructura.
+
 **Obra Pequeña (Categoría I)**
 
 Mantenimiento o cambios de acabados que no afectan estructura, distribución interna, fachada ni superficie construida. Ejemplos: repintar recámaras, cambiar azulejos en baño.
@@ -12,6 +14,8 @@ Mantenimiento o cambios de acabados que no afectan estructura, distribución int
 - **Trámite:** aviso al Administrador **48 horas antes** (Formato C-1)
 - **Costo:** sin cuota ni depósito
 - Si el Administrador detecta que la obra no encuadra en esta categoría, lo notifica en **24 horas**
+
+**Mensaje práctico:** si la obra no se ve desde afuera, no cambia estructura y no afecta superficie construida, el sistema no debe estorbar.
 
 ---
 
@@ -24,6 +28,8 @@ Cambios en apariencia exterior, elementos visibles desde calle o distribución i
 - Toda respuesta es por escrito con su fundamento
 - **Costo:** $1,500 cuota de revisión + $3,000 depósito reembolsable al concluir *(montos en pesos conforme al Artículo C; independientes de la multa por inicio sin autorización del Catálogo de Multas)*
 
+**Mensaje práctico:** la cuota paga la revisión; el depósito no es ingreso del condominio, es garantía reembolsable para asegurar que la obra cierre correctamente.
+
 ---
 
 **Obra Grande (Categoría III)**
@@ -33,6 +39,8 @@ Ampliaciones de superficie, nuevos volúmenes, cambios estructurales, adición d
 - **Trámite:** DRO con registro vigente + autorización previa del Consejo + permisos de la Dirección de Desarrollo Urbano de Soledad; visitas de supervisión durante la obra
 - **Plazo:** Para Obra Grande, el Consejo tendrá 15 días hábiles para resolver. Si transcurrido el plazo no hay respuesta, el condómino podrá requerir formalmente el inicio, y si en 48 horas adicionales persiste el silencio, operará la aprobación tácita, quedando a salvo las revisiones de seguridad del DRO.
 - **Costo:** $1,500 cuota + depósito reembolsable indexado en UMAs según complejidad: hasta 40 UMAs para intervenciones exteriores simples como techar cochera o agregar pérgola ligera; hasta 85 UMAs para ampliaciones parciales o nuevos volúmenes sin cambio de nivel; hasta 150 UMAs para planta completa, segundo nivel, modificación estructural mayor o intervención que incremente de forma sustancial la superficie construida. Depósito en garantía totalmente reembolsable, administrado bajo cuenta transparente y devuelto en un plazo máximo de 5 días posteriores a la liberación de la obra. *(Montos conforme al Artículo C; independientes de la multa por inicio sin autorización del Catálogo de Multas.)*
+
+**Mensaje práctico:** una cochera techada no debe tratarse igual que una planta completa. Por eso el depósito tiene tope por complejidad y devolución obligatoria.
 
 ### 5.2 Proceso de apelación
 

@@ -2,7 +2,9 @@
 
 El objetivo de esta propuesta no es hacer el fraccionamiento más estricto ni más permisivo. Es hacerlo predecible, transparente y justo para todos. Cuando las reglas son claras y conocidas de antemano, las decisiones dejan de depender del criterio personal de quien esté en turno: el Manual define los límites, y el Manual lo construimos y aprobamos entre todos como comunidad.
 
-Estoy disponible para responder preguntas, recibir propuestas de modificación y trabajar con quien quiera mejorar esto antes de llevarlo a votación. El objetivo no es que se apruebe mi versión: es que Solé tenga un sistema que funcione para todos.
+Entiendo que una reforma de este tipo puede despertar dudas razonables: cuánto va a costar, si se va a usar para molestar vecinos, si una obra ya hecha se vuelve problema, o si la Administración tendrá más carga. Precisamente por eso la propuesta incluye plazos, aprobación tácita, depósitos reembolsables con reglas de transparencia, amnistía para situaciones existentes y límites claros a lo que el Consejo puede hacer.
+
+Estoy disponible para responder preguntas, recibir propuestas de modificación y trabajar con quien quiera mejorar esto antes de llevarlo a votación. El objetivo no es que se apruebe mi versión: es que Solé tenga un sistema que funcione para todos, sin arbitrariedad y sin burocracia innecesaria.
 
 **Daniel Chávez Flores**
 Circuito de los Robles 136-B · Tel. 444-105-8700 · dchavezf@gmail.com
@@ -14,6 +16,8 @@ Circuito de los Robles 136-B · Tel. 444-105-8700 · dchavezf@gmail.com
 No te pido que estés de acuerdo con cada artículo. Te pido algo más sencillo: que esta conversación ocurra en el lugar que le corresponde — la Asamblea General — donde todos podemos opinar, proponer cambios y votar.
 
 Para llegar ahí necesitamos que al menos el 25% de los condóminos pidan formalmente que se convoque. Tu firma en ese proceso no aprueba nada: abre la puerta para que todos decidan.
+
+Si tu preocupación es la propiedad privada, hablemos de cómo proteger interiores y libertad de uso sin descuidar fachadas. Si tu preocupación son los costos, revisemos juntos los topes y las devoluciones. Si tu preocupación es una obra ya existente, veamos el mecanismo de regularización. Si tu preocupación es la Administración, revisemos las garantías de transparencia. Todas esas dudas son legítimas y mejoran la propuesta.
 
 Si ya leíste hasta aquí, ya tienes el contexto completo. Lo que sigue es simple:
 

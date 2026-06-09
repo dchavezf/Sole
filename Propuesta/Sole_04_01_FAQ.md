@@ -97,6 +97,54 @@ El Manual puede ser **más restrictivo**, nunca por debajo de los mínimos munic
 - Imagen urbana y colores → prevalece el Manual, siempre que no viole el uso de suelo
 - Las resoluciones del Consejo que contradigan normativa municipal pueden ser revertidas ante la Dirección de Desarrollo Urbano
 
+#### P15. ¿Esto viola mi derecho de propiedad?
+
+No. La propuesta distingue entre el espacio habitable privado y los elementos exteriores que afectan la imagen común del fraccionamiento.
+
+Dentro de la casa, cada propietario conserva libertad para mantenimiento, acabados interiores y decisiones que no afecten fachada, estructura, áreas comunes ni seguridad. En régimen condominal, las fachadas, volúmenes visibles y modificaciones estructurales tienen impacto colectivo porque influyen en la percepción y valor de todas las viviendas.
+
+La idea práctica es sencilla: **adentro decides tú; hacia afuera cuidamos entre todos lo que todos vendemos como conjunto**.
+
+#### P16. ¿No están creando más burocracia?
+
+La propuesta busca lo contrario: separar trámites simples de obras delicadas.
+
+- Obra Pequeña: aviso simple, sin cuota, sin depósito y sin Consejo.
+- Obra Mediana: revisión rápida con plazo de 5 días hábiles y aprobación tácita.
+- Obra Grande: revisión más completa porque puede afectar estructura, permisos municipales o áreas comunes.
+
+Hoy la falta de proceso claro genera más burocracia informal: mensajes, autorizaciones de palabra, dudas, reclamos y decisiones caso por caso. Un formato claro y un plazo fijo suelen ser menos pesados que una discusión abierta.
+
+#### P17. ¿El depósito es un cobro disfrazado?
+
+No. El depósito no es ingreso del condominio ni pago permanente. Es una garantía reembolsable para proteger áreas comunes y a los propios vecinos frente a daños de obra: escombro, pavimento, banquetas, instalaciones, accesos o limpieza.
+
+Para Obra Grande, además, el depósito queda limitado por complejidad e indexado en UMAs. No se trata igual una cochera techada que una planta completa. El texto exige que sea administrado en cuenta transparente y devuelto en un plazo máximo de 5 días posteriores a la liberación de la obra.
+
+#### P18. ¿Y si el Consejo se tarda o no contesta?
+
+El silencio tiene consecuencias. En Obra Mediana opera la aprobación tácita si el Consejo no responde en plazo. En Obra Grande, el Consejo tiene 15 días hábiles; si no responde, el condómino puede requerir formalmente el inicio, y si pasan 48 horas adicionales sin respuesta, opera la aprobación tácita limitada, sin sustituir las revisiones de seguridad del DRO.
+
+Esto evita que una solicitud quede congelada indefinidamente.
+
+#### P19. ¿Esto es una crítica a la Administración actual?
+
+No. El problema principal no es de personas, sino de herramientas. El Reglamento actual menciona al Consejo y exige armonía visual, pero no da criterios suficientes para resolver con objetividad.
+
+La propuesta ayuda a la Administración porque le quita la carga de ser juez estético solitario. Con Manual, plazos y formatos, la respuesta deja de ser "porque lo digo yo" y pasa a ser "porque así lo aprobó la Asamblea".
+
+#### P20. Yo no pienso construir. ¿Por qué me debería importar?
+
+Porque aunque no construyas, algún día puedes vender, heredar o pedir un crédito usando tu casa como respaldo. La imagen del fraccionamiento influye en la percepción de valor de todas las propiedades.
+
+Una obra desordenada no solo afecta al dueño que la hizo; también afecta lo que ve un comprador cuando llega a la calle. Esta propuesta protege el valor de mercado del conjunto, no solo regula al que construye.
+
+#### P21. ¿Firmar significa que ya estoy aprobando la reforma?
+
+No. Firmar para convocar a Asamblea no aprueba la propuesta. Solo permite que el tema se discuta formalmente, con todos los condóminos, y que ahí se propongan cambios, ajustes o rechazos.
+
+Si alguien tiene dudas u objeciones, la Asamblea es precisamente el lugar correcto para plantearlas. Sin firmas suficientes, la conversación se queda en chats y pasillos, donde no se puede votar ni modificar nada formalmente.
+
 ---
 
 

@@ -61,7 +61,17 @@ Una pregunta frecuente antes de votar a favor de cualquier propuesta es: ¿esto 
 
 > El único escenario que genera costo para todos los condóminos es si la carga operativa del Administrador requiere ajuste de honorarios. Eso se aprueba en Asamblea con toda la información, no está incluido en esta propuesta de manera automática.
 
-### 8.6 Carga operativa estimada para el Administrador
+### 8.6 Compromisos anti-burocracia y transparencia
+
+Para que el sistema funcione, debe ser fácil cumplirlo. Por eso la operación se sujeta a cinco compromisos:
+
+1. **Trámite proporcional:** Obra Pequeña no pasa por Consejo y no genera cuota ni depósito.
+2. **Plazos verificables:** toda solicitud tiene fecha de recepción y fecha límite de respuesta.
+3. **Depósitos separados y rastreables:** los depósitos en garantía se administran en cuenta transparente, no se mezclan con ingresos ordinarios y se devuelven conforme al plazo aprobado.
+4. **Respuestas por escrito:** no hay autorizaciones ni rechazos de palabra.
+5. **Derecho a corregir:** cuando una solicitud esté incompleta o una obra pueda adecuarse, se debe indicar qué falta antes de escalar el conflicto.
+
+### 8.7 Carga operativa estimada para el Administrador
 
 | Actividad | Tiempo estimado |
 |---|---|
@@ -98,11 +108,11 @@ Una pregunta frecuente antes de votar a favor de cualquier propuesta es: ¿esto 
 
 :::
 
-### 8.7 Lista de DROs disponibles
+### 8.8 Lista de DROs disponibles
 
 El Consejo publicará anualmente una lista de DROs con registro vigente ante el Municipio de Soledad que hayan manifestado disponibilidad para proyectos residenciales en el fraccionamiento, con rango orientativo de honorarios. Esta lista es un **servicio informativo** — no es exclusiva ni oficial.
 
-### 8.8 La Constancia de Estado de Modificaciones — alcance actual
+### 8.9 La Constancia de Estado de Modificaciones — alcance actual
 
 La Constancia entra en vigor para compraventas el **día 91 tras el cierre del período de amnistía**. Su alcance en esta etapa es informativo: el notario la recibe y la hace constar en el instrumento, pero la Ley estatal de Condominio todavía no la contempla como requisito obligatorio para la venta.
 

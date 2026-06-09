@@ -1,5 +1,5 @@
 :::cover
-# Control Arquitectónico Obligatorio y Manual de Imagen Urbana
+# Control Arquitectónico Transparente y Manual de Imagen Urbana
 
 **Fraccionamiento Solé — El Toro**
 *Propuesta de Reforma al Reglamento*
@@ -41,7 +41,7 @@ Este material está dividido en tres partes. Puedes leerlas en orden o ir direct
 
 **Para quién:** cualquier vecino que quiera entender de qué se trata antes de decidir si profundizar.
 
-Explica por qué la imagen del fraccionamiento tiene valor económico concreto, qué problema específico tiene el Reglamento actual, y resume en una página las cinco propuestas de cambio con su situación actual y el resultado esperado de cada una.
+Explica por qué la imagen del fraccionamiento tiene valor económico concreto, qué problema específico tiene el Reglamento actual, y resume en una página las cinco propuestas de cambio con su situación actual y el resultado esperado de cada una. También aclara desde el inicio qué cosas no cambia esta propuesta: no se mete con interiores, no convierte todo en trámite y no aprueba cobros discrecionales.
 
 **Al terminar esta parte sabrás:** qué se propone, por qué importa y cuánto puede valer la diferencia en el valor de tu casa.
 
@@ -53,7 +53,7 @@ Explica por qué la imagen del fraccionamiento tiene valor económico concreto, 
 
 **Para quién:** vecinos que quieran entender cómo funciona el sistema propuesto, con qué respaldo legal se sostiene, qué beneficios concretos trae y qué pasa en situaciones específicas.
 
-Cubre el sustento en la Ley de Condominio del Estado de SLP y el Código Civil Federal, el detalle de cada uno de los tres pilares del sistema (Consejo, Manual, clasificación de obras), los beneficios documentados con fuentes verificables, ejemplos numéricos de casos reales como obras ya existentes sin autorización o compraventas con historial incompleto, y respuestas a las 14 preguntas más frecuentes.
+Cubre el sustento en la Ley de Condominio del Estado de SLP y el Código Civil Federal, el detalle de cada uno de los tres pilares del sistema (Consejo, Manual, clasificación de obras), los beneficios documentados con fuentes verificables, ejemplos numéricos de casos reales como obras ya existentes sin autorización o compraventas con historial incompleto, y respuestas a las preguntas más frecuentes.
 
 **Al terminar esta parte sabrás:** cómo funciona cada pieza del sistema, qué dice la ley al respecto, y qué pasa en tu caso específico.
 
@@ -171,13 +171,15 @@ Dicho de otra manera: en diez años, la diferencia entre vivir en un fraccionami
 
 ## El momento en que la certeza necesita estructura
 
-La promesa del régimen de condominio es real. Pero una promesa necesita mecanismos para cumplirse.
+La promesa del régimen de condominio es real. Pero una promesa necesita mecanismos para cumplirse, y esos mecanismos deben sentirse justos para el vecino común: claros, rápidos, proporcionales y sin cobros escondidos.
 
 Hoy, nuestro Reglamento establece el marco correcto: prohíbe modificar fachadas sin autorización, exige respetar el estilo arquitectónico del conjunto, y designa al Consejo de Diseño como el órgano que revisa y aprueba las obras. Todo eso está bien escrito.
 
 Lo que todavía falta es precisar cómo funciona ese Consejo en la práctica — con qué criterios concretos evalúa las solicitudes, en qué plazos responde, y qué proceso sigue un vecino que quiere hacer una modificación. Sin esa precisión, el sistema existe sobre el papel pero es difícil de aplicar con consistencia, y la diferencia entre los dos escenarios de arriba comienza, suave e imperceptiblemente, a inclinarse en la dirección equivocada.
 
 Esta propuesta busca completar ese trabajo. No reescribir las reglas, sino darles los instrumentos que necesitan para funcionar: un Consejo formalmente constituido, un Manual de criterios claros y verificables, y un proceso proporcional que haga fácil hacer las cosas bien.
+
+También busca evitar tres problemas que todos conocemos en la vida condominal: que una decisión dependa de quién está de turno, que una obra de un particular termine costándole a todos, y que una regla poco clara se convierta en pleito entre vecinos.
 
 Para que la certeza que nos trajo a vivir aquí siga siendo una certeza — y para que los números de arriba sean los que veamos reflejados en el valor de nuestro patrimonio cuando llegue el momento de venderlo.
 
@@ -197,6 +199,8 @@ Los cinco artículos propuestos cierran esas brechas sin reescribir el Reglament
 
 El resultado es un sistema que hace más fácil hacer las cosas bien que no hacerlas — y que convierte el cumplimiento arquitectónico en un activo verificable cuando llegue el momento de vender.
 
+En términos prácticos: dentro de tu casa, libertad; en fachadas, estructura y elementos visibles, reglas claras para proteger el valor común. La propuesta no está diseñada para perseguir vecinos ni para cargar de trámites la vida diaria. Está diseñada para que todos sepamos de antemano qué se puede hacer, cuánto tarda la respuesta, cuánto cuesta y cómo se devuelve cualquier depósito.
+
 *Los términos técnicos y legales que aparecen en este documento están definidos en el **Glosario**, disponible en la Sección 4.*
 
 ---
@@ -213,6 +217,8 @@ El resultado es un sistema que hace más fácil hacer las cosas bien que no hace
 
 
 **Resultado:** las resoluciones del Consejo adquieren plena validez legal y cualquier vecino puede confiar en el proceso.
+
+**Garantía de confianza:** el Consejo no sustituye a la Administración ni concentra poder absoluto. Resuelve con base en reglas escritas, plazos definidos y obligación de fundamentar cada decisión.
 
 :::
 
@@ -246,6 +252,8 @@ El resultado es un sistema que hace más fácil hacer las cosas bien que no hace
 
 **Resultado:** pintar interiores no requiere trámite. Cambiar la fachada tiene un proceso claro. Las obras estructurales reciben supervisión técnica.
 
+**Lectura sencilla:** no todo pasa por Consejo. El mantenimiento interior sigue siendo libre. Lo que se ordena es lo que se ve desde afuera, afecta estructura o puede dañar áreas comunes.
+
 :::
 
 :::card-propuesta
@@ -257,7 +265,7 @@ El resultado es un sistema que hace más fácil hacer las cosas bien que no hace
 **Propuesta:** registro por lote con historial de obras autorizadas + Constancia que el Administrador expide en cada compraventa (entra en vigor el día 91 tras el cierre del período de amnistía).
 
 
-**Resultado:** el comprador sabe exactamente qué adquiere; el vendedor tiene incentivo para estar en regla antes de vender.
+**Resultado:** el comprador sabe exactamente qué adquiere; el vendedor tiene incentivo para estar en regla antes de vender. Para el propietario actual, el historial deja de ser una amenaza y se convierte en respaldo documental.
 
 :::
 
@@ -267,10 +275,12 @@ El resultado es un sistema que hace más fácil hacer las cosas bien que no hace
 
 **Situación actual:** cuando las consecuencias de no seguir el proceso son menores que el costo de seguirlo, el sistema tiende a no usarse.
 
-**Propuesta:** obras sin autorización quedan sujetas a obligación de restitución. Período de amnistía de **90 días** con reducción del **50% en multas** para regularización voluntaria.
+**Propuesta:** obras sin autorización quedan sujetas a obligación de restitución cuando no puedan integrarse al Manual o incumplan restricciones vigentes. Período de amnistía de **90 días** con reducción del **50% en multas** para regularización voluntaria.
 
 
 **Resultado:** cumplir con el proceso es, en todos los casos, la opción que mejor protege el patrimonio propio.
+
+**Mensaje clave:** el sistema no viene a perseguir el pasado; viene a ordenar el futuro. Quien actuó de buena fe tiene una vía para documentar su situación y reducir riesgos al vender, heredar o tramitar crédito.
 
 :::
 

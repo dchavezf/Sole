@@ -17,6 +17,8 @@ Las resoluciones se adoptan por **mayoría simple** de los tres miembros con vot
 - Para Obra Mediana, una negativa sin fundamento escrito dentro del plazo se considera **aprobación tácita**.
 - Para Obra Grande, el Consejo tendrá 15 días hábiles para resolver. Si transcurrido el plazo no hay respuesta, el condómino podrá requerir formalmente el inicio, y si en 48 horas adicionales persiste el silencio, operará la aprobación tácita, quedando a salvo las revisiones de seguridad del DRO.
 
+Estas reglas buscan quitar presión tanto al vecino como a la Administración. El Consejo no debe operar como un grupo de gustos personales, sino como una mesa que aplica criterios aprobados por Asamblea. Si el criterio está escrito, el vecino sabe a qué atenerse y la Administración deja de cargar sola con discusiones estéticas.
+
 ### 4.3 Plazos de resolución
 
 | Tipo de obra | Acción | Plazo |
@@ -50,6 +52,8 @@ Este punto responde directamente a quienes preguntan si el Consejo se convierte 
 
 > [!IMPORTANT]
 > **Las sanciones económicas las aplica el Administrador, no el Consejo.** El Consejo detecta y notifica; el Administrador instruye y cobra, con los mecanismos de audiencia previa establecidos en el Catálogo de Multas. Esta separación es intencional: evita que el mismo órgano que resuelve también sancione.
+
+En lenguaje simple: el Consejo no es una policía de fachadas. Es una instancia técnica con límites. No cobra directamente, no entra a casas, no inventa reglas y no puede sustituir lo que apruebe la Asamblea.
 
 ### 4.6 Inhibición por conflicto de interés
 

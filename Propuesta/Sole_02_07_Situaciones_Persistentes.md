@@ -2,10 +2,14 @@
 
 Esta sección aplica a quienes ya realizaron modificaciones antes de que existiera un proceso formal. Hay tres mecanismos según la situación de cada quien.
 
+La intención es evitar que el arranque del sistema se viva como amenaza. Un fraccionamiento que quiere ordenar su futuro necesita reconocer que muchas decisiones pasadas ocurrieron en un contexto poco claro, sin Manual, sin formatos y sin una ruta sencilla para documentar obras.
+
 > [!IMPORTANT]
 > **Si construiste antes de que existiera un proceso formal en Solé, no eres un infractor.**
 >
 > El sistema distingue entre quien evadió un proceso que existía y quien construyó cuando ningún proceso había. Para el segundo caso existe el **Mecanismo B — Reconocimiento**: si tu obra cumple visualmente con los criterios del Manual, queda certificada sin multa y sin costo de regularización. No se te puede exigir cumplir una regla que no existía cuando actuaste.
+
+En términos prácticos: regularizar no es confesarse culpable. Es dejar tu expediente ordenado para vender, heredar o acreditar la seguridad de lo que ya existe.
 
 | Mecanismo | Cuándo aplica | Costo | Condición |
 |---|---|---|---|
