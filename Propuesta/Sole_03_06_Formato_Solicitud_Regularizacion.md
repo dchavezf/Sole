@@ -78,7 +78,7 @@ El propietario declara que la obra descrita cumple con los criterios del Manual 
 | Concepto | Tarifa normal | Con 50% de descuento |
 |---|---|---|
 | Cuota de revisión | $1,500 MXN | $750 MXN |
-| Depósito en garantía (15% del costo estimado, mín. $5,000) | $_______ MXN | $_______ MXN |
+| Depósito en garantía aplicable según categoría y complejidad | $_______ MXN | $_______ MXN |
 | Multa de regularización (equivale al depósito normal) | $_______ MXN | **$_______ MXN** |
 
 ### Mecanismo B — Reconocimiento sin multa

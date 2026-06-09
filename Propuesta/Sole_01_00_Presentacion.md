@@ -241,7 +241,7 @@ El resultado es un sistema que hace más fácil hacer las cosas bien que no hace
 |---|---|---|---|
 | **Obra Pequeña** | Mantenimiento o acabados interiores sin afectar fachada ni estructura | Aviso al Administrador **48 h antes** | Sin costo |
 | **Obra Mediana** | Cambios en apariencia exterior o elementos visibles | Solicitud al Consejo · respuesta en **5 días hábiles** · aprobación tácita si no responde | $1,500 cuota + $3,000 depósito reembolsable |
-| **Obra Grande** | Ampliaciones, nuevos volúmenes, modificaciones estructurales | DRO + autorización del Consejo + permisos municipales · **sin aprobación tácita** | $1,500 cuota + **15% del presupuesto** (mín. $10,000) depósito reembolsable |
+| **Obra Grande** | Ampliaciones, nuevos volúmenes, modificaciones estructurales | DRO + autorización del Consejo + permisos municipales · aprobación tácita limitada tras 15 días hábiles, requerimiento formal y 48 horas adicionales de silencio, sin sustituir revisiones de seguridad del DRO | $1,500 cuota + depósito reembolsable indexado en UMAs según complejidad, con tope por subcategoría |
 
 
 **Resultado:** pintar interiores no requiere trámite. Cambiar la fachada tiene un proceso claro. Las obras estructurales reciben supervisión técnica.

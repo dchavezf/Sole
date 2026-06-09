@@ -14,7 +14,8 @@ Las resoluciones se adoptan por **mayoría simple** de los tres miembros con vot
 
 - El Consejo se reúne cuando exista al menos una solicitud pendiente, y **al menos una vez al mes** para revisar obras en proceso.
 - Toda resolución —aprobación o rechazo— debe constar por escrito con referencia expresa al Reglamento o al Manual.
-- Una negativa sin fundamento escrito dentro del plazo se considera **aprobación tácita**.
+- Para Obra Mediana, una negativa sin fundamento escrito dentro del plazo se considera **aprobación tácita**.
+- Para Obra Grande, el Consejo tendrá 15 días hábiles para resolver. Si transcurrido el plazo no hay respuesta, el condómino podrá requerir formalmente el inicio, y si en 48 horas adicionales persiste el silencio, operará la aprobación tácita, quedando a salvo las revisiones de seguridad del DRO.
 
 ### 4.3 Plazos de resolución
 
@@ -22,7 +23,7 @@ Las resoluciones se adoptan por **mayoría simple** de los tres miembros con vot
 |---|---|---|
 | Obra Pequeña | Verificación del Administrador | 24 horas desde notificación |
 | Obra Mediana | Resolución del Consejo | 5 días hábiles |
-| Obra Grande | Resolución del Consejo | 15 días hábiles — sin aprobación tácita |
+| Obra Grande | Resolución del Consejo | 15 días hábiles + requerimiento formal y 48 horas adicionales para aprobación tácita limitada |
 
 > [!WARNING]
 > **Alcance de responsabilidad:** la aprobación del Consejo es **exclusivamente estética y de cumplimiento con el Manual**. No sustituye la responsabilidad técnica del DRO. Una obra puede cumplir todos los lineamientos del Manual y aun así requerir supervisión estructural independiente.

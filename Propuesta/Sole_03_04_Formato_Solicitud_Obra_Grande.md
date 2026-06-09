@@ -1,6 +1,6 @@
 # Formato C-3 — Solicitud de Autorización de Obra Grande
 
-*Categoría III — Para ampliaciones de superficie, nuevos volúmenes, cambios estructurales, adición de niveles, o cualquier obra que requiera permiso municipal. No aplica aprobación tácita por silencio del Consejo. Requiere DRO con registro vigente ante el Municipio de Soledad de Graciano Sánchez.*
+*Categoría III — Para ampliaciones de superficie, nuevos volúmenes, cambios estructurales, adición de niveles, o cualquier obra que requiera permiso municipal. Aplica aprobación tácita limitada conforme al plazo especial de Obra Grande, sin sustituir revisiones de seguridad del DRO. Requiere DRO con registro vigente ante el Municipio de Soledad de Graciano Sánchez.*
 
 ---
 
@@ -92,10 +92,10 @@
 | Concepto | Cálculo | Monto | Estado |
 |---|---|---|---|
 | Cuota de revisión | Fija | $1,500 MXN | [ ] Pagado |
-| Depósito reembolsable | 15% del presupuesto (mín. $10,000) | $_______ MXN | [ ] Pagado |
+| Depósito reembolsable | Indexado en UMAs según complejidad: hasta 40 UMAs para intervención exterior simple; hasta 85 UMAs para ampliación parcial o nuevo volumen sin cambio de nivel; hasta 150 UMAs para planta completa, segundo nivel o modificación estructural mayor | $_______ MXN | [ ] Pagado |
 | **Total** | | **$_______ MXN** | |
 
-*El depósito se reembolsa íntegramente al concluir la obra conforme a lo autorizado y tras verificación del Consejo.*
+*Depósito en garantía totalmente reembolsable, administrado bajo cuenta transparente y devuelto en un plazo máximo de 5 días posteriores a la liberación de la obra.*
 
 ---
 
@@ -135,7 +135,7 @@ Firma del Administrador: ________________________________
 
 ## Para uso del Consejo de Diseño — Resolución
 
-> **Recordatorio:** Esta categoría NO admite aprobación tácita. El Consejo debe emitir resolución expresa dentro de los 15 días hábiles.
+> **Recordatorio:** Para Obra Grande, el Consejo tendrá 15 días hábiles para resolver. Si transcurrido el plazo no hay respuesta, el condómino podrá requerir formalmente el inicio, y si en 48 horas adicionales persiste el silencio, operará la aprobación tácita, quedando a salvo las revisiones de seguridad del DRO.
 
 **Fecha de resolución:** ___/___/______
 
@@ -144,6 +144,7 @@ Firma del Administrador: ________________________________
 - [ ] **Aprobada** — la obra puede proceder conforme a lo solicitado
 - [ ] **Aprobada con condiciones** — ver condiciones al reverso
 - [ ] **Rechazada** — ver fundamento al reverso
+- [ ] **Aprobación tácita limitada** — transcurrió el plazo de 15 días hábiles, el condómino requirió formalmente el inicio y persistió el silencio por 48 horas adicionales
 
 **Fundamento (referencia al Manual o al Reglamento):**
 

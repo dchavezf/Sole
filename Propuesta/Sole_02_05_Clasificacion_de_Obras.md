@@ -31,8 +31,8 @@ Cambios en apariencia exterior, elementos visibles desde calle o distribución i
 Ampliaciones de superficie, nuevos volúmenes, cambios estructurales, adición de niveles, o cualquier obra que requiera permiso municipal.
 
 - **Trámite:** DRO con registro vigente + autorización previa del Consejo + permisos de la Dirección de Desarrollo Urbano de Soledad; visitas de supervisión durante la obra
-- **No hay aprobación automática** por silencio del Consejo en esta categoría
-- **Costo:** $1,500 cuota + **15% del presupuesto** (mín. $10,000) como depósito reembolsable al concluir satisfactoriamente *(montos en pesos conforme al Artículo C; independientes de la multa por inicio sin autorización del Catálogo de Multas)*
+- **Plazo:** Para Obra Grande, el Consejo tendrá 15 días hábiles para resolver. Si transcurrido el plazo no hay respuesta, el condómino podrá requerir formalmente el inicio, y si en 48 horas adicionales persiste el silencio, operará la aprobación tácita, quedando a salvo las revisiones de seguridad del DRO.
+- **Costo:** $1,500 cuota + depósito reembolsable indexado en UMAs según complejidad: hasta 40 UMAs para intervenciones exteriores simples como techar cochera o agregar pérgola ligera; hasta 85 UMAs para ampliaciones parciales o nuevos volúmenes sin cambio de nivel; hasta 150 UMAs para planta completa, segundo nivel, modificación estructural mayor o intervención que incremente de forma sustancial la superficie construida. Depósito en garantía totalmente reembolsable, administrado bajo cuenta transparente y devuelto en un plazo máximo de 5 días posteriores a la liberación de la obra. *(Montos conforme al Artículo C; independientes de la multa por inicio sin autorización del Catálogo de Multas.)*
 
 ### 5.2 Proceso de apelación
 
@@ -78,7 +78,7 @@ Para que un sistema de reglas sea efectivo, sus consecuencias deben ser proporci
 
 **Acción →** Al activarse el sistema, la obra queda registrada como no autorizada. El propietario recibe notificación formal de que la obra está sujeta a obligación de restitución si no inicia el proceso de regularización en el plazo establecido.
 
-**Resultado →** El costo total es significativamente mayor que si hubiera seguido el proceso desde el inicio. Se acumulan tres conceptos independientes: (1) la **multa por inicio sin autorización** del Catálogo de Multas (88 UMAs ≈ $10,323 al valor 2026), (2) la **cuota de revisión** para regularización ($1,500), y (3) el **depósito en garantía** (15% del presupuesto, mínimo $10,000). Si no atiende la notificación en el plazo establecido, el Comité puede contratar los trabajos de restitución y recuperar el costo del propietario responsable. Seguir el proceso desde el principio es, en todos los casos, la opción que mejor protege el patrimonio propio.
+**Resultado →** El costo total es significativamente mayor que si hubiera seguido el proceso desde el inicio. Se acumulan tres conceptos independientes: (1) la **multa por inicio sin autorización** del Catálogo de Multas (88 UMAs ≈ $10,323 al valor 2026), (2) la **cuota de revisión** para regularización ($1,500), y (3) el **depósito en garantía** indexado en UMAs según la complejidad de la obra. Si no atiende la notificación en el plazo establecido, el Comité puede contratar los trabajos de restitución y recuperar el costo del propietario responsable. Seguir el proceso desde el principio es, en todos los casos, la opción que mejor protege el patrimonio propio.
 
 :::
 

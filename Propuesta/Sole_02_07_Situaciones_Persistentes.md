@@ -21,12 +21,12 @@ El costo de regularización incluye tres conceptos independientes. Las multas de
 |---|---|---|
 | Multa del Catálogo por inicio sin autorización (88 UMAs) | ~$10,323 MXN | ~$5,162 MXN |
 | Cuota de revisión (Artículo C) | $1,500 MXN | $1,500 MXN |
-| Depósito en garantía (15% del presupuesto) | $22,500 MXN | $22,500 MXN |
-| Multa de regularización (doble del depósito) | $45,000 MXN | $22,500 MXN |
-| **Total estimado** | **~$79,323 MXN** | **~$51,662 MXN** |
+| Depósito en garantía indexado por complejidad (hasta 150 UMAs para ampliación mayor) | ~$17,597 MXN | ~$17,597 MXN |
+| Multa de regularización (doble del depósito) | ~$35,194 MXN | ~$17,597 MXN |
+| **Total estimado** | **~$64,614 MXN** | **~$41,856 MXN** |
 
 > [!WARNING]
-> **Pasados los 90 días de amnistía**, la multa del Catálogo y la multa de regularización aplican sin descuento. El ahorro por actuar durante el período de amnistía en este ejemplo es de aproximadamente $27,661 MXN.
+> **Pasados los 90 días de amnistía**, la multa del Catálogo y la multa de regularización aplican sin descuento. El ahorro por actuar durante el período de amnistía en este ejemplo es de aproximadamente $22,758 MXN.
 
 ### 7.2 Constancia de Estado de Modificaciones — cuándo entra en vigor
 

@@ -14,7 +14,7 @@ Los tres miembros votantes durarán en su cargo un año, con posibilidad de máx
 
 II. FUNCIONAMIENTO
 
-(a) El CONSEJO se reunirá cuando exista al menos una solicitud pendiente, y al menos una vez al mes para revisar obras en proceso. (b) Las resoluciones — aprobaciones y rechazos — deberán constar por escrito con referencia expresa al Reglamento o al MANUAL. Una negativa sin fundamento escrito dentro del plazo se considerará aprobación tácita. (c) La aprobación del CONSEJO es exclusivamente estética y de cumplimiento con el MANUAL. No sustituye la responsabilidad técnica y estructural del DRO.
+(a) El CONSEJO se reunirá cuando exista al menos una solicitud pendiente, y al menos una vez al mes para revisar obras en proceso. (b) Las resoluciones — aprobaciones y rechazos — deberán constar por escrito con referencia expresa al Reglamento o al MANUAL. Para Obra Intermedia, una negativa sin fundamento escrito dentro del plazo se considerará aprobación tácita. Para Obra Grande, el Consejo tendrá 15 días hábiles para resolver. Si transcurrido el plazo no hay respuesta, el condómino podrá requerir formalmente el inicio, y si en 48 horas adicionales persiste el silencio, operará la aprobación tácita, quedando a salvo las revisiones de seguridad del DRO. (c) La aprobación del CONSEJO es exclusivamente estética y de cumplimiento con el MANUAL. No sustituye la responsabilidad técnica y estructural del DRO.
 
 III. PLAZOS
 
@@ -22,7 +22,7 @@ III. PLAZOS
 |---|---|---|
 | Obra Menor | Verificación del Administrador | 24 horas desde notificación |
 | Obra Intermedia | Resolución del Consejo de Diseño | 5 días hábiles |
-| Obra Mayor | Resolución del Consejo de Diseño | 15 días hábiles — sin aprobación tácita |
+| Obra Mayor | Resolución del Consejo de Diseño | 15 días hábiles + requerimiento formal y 48 horas adicionales para aprobación tácita limitada |
 
 IV. VACANCIA: Ante vacancia, el COMITÉ DE REPRESENTANTES designará sustituto provisional en 15 días naturales.
 
@@ -50,7 +50,7 @@ CATEGORÍA I — OBRA MENOR: Intervenciones de mantenimiento o cambio de acabado
 
 CATEGORÍA II — OBRA INTERMEDIA: Modificaciones con impacto en apariencia exterior o instalación de elementos visibles desde calle o áreas comunes. Requisitos: (a) Solicitud escrita al CONSEJO con materiales referenciados al MANUAL. (b) Último recibo de cuota al corriente. (c) Cuota de revisión: $1,500 MXN. (d) Depósito en garantía: $3,000 MXN, reembolsable al término satisfactorio. (e) El CONSEJO resolverá en 5 días hábiles. Aprobación tácita si no hay respuesta en plazo.
 
-CATEGORÍA III — OBRA MAYOR: Ampliaciones de superficie construida, nuevos volúmenes, modificaciones estructurales, adición de niveles, o cualquier obra que requiera permiso municipal. Requisitos: (a) Solicitud completa conforme al **Art. 123 vigente** *(el condómino deberá presentar: plano del proyecto acotado, descripción de acabados, copia de escrituras, último recibo de cuota de mantenimiento, copia del acta de entrega de la vivienda; generando cuota de revisión de $1,500 MXN más cuota de supervisión).* (b) DRO con cédula profesional vigente, quien asume responsabilidad técnica y legal. (c) Autorización previa del CONSEJO antes de gestionar permisos municipales. (d) Permisos de la Dirección de Desarrollo Urbano de Soledad. (e) Depósito en garantía: 15% del presupuesto, mínimo $10,000 MXN. (f) Visitas de supervisión del CONSEJO durante la obra. No hay aprobación tácita.
+CATEGORÍA III — OBRA MAYOR: Ampliaciones de superficie construida, nuevos volúmenes, modificaciones estructurales, adición de niveles, o cualquier obra que requiera permiso municipal. Requisitos: (a) Solicitud completa conforme al **Art. 123 vigente** *(el condómino deberá presentar: plano del proyecto acotado, descripción de acabados, copia de escrituras, último recibo de cuota de mantenimiento, copia del acta de entrega de la vivienda; generando cuota de revisión de $1,500 MXN más cuota de supervisión).* (b) DRO con cédula profesional vigente, quien asume responsabilidad técnica y legal. (c) Autorización previa del CONSEJO antes de gestionar permisos municipales. (d) Permisos de la Dirección de Desarrollo Urbano de Soledad. (e) Depósito en garantía indexado en UMAs según complejidad: hasta 40 UMAs para intervenciones exteriores simples como techar cochera o agregar pérgola ligera; hasta 85 UMAs para ampliaciones parciales o nuevos volúmenes sin cambio de nivel; hasta 150 UMAs para planta completa, segundo nivel, modificación estructural mayor o intervención que incremente de forma sustancial la superficie construida. Depósito en garantía totalmente reembolsable, administrado bajo cuenta transparente y devuelto en un plazo máximo de 5 días posteriores a la liberación de la obra. (f) Visitas de supervisión del CONSEJO durante la obra. Para Obra Grande, el Consejo tendrá 15 días hábiles para resolver. Si transcurrido el plazo no hay respuesta, el condómino podrá requerir formalmente el inicio, y si en 48 horas adicionales persiste el silencio, operará la aprobación tácita, quedando a salvo las revisiones de seguridad del DRO.
 
 ---
 
@@ -72,7 +72,7 @@ I. DEFINICIÓN: Es obra no autorizada toda intervención realizada sin seguir el
 
 II. PERÍODO DE AMNISTÍA: Durante los 90 días naturales siguientes a la aprobación del MANUAL, los CONDÓMINOS con obras preexistentes no autorizadas podrán acogerse a las siguientes condiciones reducidas: (a) Si la obra puede regularizarse conforme al MANUAL: multa de regularización equivalente al 50% de la tarifa normal (es decir, equivalente a un depósito en garantía en lugar de dos). (b) Si la obra no puede regularizarse por contravenir prohibiciones vigentes del Reglamento: la restitución procede con reducción del 50% en las penalidades administrativas. El período de amnistía es aplicable por una sola vez.
 
-Ejemplo de cálculo con amnistía: Para una Obra Mayor con presupuesto original de $150,000 MXN — Depósito en garantía normal: $22,500 (15%). Multa de regularización tarifa normal: $45,000 (doble del depósito). Multa con período de amnistía: $22,500 (50% de descuento).
+Ejemplo de cálculo con amnistía: Para una Obra Mayor con presupuesto original de $150,000 MXN y complejidad alta — Depósito en garantía normal: hasta 150 UMAs. Multa de regularización tarifa normal: doble del depósito aplicable. Multa con período de amnistía: equivalente al depósito aplicable por el descuento del 50%.
 
 III. RECONOCIMIENTO DE MEJORAS PREEXISTENTES: Las obras realizadas antes de la entrada en vigor del presente artículo, por condóminos que no podían seguir ningún proceso formal porque éste no existía, podrán ser certificadas por el CONSEJO DE DISEÑO mediante Constancia de Conformidad sin cargo de multa, siempre que cumplan con los criterios del MANUAL una vez aprobado. Este mecanismo es distinto a la amnistía y aplica a condóminos de buena fe cuyas obras se realizaron en ausencia de proceso, no en evasión de él.
 
