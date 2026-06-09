@@ -112,7 +112,7 @@
         "body": { "padding": "0" },
         "body::before": { "display": "none", "content": "none", "backgroundImage": "none" }
       },
-      "avoidBreakInside": [".md-table-container", "pre", ".callout", ".directive"]
+      "avoidBreakInside": ["pre", ".callout", ".directive"]
     },
     "docx": {
       "headerRun": { "size": 16, "color": "{{colors.neutral}}" },

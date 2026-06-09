@@ -1,105 +1,146 @@
-# Folleto de bolsillo: Protejamos el valor de Solé
+# Folleto de bolsillo: Protejamos el valor de nuestras casas sin generar más burocracia
+
+Una propuesta para tener reglas claras, menos conflictos y mayor certeza para todos los vecinos.
 
 ## Página 1
 
-### ¿Sabías que el desorden en fachadas puede costarnos plusvalía?
+### Lo más importante: esto NO es para pedir permiso para todo
 
-Cuando una privada conserva una imagen ordenada, coherente y bien cuidada, el mercado la percibe como más segura, más estable y más valiosa.
+La propuesta distingue entre mantenimiento normal y obras que sí pueden afectar la fachada, la estructura, áreas comunes o a otros vecinos.
 
-De acuerdo con datos de la Sociedad Hipotecaria Federal (SHF), las zonas habitacionales con mejor organización y gobernanza pueden tener una diferencia importante de crecimiento frente a zonas donde las reglas no se aplican con consistencia.
+**NO requerirá permiso:**
 
-En una casa de valor medio en Solé, esa diferencia puede representar **cientos de miles de pesos en 10 años**. En escenarios acumulados, puede acercarse o superar **un millón de pesos de plusvalía potencial**.
+- Pintar interiores
+- Cambiar pisos o azulejos interiores
+- Reparaciones menores
+- Mantenimiento normal
+- Trabajos que no modifiquen fachada o estructura
 
-Esto no depende solo de lo que cada quien haga dentro de su casa. También depende de lo que ve un comprador cuando entra al fraccionamiento:
+**Solo aplicaría para:**
 
-- fachadas integradas,
-- ampliaciones bien resueltas,
-- cocheras y techumbres con criterio común,
-- calles limpias después de una obra,
-- reglas claras para todos.
+- Fachadas visibles
+- Ampliaciones
+- Techumbres
+- Cambios estructurales
+- Obras que puedan afectar áreas comunes o vecinos
 
-La imagen del conjunto es parte del valor de cada propiedad.
-
----
-
-### Tranquilidad: esto no es para meter permisos a todo
-
-La propuesta distingue entre obras simples y obras que sí afectan a los demás.
-
-**No requerirá permiso ni pago:**
-
-- pintar por dentro,
-- cambiar azulejos o acabados interiores,
-- mantenimiento menor,
-- reparaciones que no afecten fachada,
-- trabajos que no cambien estructura ni superficie construida.
-
-En palabras simples:
-
-> Dentro de tu casa, libertad.  
-> En fachadas, estructura y elementos visibles, reglas claras para proteger el valor de todos.
+> **Dentro de tu casa decides tú.**  
+> **En fachadas y elementos visibles, cuidamos juntos el valor de todos.**
 
 El objetivo no es hacer más pesada la vida en Solé. Es evitar pleitos, decisiones de palabra y obras que terminen afectando el patrimonio común.
 
 ---
 
-## Página 2
+### ¿Por qué hablar de esto ahora?
 
-### La solución: reglas claras, no favoritismos
+**Lo que ve un comprador también influye en el valor de tu casa.**
 
-La propuesta crea un sistema sencillo:
+Cuando alguien visita una privada para comprar, no solo ve una vivienda por dentro. También observa:
 
-**1. Un Consejo de Diseño elegido por nosotros**
+- las fachadas,
+- las ampliaciones,
+- el estado de las áreas comunes,
+- la limpieza después de las obras,
+- si existen reglas claras.
 
-No sería un grupo improvisado ni una decisión de una sola persona. El Consejo se integra con vecinos elegidos en Asamblea, con reglas de funcionamiento, plazos y obligación de responder por escrito.
+La imagen del conjunto influye en la percepción de seguridad, orden y valor de las viviendas.
 
-**2. Un Manual basado en planos originales**
-
-El Manual no se inventa al gusto de nadie. Se construye con base en:
-
-- planos originales de la constructora,
-- fachadas tipo,
-- colores y acabados del proyecto,
-- criterios técnicos aprobados por Asamblea.
-
-Esto significa:
-
-> Cero inventos.  
-> Cero favoritismos.  
-> Cero decisiones de palabra.
-
-**3. Trámites proporcionales**
-
-- Obra pequeña: aviso simple, sin cuota, sin depósito.
-- Obra mediana: revisión rápida y plazo de respuesta.
-- Obra grande: revisión técnica, DRO y depósito reembolsable con tope según complejidad.
-
-Además, si ya existen obras realizadas antes de tener un sistema claro, la propuesta incluye un período de regularización para ordenar expedientes sin convertir el pasado en persecución.
+Muchos vecinos no piensan vender mañana. Pero todos queremos conservar y proteger nuestro patrimonio.
 
 ---
 
-### Firma para que esto se discuta en Asamblea
+:::pagebreak
 
-Tu firma **no aprueba la reforma**.
+## Página 2
 
-Tu firma solo pide que el tema se hable formalmente en Asamblea, donde todos podamos:
+### Menos decisiones de palabra. Más reglas claras para todos.
 
-- opinar,
-- proponer cambios,
-- aclarar dudas,
-- votar a favor o en contra.
+La propuesta busca que las decisiones no dependan del gusto de una persona ni de conversaciones informales. El objetivo es que todos sepamos de antemano qué aplica, cuánto tarda y quién responde.
 
-Sin firmas suficientes, la conversación se queda en chats y pasillos. Con firmas suficientes, se discute de frente, con reglas y con todos los vecinos.
+### Consejo de Diseño
 
-**Firma aquí para que podamos discutir esto abiertamente en Asamblea.**
+Vecinos elegidos por Asamblea que:
 
-Nombre: ___________________________________________
+- Revisan solicitudes
+- Responden por escrito
+- Deben respetar plazos
+- Aplican criterios previamente aprobados
 
-Lote / circuito: ___________________________________
+### Manual de Imagen Urbana
 
-Firma: ____________________________________________
+El Manual se basaría en:
 
-Teléfono opcional: _________________________________
+- Planos originales
+- Fachadas tipo
+- Colores y acabados del proyecto
+- Criterios aprobados por Asamblea
+
+No en opiniones personales.  
+No en favoritismos.  
+No en decisiones de palabra.
+
+---
+
+### ¿Y las obras que ya existen?
+
+La propuesta contempla un proceso de regularización.
+
+Su objetivo **NO** es perseguir el pasado.
+
+Su objetivo es ordenar expedientes y brindar mayor certeza jurídica a los propietarios.
+
+Regularizar una obra existente no debe verse como castigo. Debe servir para que cada propietario tenga respaldo documental cuando venda, herede o necesite acreditar el estado de su casa.
+
+---
+
+### Tu firma NO aprueba esta propuesta
+
+Tu firma únicamente permite que el tema pueda discutirse formalmente en Asamblea.
+
+La Asamblea podrá:
+
+- Aprobar la propuesta
+- Modificarla
+- Rechazarla
+
+Todos los vecinos conservarán su derecho a:
+
+- Opinar
+- Hacer preguntas
+- Proponer cambios
+- Votar libremente
+
+Si consideras que este tema merece discutirse entre todos los vecinos, apoya su inclusión en Asamblea.
+
+---
+
+### Documentos y comentarios
+
+**Documento completo para quien desee revisarlo:**
+
+https://drive.google.com/file/d/1FSGtPlBlXDt86RaJkitGyPEybZuJNXK7/view?usp=sharing
+
+Para mantener el proceso ordenado y asegurar que todas las observaciones puedan revisarse adecuadamente, cualquier comentario, duda o propuesta de modificación puede enviarse mediante este formulario:
+
+https://docs.google.com/forms/d/e/1FAIpQLSfh-qkBy-GXCR_RMD9pmJK5uN6CjYX_X4naCAeZpRHkRVQgpg/viewform
+
+Todas las observaciones recibidas serán analizadas antes de preparar una versión consolidada para discusión vecinal.
+
+---
+
+### Preguntas frecuentes
+
+**¿Me van a obligar a modificar mi casa?**
+
+No. La propuesta establece procedimientos para obras futuras y contempla mecanismos de regularización para obras existentes.
+
+**¿Habrá cuotas nuevas?**
+
+No. La propuesta se enfoca en procedimientos y criterios de revisión. Las revisiones y depósitos aplican solo cuando alguien realiza obras que por su tipo requieren revisión.
+
+**¿Firmar significa estar de acuerdo?**
+
+No. Firmar únicamente solicita que el tema sea discutido formalmente en Asamblea.
 
 ---
 
