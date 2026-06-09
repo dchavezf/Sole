@@ -66,7 +66,7 @@ docs/.nojekyll
 En GitHub configurar:
 
 ```text
-Settings -> Pages -> Build and deployment -> Deploy from a branch -> main -> /docs
+Settings -> Pages -> Build and deployment -> Deploy from a branch -> master -> /docs
 ```
 
 ## Archivos especiales
@@ -80,8 +80,10 @@ Debe incluir:
 - Encabezado con mensaje principal.
 - Boton local `Enviar comentario` apuntando a `formulario.html`.
 - Lectura rapida.
+- Seccion `Explora por concepto`, independiente de la biblioteca completa.
 - Comparativo "Antes / despues" en tarjetas, no en tabla, para mejor lectura en celular.
 - Tipos de obra.
+- Footer en las tarjetas principales con liga directa al desarrollo del concepto.
 - Ruta de implementacion.
 - Articulos A-E bajo demanda.
 - FAQ con busqueda.
@@ -139,6 +141,33 @@ Ejemplo:
 <a href="Sole_03_01_Articulos_Normativos.html">Articulos normativos A-E</a>
 ```
 
+## Mapa conceptual del indice
+
+La portada debe incluir una seccion llamada `Explora por concepto` antes del comparativo.
+
+Esta seccion no sustituye la biblioteca completa. Su funcion es ayudar a leer la propuesta por temas mayores, agrupando documentos relacionados aunque provengan de capitulos distintos.
+Esta organizacion queda como la estructura vigente del micrositio.
+
+Conceptos actuales:
+
+```text
+Valor patrimonial y punto de partida
+Consejo, Manual y clasificacion de obras
+Tramites, formatos y operacion
+Regularizacion, historial y compraventas
+HABI, proyecto original y soporte tecnico
+Dudas, terminos y firma para Asamblea
+```
+
+Reglas:
+
+- Un concepto puede enlazar a mas de un HTML.
+- Un documento puede aparecer en el concepto donde ayude a explicar mejor el tema.
+- No todos los documentos tienen que convertirse en concepto principal.
+- Los formatos, catalogos y anexos pueden aparecer como soporte de un concepto mayor.
+- La biblioteca completa se conserva al final como indice documental exhaustivo.
+- Al agregar nuevos documentos, primero decidir si pertenecen a un concepto existente, si justifican crear un concepto nuevo, o si deben quedarse solo en biblioteca/descargas.
+
 ## Conversion de Markdown a HTML
 
 Cada archivo:
@@ -174,6 +203,7 @@ Reglas de conversion usadas:
 - El sitio debe funcionar bien en celular.
 - Evitar tablas anchas en secciones principales de `index.html`.
 - Usar tarjetas para comparativos y resuenes.
+- Las tarjetas principales deben cerrar con un footer breve del tipo: "Si quieres conocer mas de este concepto, consulta..." y enlazar a la pagina HTML donde se desarrolla el tema.
 - Mantener tarjetas con radio maximo de `8px`.
 - No depender de internet para estilos, fuentes o scripts.
 - No usar frameworks externos.
@@ -213,8 +243,11 @@ https://dominio.example/formulario.html
 4. Confirmar que `formulario.html` existe y redirige al Google Form correcto.
 5. Confirmar que las descargas estan en `output/Propuesta/downloads/`.
 6. Actualizar la seccion `Descargas` si cambiaron nombres o archivos.
-7. Revisar la portada en celular o con ventana estrecha.
-8. Publicar `output/Propuesta/`.
+7. Confirmar que `Explora por concepto` relaciona los documentos relevantes con conceptos mayores.
+8. Revisar la portada en celular o con ventana estrecha.
+9. Copiar el contenido de `output/Propuesta/` a `docs/`.
+10. Confirmar que `docs/index.html`, `docs/formulario.html`, `docs/downloads/` y `docs/.nojekyll` existen.
+11. Publicar con GitHub Pages desde `master` y carpeta `/docs`.
 
 ## Nota de git
 

@@ -181,9 +181,24 @@
       border-radius: 8px;
       padding: 18px;
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
     }
 
     .card p:last-child { margin-bottom: 0; }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .card-footer a {
+      font-weight: 800;
+      text-decoration: none;
+    }
 
     .tag {
       display: inline-flex;
@@ -323,12 +338,59 @@
       gap: 14px;
     }
 
+    .concept-map {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .concept-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .concept-card h3 {
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+
+    .concept-card p {
+      color: var(--muted);
+    }
+
+    .concept-links {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .concept-links a {
+      display: block;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .concept-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
     .comparison-card {
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 18px;
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
     }
 
     .comparison-card h3 {
@@ -401,7 +463,7 @@
     .hidden { display: none; }
 
     @media (max-width: 840px) {
-      header .shell, .grid, .grid.two, .comparison-grid, .library, .download-list { grid-template-columns: 1fr; }
+      header .shell, .grid, .grid.two, .comparison-grid, .concept-map, .library, .download-list { grid-template-columns: 1fr; }
       .steps { grid-template-columns: repeat(5, 220px); }
       .shell { padding-left: 16px; padding-right: 16px; }
       th, td { min-width: 180px; }
@@ -432,6 +494,7 @@
   <nav aria-label="Secciones principales">
     <div class="shell">
       <a href="#lectura-rapida">5 minutos</a>
+      <a href="#conceptos">Conceptos</a>
       <a href="#comparativo">Antes / después</a>
       <a href="#obras">Tipos de obra</a>
       <a href="#ruta">Ruta si se aprueba</a>
@@ -451,22 +514,111 @@
           <span class="tag">Qué busca</span>
           <h3>Proteger plusvalía y reducir conflictos</h3>
           <p>El valor de cada casa no depende solo de lo que hay adentro. También depende de la imagen general del fraccionamiento y de que las reglas se apliquen con consistencia.</p>
+          <div class="card-footer">Si quieres conocer más de este punto, consulta <a href="Sole_02_10_Plusvalia.html">Plusvalía</a>.</div>
         </article>
         <article class="card">
           <span class="tag">Qué cambia</span>
           <h3>De criterios de palabra a reglas verificables</h3>
           <p>Se formaliza el Consejo de Diseño, se crea un Manual de Imagen Urbana y se clasifican las obras según su impacto real.</p>
+          <div class="card-footer">Si quieres conocer más de este punto, consulta <a href="Sole_02_03_Los_tres_pilares.html">Los tres pilares</a>.</div>
         </article>
         <article class="card">
           <span class="tag">Qué no cambia</span>
           <h3>No se regula la vida interior</h3>
           <p>Mantenimiento interior, acabados internos y trabajos que no afecten fachada, estructura, áreas comunes ni seguridad siguen siendo libres o de aviso simple.</p>
+          <div class="card-footer">Si quieres conocer más de este punto, consulta <a href="Sole_02_05_Clasificacion_de_Obras.html">Clasificación de obras</a>.</div>
         </article>
       </div>
 
       <div class="notice">
         <strong>Firma o comentario no equivalen a aprobar.</strong> La firma solo ayuda a llevar el tema a Asamblea. Los desacuerdos, ajustes y preguntas se atienden ahí o mediante el formulario.
       </div>
+    </section>
+
+    <section id="conceptos">
+      <h2>Explora por concepto</h2>
+      <p class="section-intro">Esta es la ruta recomendada para profundizar sin leer todo en orden. Cada concepto agrupa los documentos que lo desarrollan; algunos son centrales y otros funcionan solo como soporte operativo.</p>
+      <div class="concept-map">
+        <article class="concept-card">
+          <span class="tag">Por qué importa</span>
+          <h3>Valor patrimonial y punto de partida</h3>
+          <p>Explica el problema que se quiere resolver, por qué la imagen del conjunto afecta el valor de cada casa y cuál es el fundamento inicial de la propuesta.</p>
+          <div class="concept-links">
+            <a href="Sole_01_00_Presentacion.html">Presentación completa</a>
+            <a href="Sole_02_01_El_punto_de_partida.html">El punto de partida</a>
+            <a href="Sole_02_10_Plusvalia.html">Plusvalía</a>
+            <a href="Sole_02_02_Base_Legal.html">Base legal</a>
+          </div>
+        </article>
+
+        <article class="concept-card">
+          <span class="tag">Sistema propuesto</span>
+          <h3>Consejo, Manual y clasificación de obras</h3>
+          <p>Es el corazón de la propuesta: quién decide, con qué criterios y cómo se distingue una obra simple de una intervención delicada.</p>
+          <div class="concept-links">
+            <a href="Sole_02_03_Los_tres_pilares.html">Los tres pilares</a>
+            <a href="Sole_02_04_El_consejo.html">El Consejo</a>
+            <a href="Sole_02_06_El_manual_de_imagen_urbana.html">Manual de imagen urbana</a>
+            <a href="Sole_02_05_Clasificacion_de_Obras.html">Clasificación de obras</a>
+            <a href="Sole_03_00_Texto normativo para votación.html">Texto normativo para votación</a>
+            <a href="Sole_03_01_Articulos_Normativos.html">Artículos normativos A-E</a>
+          </div>
+        </article>
+
+        <article class="concept-card">
+          <span class="tag">Vida práctica</span>
+          <h3>Trámites, formatos y operación</h3>
+          <p>Reúne los documentos que convierten la propuesta en procedimientos concretos para avisar, solicitar, revisar, apelar y cerrar obras.</p>
+          <div class="concept-links">
+            <a href="Sole_02_08_Implementacion_y_operacion.html">Implementación y operación</a>
+            <a href="Sole_03_02_Formato_C1_Aviso_Obra_Pequeña.html">Aviso de obra pequeña</a>
+            <a href="Sole_03_03_Formato_Solicitud_Obra_Mediana.html">Solicitud de obra mediana</a>
+            <a href="Sole_03_04_Formato_Solicitud_Obra_Grande.html">Solicitud de obra grande</a>
+            <a href="Sole_03_07_Proceso_Apelacion.html">Proceso de apelación</a>
+            <a href="Sole_03_08_Protocolo_Entrega_Recepcion.html">Entrega-recepción</a>
+            <a href="Sole_03_11_Modificaciones_Catalogo_Multas.html">Catálogo de multas</a>
+          </div>
+        </article>
+
+        <article class="concept-card">
+          <span class="tag">Casos existentes</span>
+          <h3>Regularización, historial y compraventas</h3>
+          <p>Atiende las situaciones que ya existen, el inventario inicial, la constancia de modificaciones y el modo de documentar cada lote hacia adelante.</p>
+          <div class="concept-links">
+            <a href="Sole_02_07_Situaciones_Persistentes.html">Situaciones persistentes</a>
+            <a href="Sole_03_05_Formato_Constancia_Estado_Modificaciones.html">Constancia de modificaciones</a>
+            <a href="Sole_03_06_Formato_Solicitud_Regularizacion.html">Solicitud de regularización</a>
+            <a href="Sole_03_09_Inventario_Inicial_Obras.html">Inventario inicial de obras</a>
+          </div>
+        </article>
+
+        <article class="concept-card">
+          <span class="tag">Desarrollador y planos</span>
+          <h3>HABI, proyecto original y soporte técnico</h3>
+          <p>Relaciona la propuesta con el desarrollador, los planos originales y los documentos técnicos necesarios para construir el Manual de Imagen Urbana.</p>
+          <div class="concept-links">
+            <a href="Sole_02_09_HABI.html">HABI</a>
+            <a href="Sole_03_10_Solicitud_Planos_HABI_Municipio.html">Solicitud de planos HABI / Municipio</a>
+            <a href="downloads/PLANO%20MONTSE%202R%20AUTORIZADO%20SOLE.pdf">Plano Montse 2R autorizado</a>
+            <a href="downloads/PLANO%20MONTSE%203.0%20AUTORIZADO%20SOLE.pdf">Plano Montse 3.0 autorizado</a>
+          </div>
+        </article>
+
+        <article class="concept-card">
+          <span class="tag">Participación</span>
+          <h3>Dudas, términos y firma para Asamblea</h3>
+          <p>Material de apoyo para resolver dudas comunes, entender términos técnicos y participar en la convocatoria sin confundir firma con aprobación.</p>
+          <div class="concept-links">
+            <a href="Sole_04_01_FAQ.html">Preguntas frecuentes</a>
+            <a href="Sole_04_02_Glosario_de_terminos.html">Glosario de términos</a>
+            <a href="Sole_04_03_Marco_legal.html">Marco legal</a>
+            <a href="Sole_02_12_Nota final.html">Nota final</a>
+            <a href="Sole_05_00_Hoja_de_Firmas.html">Hoja de firmas</a>
+            <a href="formulario.html">Enviar comentario</a>
+          </div>
+        </article>
+      </div>
+      <p class="concept-note">Documentos como el catálogo de multas y algunos formatos son relevantes para la operación, pero no todos necesitan convertirse en un concepto principal del índice. Por eso aparecen como soporte dentro del tema que les corresponde o en la biblioteca completa.</p>
     </section>
 
     <section id="comparativo">
@@ -478,30 +630,35 @@
           <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>El Reglamento lo menciona, pero no define con suficiente precisión integración, plazos y funcionamiento.</span></div>
           <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Asamblea elige integrantes, resoluciones por escrito y plazos definidos.</span></div>
           <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Menos discrecionalidad y decisiones más defendibles.</span></div>
+          <div class="card-footer">Si quieres conocer más de este concepto, consulta <a href="Sole_02_04_El_consejo.html">El Consejo</a>.</div>
         </article>
         <article class="comparison-card">
           <h3>Imagen urbana</h3>
           <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>Conceptos como armonía visual pueden sentirse subjetivos.</span></div>
           <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Manual con colores, materiales, fachadas tipo y criterios verificables.</span></div>
           <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Cada vecino puede revisar antes si su proyecto cumple.</span></div>
+          <div class="card-footer">Si quieres conocer más de este concepto, consulta <a href="Sole_02_06_El_manual_de_imagen_urbana.html">Manual de imagen urbana</a>.</div>
         </article>
         <article class="comparison-card">
           <h3>Obras</h3>
           <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>No siempre se distingue una reparación simple de una ampliación estructural.</span></div>
           <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Obra menor, intermedia y mayor, con requisitos proporcionales.</span></div>
           <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Lo simple se resuelve rápido; lo delicado se revisa mejor.</span></div>
+          <div class="card-footer">Si quieres conocer más de este concepto, consulta <a href="Sole_02_05_Clasificacion_de_Obras.html">Clasificación de obras</a>.</div>
         </article>
         <article class="comparison-card">
           <h3>Compraventas</h3>
           <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>No hay historial claro de modificaciones autorizadas por lote.</span></div>
           <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Registro de modificaciones y constancia informativa al vender.</span></div>
           <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Más certeza para compradores, vendedores y vecinos.</span></div>
+          <div class="card-footer">Si quieres conocer más de este concepto, consulta <a href="Sole_03_05_Formato_Constancia_Estado_Modificaciones.html">Constancia de modificaciones</a>.</div>
         </article>
         <article class="comparison-card">
           <h3>Obras previas</h3>
           <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>La situación puede quedar ambigua o volverse conflicto.</span></div>
           <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Amnistía, regularización y reconocimiento de obras de buena fe.</span></div>
           <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Ordenar el futuro sin convertir el pasado en persecución automática.</span></div>
+          <div class="card-footer">Si quieres conocer más de este concepto, consulta <a href="Sole_02_07_Situaciones_Persistentes.html">Situaciones persistentes</a>.</div>
         </article>
       </div>
     </section>
@@ -515,18 +672,21 @@
           <h3>Obra menor</h3>
           <p>Mantenimiento o acabados que no modifican estructura, distribución, fachada ni superficie construida.</p>
           <p><strong>Trámite:</strong> aviso al Administrador 48 horas antes. Sin Consejo y sin depósito.</p>
+          <div class="card-footer">Si quieres conocer más de esta categoría, consulta <a href="Sole_03_02_Formato_C1_Aviso_Obra_Pequeña.html">Formato C1</a>.</div>
         </article>
         <article class="card">
           <span class="tag">Categoría II</span>
           <h3>Obra intermedia</h3>
           <p>Cambios con impacto en apariencia exterior o elementos visibles desde calle o áreas comunes.</p>
           <p><strong>Trámite:</strong> solicitud al Consejo, respuesta en 5 días hábiles y aprobación tácita si no responde.</p>
+          <div class="card-footer">Si quieres conocer más de esta categoría, consulta <a href="Sole_03_03_Formato_Solicitud_Obra_Mediana.html">Solicitud de obra mediana</a>.</div>
         </article>
         <article class="card">
           <span class="tag">Categoría III</span>
           <h3>Obra mayor</h3>
           <p>Ampliaciones, nuevos volúmenes, cambios estructurales, segundos niveles o cualquier obra con permiso municipal.</p>
           <p><strong>Trámite:</strong> DRO, Consejo, permisos municipales y depósito reembolsable según complejidad.</p>
+          <div class="card-footer">Si quieres conocer más de esta categoría, consulta <a href="Sole_03_04_Formato_Solicitud_Obra_Grande.html">Solicitud de obra grande</a>.</div>
         </article>
       </div>
     </section>
