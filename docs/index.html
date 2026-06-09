@@ -1,0 +1,742 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propuesta Solé | Lectura guiada</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f4ef;
+      --paper: #fffdf8;
+      --ink: #1f2933;
+      --muted: #5b6570;
+      --line: #ded8cd;
+      --brand: #29524a;
+      --brand-2: #8a643b;
+      --soft: #e8efe8;
+      --warn: #fff3d7;
+      --shadow: 0 12px 30px rgba(45, 38, 27, .10);
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a { color: var(--brand); }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(41,82,74,.94), rgba(25,55,50,.94)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M0 80h160M80 0v160' stroke='%23ffffff' stroke-opacity='.10'/%3E%3C/svg%3E");
+      color: white;
+      padding: 54px 0 42px;
+    }
+
+    header .shell {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1.5fr .9fr;
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #dce9df;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 4.3rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 760px;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: #eef6ef;
+      font-size: 1.12rem;
+      max-width: 720px;
+    }
+
+    .status {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .status strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: var(--brand);
+      color: white;
+      text-decoration: none;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: inherit;
+      border-color: currentColor;
+    }
+
+    header .button { background: white; color: var(--brand); }
+    header .button.secondary { background: transparent; color: white; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(246,244,239,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav .shell {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    nav a {
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 650;
+      font-size: .92rem;
+    }
+
+    section {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      line-height: 1.15;
+    }
+
+    h3 { margin: 0 0 10px; }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 0 22px;
+      font-size: 1.02rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--brand);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .notice {
+      border-left: 5px solid var(--brand-2);
+      background: var(--warn);
+      padding: 16px 18px;
+      border-radius: 8px;
+      margin: 18px 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .step {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 150px;
+    }
+
+    .num {
+      width: 30px;
+      height: 30px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--brand);
+      color: white;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th { background: var(--soft); }
+    tr:last-child td { border-bottom: 0; }
+
+    .tools {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 16px 0 18px;
+    }
+
+    input[type="search"] {
+      width: min(100%, 430px);
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font: inherit;
+      background: white;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 8px 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chip.active {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    details {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 10px 0;
+      box-shadow: 0 8px 18px rgba(45, 38, 27, .06);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 15px 18px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    details > div {
+      padding: 0 18px 18px;
+      color: var(--muted);
+    }
+
+    details.article > div {
+      color: var(--ink);
+    }
+
+    .article-note {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .comparison-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-card h3 {
+      margin-bottom: 14px;
+      color: var(--brand);
+    }
+
+    .comparison-row {
+      display: grid;
+      gap: 4px;
+      margin-top: 12px;
+    }
+
+    .comparison-label {
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .library {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .library-group {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 8px 18px rgba(45, 38, 27, .06);
+    }
+
+    .library-group h3 {
+      margin-bottom: 12px;
+    }
+
+    .library a,
+    .download-list a {
+      display: block;
+      margin: 0 0 8px;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      text-decoration: none;
+    }
+
+    .download-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .empty-state {
+      background: var(--paper);
+      border: 1px dashed var(--brand-2);
+      border-radius: 8px;
+      padding: 18px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 36px 0 46px;
+      color: var(--muted);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 840px) {
+      header .shell, .grid, .grid.two, .comparison-grid, .library, .download-list { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: repeat(5, 220px); }
+      .shell { padding-left: 16px; padding-right: 16px; }
+      th, td { min-width: 180px; }
+      .table-wrap { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <div>
+        <p class="eyebrow">Fraccionamiento Solé · Junio 2026</p>
+        <h1>Propuesta de reglas claras para fachadas, ampliaciones y obras</h1>
+        <p class="lead">Una lectura guiada para entender primero lo esencial y abrir el detalle solo cuando lo necesites.</p>
+        <div class="actions">
+          <a class="button" href="#lectura-rapida">Leer en 5 minutos</a>
+          <a class="button secondary" href="#articulos">Ver artículos A-E</a>
+          <a class="button secondary" href="formulario.html">Enviar comentario</a>
+        </div>
+      </div>
+      <aside class="status">
+        <strong>Importante</strong>
+        Esta etapa no aprueba la propuesta. Solo busca saber si existe interés suficiente para discutirla formalmente en Asamblea, con preguntas, cambios y votación libre.
+      </aside>
+    </div>
+  </header>
+
+  <nav aria-label="Secciones principales">
+    <div class="shell">
+      <a href="#lectura-rapida">5 minutos</a>
+      <a href="#comparativo">Antes / después</a>
+      <a href="#obras">Tipos de obra</a>
+      <a href="#ruta">Ruta si se aprueba</a>
+      <a href="#articulos">Artículos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#descargas">Descargas</a>
+      <a href="#biblioteca">Documentos</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section id="lectura-rapida">
+      <h2>Lee esto en 5 minutos</h2>
+      <p class="section-intro">La propuesta parte de una idea sencilla: dentro de tu casa, libertad; hacia afuera, reglas claras para cuidar lo que todos vendemos como conjunto.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Qué busca</span>
+          <h3>Proteger plusvalía y reducir conflictos</h3>
+          <p>El valor de cada casa no depende solo de lo que hay adentro. También depende de la imagen general del fraccionamiento y de que las reglas se apliquen con consistencia.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Qué cambia</span>
+          <h3>De criterios de palabra a reglas verificables</h3>
+          <p>Se formaliza el Consejo de Diseño, se crea un Manual de Imagen Urbana y se clasifican las obras según su impacto real.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Qué no cambia</span>
+          <h3>No se regula la vida interior</h3>
+          <p>Mantenimiento interior, acabados internos y trabajos que no afecten fachada, estructura, áreas comunes ni seguridad siguen siendo libres o de aviso simple.</p>
+        </article>
+      </div>
+
+      <div class="notice">
+        <strong>Firma o comentario no equivalen a aprobar.</strong> La firma solo ayuda a llevar el tema a Asamblea. Los desacuerdos, ajustes y preguntas se atienden ahí o mediante el formulario.
+      </div>
+    </section>
+
+    <section id="comparativo">
+      <h2>Antes / después</h2>
+      <p class="section-intro">La diferencia principal no es tener más reglas, sino que las reglas existentes sean aplicables, visibles y proporcionales.</p>
+      <div class="comparison-grid">
+        <article class="comparison-card">
+          <h3>Consejo de Diseño</h3>
+          <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>El Reglamento lo menciona, pero no define con suficiente precisión integración, plazos y funcionamiento.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Asamblea elige integrantes, resoluciones por escrito y plazos definidos.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Menos discrecionalidad y decisiones más defendibles.</span></div>
+        </article>
+        <article class="comparison-card">
+          <h3>Imagen urbana</h3>
+          <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>Conceptos como armonía visual pueden sentirse subjetivos.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Manual con colores, materiales, fachadas tipo y criterios verificables.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Cada vecino puede revisar antes si su proyecto cumple.</span></div>
+        </article>
+        <article class="comparison-card">
+          <h3>Obras</h3>
+          <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>No siempre se distingue una reparación simple de una ampliación estructural.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Obra menor, intermedia y mayor, con requisitos proporcionales.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Lo simple se resuelve rápido; lo delicado se revisa mejor.</span></div>
+        </article>
+        <article class="comparison-card">
+          <h3>Compraventas</h3>
+          <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>No hay historial claro de modificaciones autorizadas por lote.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Registro de modificaciones y constancia informativa al vender.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Más certeza para compradores, vendedores y vecinos.</span></div>
+        </article>
+        <article class="comparison-card">
+          <h3>Obras previas</h3>
+          <div class="comparison-row"><span class="comparison-label">Situación actual</span><span>La situación puede quedar ambigua o volverse conflicto.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Propuesta</span><span>Amnistía, regularización y reconocimiento de obras de buena fe.</span></div>
+          <div class="comparison-row"><span class="comparison-label">Resultado</span><span>Ordenar el futuro sin convertir el pasado en persecución automática.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="obras">
+      <h2>¿Qué tipo de obra quieres entender?</h2>
+      <p class="section-intro">Usa esta sección como atajo práctico. No todo pasa por Consejo ni todo tiene el mismo costo o revisión.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Categoría I</span>
+          <h3>Obra menor</h3>
+          <p>Mantenimiento o acabados que no modifican estructura, distribución, fachada ni superficie construida.</p>
+          <p><strong>Trámite:</strong> aviso al Administrador 48 horas antes. Sin Consejo y sin depósito.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Categoría II</span>
+          <h3>Obra intermedia</h3>
+          <p>Cambios con impacto en apariencia exterior o elementos visibles desde calle o áreas comunes.</p>
+          <p><strong>Trámite:</strong> solicitud al Consejo, respuesta en 5 días hábiles y aprobación tácita si no responde.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Categoría III</span>
+          <h3>Obra mayor</h3>
+          <p>Ampliaciones, nuevos volúmenes, cambios estructurales, segundos niveles o cualquier obra con permiso municipal.</p>
+          <p><strong>Trámite:</strong> DRO, Consejo, permisos municipales y depósito reembolsable según complejidad.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="ruta">
+      <h2>Ruta si la Asamblea aprueba</h2>
+      <p class="section-intro">La aprobación no activa todo de golpe. El sistema se implementa por etapas.</p>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><strong>Consejo</strong><p>Se constituye formalmente el Consejo de Diseño en la misma Asamblea.</p></div>
+        <div class="step"><span class="num">2</span><strong>Manual</strong><p>El Consejo redacta el Manual con participación de condóminos.</p></div>
+        <div class="step"><span class="num">3</span><strong>Aprobación</strong><p>La Asamblea revisa y aprueba el Manual en una segunda etapa.</p></div>
+        <div class="step"><span class="num">4</span><strong>Amnistía</strong><p>Se abre un periodo de 90 días para regularizar obras preexistentes.</p></div>
+        <div class="step"><span class="num">5</span><strong>Constancia</strong><p>Al cerrar la amnistía, inicia la constancia de modificaciones para compraventas.</p></div>
+      </div>
+    </section>
+
+    <section id="articulos">
+      <h2>Artículos propuestos A-E</h2>
+      <p class="section-intro">Aquí está el texto normativo, colapsado por artículo para que solo abras lo que quieras revisar.</p>
+      <div class="tools" aria-label="Filtros de artículos">
+        <button class="chip active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="consejo">Consejo</button>
+        <button class="chip" data-filter="manual">Manual</button>
+        <button class="chip" data-filter="obras">Obras</button>
+        <button class="chip" data-filter="registro">Registro</button>
+        <button class="chip" data-filter="amnistia">Amnistía</button>
+      </div>
+
+      <details class="article" data-tags="consejo">
+        <summary>Artículo A — Constitución formal del Consejo de Diseño</summary>
+        <div>
+          <p class="article-note">Define quién integra el Consejo, cómo opera, qué plazos tiene y cómo se documentan sus resoluciones.</p>
+          <p><strong>Integración.</strong> El Consejo se integrará por cinco miembros: tres condóminos propietarios elegidos en Asamblea General por voto nominal, el Administrador o su representante con voz pero sin voto, y un representante del Comité de Vigilancia con voz pero sin voto. Al menos uno de los tres miembros votantes deberá acreditar perfil técnico preferente en arquitectura, ingeniería, diseño o DRO.</p>
+          <p><strong>Funcionamiento.</strong> El Consejo se reunirá cuando exista solicitud pendiente y al menos una vez al mes para revisar obras en proceso. Las aprobaciones y rechazos deberán constar por escrito con referencia expresa al Reglamento o al Manual. La aprobación del Consejo es estética y de cumplimiento con el Manual; no sustituye responsabilidad técnica del DRO.</p>
+          <p><strong>Plazos.</strong> Obra menor: verificación del Administrador en 24 horas. Obra intermedia: resolución en 5 días hábiles. Obra mayor: resolución en 15 días hábiles, con requerimiento formal y 48 horas adicionales para aprobación tácita limitada.</p>
+          <p><strong>Transición.</strong> Ante vacancia, el Comité de Representantes designará sustituto provisional en 15 días naturales. La construcción de HABI conforme al proyecto ejecutivo autorizado queda exenta mientras corresponda al proyecto original o variantes aprobadas municipalmente.</p>
+        </div>
+      </details>
+
+      <details class="article" data-tags="manual">
+        <summary>Artículo B — Manual de Imagen Urbana como norma obligatoria</summary>
+        <div>
+          <p class="article-note">Convierte criterios generales como armonía visual en especificaciones consultables.</p>
+          <p>El Manual de Imagen Urbana y Lineamientos Arquitectónicos será un Anexo Técnico obligatorio del Reglamento, con la misma jerarquía normativa. En caso de contradicción, prevalecerá la disposición más restrictiva, sin relajar mínimos de seguridad, habitabilidad o uso de suelo.</p>
+          <p>Se elaborará con base en los planos arquitectónicos del proyecto original de HABI: carta cromática, especificación de acabados exteriores y planos de fachadas tipo. El Administrador deberá obtenerlos y conservarlos como acervo oficial del condominio.</p>
+          <p>El contenido mínimo incluirá paleta de materiales, paleta de colores con códigos comerciales disponibles en SLP, lineamientos de fachada, ampliaciones, instalaciones, servicios, jardinería y paisajismo.</p>
+          <p>Si un material ya no está disponible, el condómino podrá proponer un equivalente. El Consejo evaluará textura, color, dimensiones y durabilidad, y emitirá resolución escrita.</p>
+        </div>
+      </details>
+
+      <details class="article" data-tags="obras">
+        <summary>Artículo C — Clasificación de obras y requisitos por tipo</summary>
+        <div>
+          <p class="article-note">Separa lo simple de lo delicado para evitar trámites innecesarios y revisar mejor lo que sí impacta al conjunto.</p>
+          <p><strong>Categoría I, Obra menor.</strong> Mantenimiento o cambio de acabados que no modifican estructura, distribución, fachada ni superficie construida. Requiere notificación al Administrador 48 horas antes, sin autorización previa del Consejo y sin depósito.</p>
+          <p><strong>Categoría II, Obra intermedia.</strong> Modificaciones con impacto en apariencia exterior o elementos visibles desde calle o áreas comunes. Requiere solicitud escrita, materiales referenciados al Manual, cuota de revisión de $1,500 MXN, depósito reembolsable de $3,000 MXN y respuesta del Consejo en 5 días hábiles.</p>
+          <p><strong>Categoría III, Obra mayor.</strong> Ampliaciones, nuevos volúmenes, modificaciones estructurales, adición de niveles o cualquier obra que requiera permiso municipal. Requiere solicitud completa, DRO, autorización previa del Consejo, permisos municipales y depósito reembolsable en UMAs según complejidad.</p>
+        </div>
+      </details>
+
+      <details class="article" data-tags="registro">
+        <summary>Artículo D — Registro histórico y constancia de modificaciones</summary>
+        <div>
+          <p class="article-note">Crea memoria documental por lote para que compradores y propietarios sepan qué está autorizado.</p>
+          <p>El Administrador llevará un Registro de Modificaciones por lote con número de lote, tipo de obra, descripción autorizada, fecha de autorización, DRO cuando aplique, fecha de conclusión, liberación del depósito y observaciones de inspección final.</p>
+          <p>Al cambiar de Administrador, el Registro se transferirá como parte del acta de entrega-recepción, con verificación de integridad por el Comité de Vigilancia y copia de seguridad accesible para el Comité de Representantes.</p>
+          <p>En toda transmisión de propiedad, el Administrador expedirá una Constancia de Estado de Modificaciones en máximo 5 días hábiles. La constancia indicará si existen obras no autorizadas pendientes de regularización y tendrá efectos informativos en esta etapa.</p>
+        </div>
+      </details>
+
+      <details class="article" data-tags="amnistia">
+        <summary>Artículo E — Obras no autorizadas, amnistía y restitución</summary>
+        <div>
+          <p class="article-note">Busca ordenar el futuro y dar una salida documentada a situaciones preexistentes.</p>
+          <p>Es obra no autorizada toda intervención realizada sin seguir el proceso aplicable o ejecutada sin resolución favorable del Consejo cuando ésta sea necesaria. Detectada una obra, el Administrador o el Consejo notificará en 48 horas, indicando la obra, la regla aplicable y las opciones disponibles.</p>
+          <p>Durante los 90 días naturales siguientes a la aprobación del Manual, los condóminos con obras preexistentes podrán regularizar con condiciones reducidas: si la obra cumple el Manual, multa de regularización equivalente al 50% de la tarifa normal; si no puede regularizarse, la restitución procede con reducción del 50% en penalidades administrativas.</p>
+          <p>Las obras hechas antes de existir un proceso formal podrán certificarse mediante Constancia de Conformidad sin multa si cumplen con el Manual. Fuera del periodo de amnistía, el condómino deberá elegir regularización o restitución dentro de 15 días hábiles.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="faq">
+      <h2>Preguntas frecuentes</h2>
+      <p class="section-intro">Busca por palabra clave o abre las preguntas una por una. Pensado para quienes llegan con una duda concreta.</p>
+      <div class="tools">
+        <input id="faqSearch" type="search" placeholder="Buscar: multa, HABI, obra, Consejo, firmar...">
+      </div>
+
+      <details data-faq><summary>¿Con qué autoridad se presenta esta propuesta?</summary><div><p>El Art. 99 del Reglamento Interno faculta a condóminos que representen al menos el 25% a convocar a Asamblea. La propuesta no tiene autoridad propia: solo sería vinculante si la Asamblea la aprueba.</p></div></details>
+      <details data-faq><summary>¿Quién decide si mi obra es menor, intermedia o mayor?</summary><div><p>La clasificación pasa por filtros: el vecino propone la categoría, el Administrador verifica y el Consejo puede reclasificar solo con fundamento escrito. El silencio dentro del plazo equivale a aceptación de la clasificación original.</p></div></details>
+      <details data-faq><summary>¿Las cifras sobre plusvalía tienen respaldo?</summary><div><p>Sí. La propuesta cita fuentes como CAI, Journal of Housing Economics e Índice SHF, con referencias completas en los documentos de apoyo.</p></div></details>
+      <details data-faq><summary>¿La apelación sería ante el mismo grupo?</summary><div><p>No. Primero revisa el Comité de Representantes si la resolución está fundada. Si hace falta, interviene un árbitro externo designado por el Colegio de Arquitectos o el Registro de DROs.</p></div></details>
+      <details data-faq><summary>Si aviso una obra menor y nadie contesta, ¿puedo hacer lo que sea?</summary><div><p>No. La obra menor sigue sujeta al Manual. Si el trabajo realmente afecta fachada, estructura o áreas comunes, puede reclasificarse.</p></div></details>
+      <details data-faq><summary>¿Qué pasa si ya tengo obras hechas sin autorización?</summary><div><p>No implica demolición automática. Puede haber regularización, reconocimiento de buena fe o restitución según si la obra cumple el Manual y el Reglamento vigente.</p></div></details>
+      <details data-faq><summary>¿Esto viola mi derecho de propiedad?</summary><div><p>No. La propuesta distingue entre interiores privados y elementos exteriores o estructurales que afectan imagen común, seguridad o valor del conjunto.</p></div></details>
+      <details data-faq><summary>¿No están creando más burocracia?</summary><div><p>La intención es separar trámites simples de obras delicadas. Obra menor es aviso simple; obra intermedia tiene plazo corto; obra mayor se revisa más porque puede afectar estructura o permisos municipales.</p></div></details>
+      <details data-faq><summary>¿El depósito es un cobro disfrazado?</summary><div><p>No. Es una garantía reembolsable para proteger áreas comunes y vecinos frente a daños de obra. Para obra mayor queda limitado por complejidad e indexado en UMAs.</p></div></details>
+      <details data-faq><summary>¿Firmar significa aprobar la reforma?</summary><div><p>No. Firmar solo permite llevar el tema a Asamblea. Ahí se pueden proponer cambios, expresar desacuerdos y votar libremente.</p></div></details>
+    </section>
+
+    <section id="descargas">
+      <h2>Descargas</h2>
+      <p class="section-intro">Aquí van los archivos listos para descargar, separados de la lectura web. Los enlaces apuntan a documentos dentro de <strong>output/Propuesta/downloads</strong>.</p>
+      <div class="download-list">
+        <a href="downloads/folleto_bolsillo_2_paginas.pdf" download>
+          <strong>Folleto explicativo</strong><br>
+          <span>PDF · 80 KB</span>
+        </a>
+        <a href="downloads/Propuesta.pdf" download>
+          <strong>Documento completo</strong><br>
+          <span>PDF · 445 KB</span>
+        </a>
+        <a href="downloads/PLANO%20MONTSE%202R%20AUTORIZADO%20SOLE.pdf" download>
+          <strong>Plano Montse 2R autorizado</strong><br>
+          <span>PDF · 26.7 MB</span>
+        </a>
+        <a href="downloads/PLANO%20MONTSE%203.0%20AUTORIZADO%20SOLE.pdf" download>
+          <strong>Plano Montse 3.0 autorizado</strong><br>
+          <span>PDF · 32.0 MB</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="biblioteca">
+      <h2>Biblioteca completa</h2>
+      <p class="section-intro">Para quien quiera revisar el material fuente, estas son las páginas HTML generadas desde los documentos originales, agrupadas por capítulo.</p>
+      <div class="library">
+        <div class="library-group">
+          <h3>01 · Presentación</h3>
+          <a href="Sole_01_00_Presentacion.html">Presentación completa</a>
+        </div>
+        <div class="library-group">
+          <h3>02 · Propuesta explicada</h3>
+          <a href="Sole_02_00_Propuesta.html">La propuesta</a>
+          <a href="Sole_02_01_El_punto_de_partida.html">El punto de partida</a>
+          <a href="Sole_02_02_Base_Legal.html">Base legal</a>
+          <a href="Sole_02_03_Los_tres_pilares.html">Los tres pilares</a>
+          <a href="Sole_02_04_El_consejo.html">El Consejo</a>
+          <a href="Sole_02_05_Clasificacion_de_Obras.html">Clasificación de obras</a>
+          <a href="Sole_02_06_El_manual_de_imagen_urbana.html">Manual de imagen urbana</a>
+          <a href="Sole_02_07_Situaciones_Persistentes.html">Situaciones persistentes</a>
+          <a href="Sole_02_08_Implementacion_y_operacion.html">Implementación y operación</a>
+          <a href="Sole_02_09_HABI.html">HABI</a>
+          <a href="Sole_02_10_Plusvalia.html">Plusvalía</a>
+          <a href="Sole_02_12_Nota final.html">Nota final</a>
+        </div>
+        <div class="library-group">
+          <h3>03 · Texto normativo y formatos</h3>
+          <a href="Sole_03_00_Texto normativo para votación.html">Texto normativo para votación</a>
+          <a href="Sole_03_01_Articulos_Normativos.html">Artículos normativos A-E</a>
+          <a href="Sole_03_02_Formato_C1_Aviso_Obra_Pequeña.html">Formato C1 · Obra pequeña</a>
+          <a href="Sole_03_03_Formato_Solicitud_Obra_Mediana.html">Formato · Obra mediana</a>
+          <a href="Sole_03_04_Formato_Solicitud_Obra_Grande.html">Formato · Obra grande</a>
+          <a href="Sole_03_05_Formato_Constancia_Estado_Modificaciones.html">Constancia de modificaciones</a>
+          <a href="Sole_03_06_Formato_Solicitud_Regularizacion.html">Solicitud de regularización</a>
+          <a href="Sole_03_07_Proceso_Apelacion.html">Proceso de apelación</a>
+          <a href="Sole_03_08_Protocolo_Entrega_Recepcion.html">Entrega-recepción</a>
+          <a href="Sole_03_09_Inventario_Inicial_Obras.html">Inventario inicial de obras</a>
+          <a href="Sole_03_10_Solicitud_Planos_HABI_Municipio.html">Solicitud de planos HABI / Municipio</a>
+          <a href="Sole_03_11_Modificaciones_Catalogo_Multas.html">Modificaciones al catálogo de multas</a>
+        </div>
+        <div class="library-group">
+          <h3>04 · Referencia</h3>
+          <a href="Sole_04_01_FAQ.html">FAQ completo</a>
+          <a href="Sole_04_02_Glosario_de_terminos.html">Glosario de términos</a>
+          <a href="Sole_04_03_Marco_legal.html">Marco legal</a>
+        </div>
+        <div class="library-group">
+          <h3>05 · Participación</h3>
+          <a href="Sole_05_00_Hoja_de_Firmas.html">Hoja de firmas</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p><strong>Contacto:</strong> Daniel Chávez Flores · Circuito de los Robles 136-B · 444-105-8700 · dchavezf@gmail.com</p>
+    <p>Propuesta ciudadana para discusión en Asamblea. Este micrositio resume y organiza el material; los documentos fuente conservan el detalle completo.</p>
+  </footer>
+
+  <script>
+    const chips = document.querySelectorAll("[data-filter]");
+    const articles = document.querySelectorAll("details.article");
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const filter = chip.dataset.filter;
+        chips.forEach((item) => item.classList.toggle("active", item === chip));
+        articles.forEach((article) => {
+          const visible = filter === "all" || article.dataset.tags.includes(filter);
+          article.classList.toggle("hidden", !visible);
+          if (!visible) article.open = false;
+        });
+      });
+    });
+
+    const faqSearch = document.querySelector("#faqSearch");
+    const faqItems = document.querySelectorAll("[data-faq]");
+
+    faqSearch.addEventListener("input", () => {
+      const query = faqSearch.value.trim().toLowerCase();
+      faqItems.forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        const match = !query || text.includes(query);
+        item.classList.toggle("hidden", !match);
+        if (query && match) item.open = true;
+        if (!query) item.open = false;
+      });
+    });
+  </script>
+</body>
+</html>
+
