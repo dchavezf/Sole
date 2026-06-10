@@ -115,8 +115,14 @@
       border-color: currentColor;
     }
 
+    .button.accent {
+      background: var(--brand-2);
+      color: white;
+    }
+
     header .button { background: white; color: var(--brand); }
     header .button.secondary { background: transparent; color: white; }
+    header .button.accent { background: #f3d69a; color: #22352f; }
 
     nav {
       position: sticky;
@@ -220,6 +226,47 @@
       padding: 16px 18px;
       border-radius: 8px;
       margin: 18px 0;
+    }
+
+    .cta-panel {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--brand);
+      border-radius: 8px;
+      padding: 18px;
+      margin: 22px 0 0;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel h3 {
+      margin: 0 0 6px;
+      color: var(--brand);
+    }
+
+    .cta-panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta-panel .actions {
+      margin-top: 0;
+      justify-content: flex-end;
+    }
+
+    .cta-inline {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .cta-inline p {
+      margin: 0 0 10px;
     }
 
     .steps {
@@ -463,11 +510,18 @@
     .hidden { display: none; }
 
     @media (max-width: 840px) {
-      header .shell, .grid, .grid.two, .comparison-grid, .concept-map, .library, .download-list { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: repeat(5, 220px); }
+      header .shell, .grid, .grid.two, .comparison-grid, .concept-map, .library, .download-list, .cta-panel { grid-template-columns: 1fr; }
+      .steps {
+        grid-template-columns: 1fr;
+        overflow-x: visible;
+      }
+      .step {
+        min-height: auto;
+      }
       .shell { padding-left: 16px; padding-right: 16px; }
       th, td { min-width: 180px; }
       .table-wrap { overflow-x: auto; }
+      .cta-panel .actions { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -479,14 +533,15 @@
         <h1>Propuesta de reglas claras para fachadas, ampliaciones y obras</h1>
         <p class="lead">Una lectura guiada para entender primero lo esencial y abrir el detalle solo cuando lo necesites.</p>
         <div class="actions">
+          <a class="button accent" href="formulario.html">Sí, quiero llevarlo a Asamblea</a>
           <a class="button" href="#lectura-rapida">Leer en 5 minutos</a>
           <a class="button secondary" href="#articulos">Ver artículos A-E</a>
-          <a class="button secondary" href="formulario.html">Enviar comentario</a>
+          <a class="button secondary" href="formulario.html">Enviar duda o ajuste</a>
         </div>
       </div>
       <aside class="status">
         <strong>Importante</strong>
-        Esta etapa no aprueba la propuesta. Solo busca saber si existe interés suficiente para discutirla formalmente en Asamblea, con preguntas, cambios y votación libre.
+        Firmar en esta etapa no aprueba la propuesta ni obliga tu voto. Solo ayuda a que el tema llegue a Asamblea, donde todos podremos preguntar, modificar y votar libremente.
       </aside>
     </div>
   </header>
@@ -502,6 +557,7 @@
       <a href="#faq">FAQ</a>
       <a href="#descargas">Descargas</a>
       <a href="#biblioteca">Documentos</a>
+      <a href="formulario.html">Sí firmo</a>
     </div>
   </nav>
 
@@ -532,6 +588,17 @@
 
       <div class="notice">
         <strong>Firma o comentario no equivalen a aprobar.</strong> La firma solo ayuda a llevar el tema a Asamblea. Los desacuerdos, ajustes y preguntas se atienden ahí o mediante el formulario.
+      </div>
+
+      <div class="cta-panel">
+        <div>
+          <h3>¿Estás de acuerdo en que se discuta formalmente?</h3>
+          <p>Tu firma sirve para abrir la conversación en el lugar correcto: la Asamblea. Ahí la propuesta puede aprobarse, modificarse o rechazarse.</p>
+        </div>
+        <div class="actions">
+          <a class="button accent" href="formulario.html">Sí firmo para Asamblea</a>
+          <a class="button secondary" href="formulario.html">Tengo una observación</a>
+        </div>
       </div>
     </section>
 
@@ -661,6 +728,15 @@
           <div class="card-footer">Si quieres conocer más de este concepto, consulta <a href="Sole_02_07_Situaciones_Persistentes.html">Situaciones persistentes</a>.</div>
         </article>
       </div>
+      <div class="cta-panel">
+        <div>
+          <h3>Si te parece razonable, ayúdanos a llevarlo a votación</h3>
+          <p>La firma no cierra el debate: lo abre. Nos permite pasar de mensajes sueltos a una discusión con reglas, preguntas y acuerdos por escrito.</p>
+        </div>
+        <div class="actions">
+          <a class="button accent" href="formulario.html">Sí, firmo</a>
+        </div>
+      </div>
     </section>
 
     <section id="obras">
@@ -784,7 +860,12 @@
       <details data-faq><summary>¿Esto viola mi derecho de propiedad?</summary><div><p>No. La propuesta distingue entre interiores privados y elementos exteriores o estructurales que afectan imagen común, seguridad o valor del conjunto.</p></div></details>
       <details data-faq><summary>¿No están creando más burocracia?</summary><div><p>La intención es separar trámites simples de obras delicadas. Obra menor es aviso simple; obra intermedia tiene plazo corto; obra mayor se revisa más porque puede afectar estructura o permisos municipales.</p></div></details>
       <details data-faq><summary>¿El depósito es un cobro disfrazado?</summary><div><p>No. Es una garantía reembolsable para proteger áreas comunes y vecinos frente a daños de obra. Para obra mayor queda limitado por complejidad e indexado en UMAs.</p></div></details>
-      <details data-faq><summary>¿Firmar significa aprobar la reforma?</summary><div><p>No. Firmar solo permite llevar el tema a Asamblea. Ahí se pueden proponer cambios, expresar desacuerdos y votar libremente.</p></div></details>
+      <details data-faq><summary>¿Firmar significa aprobar la reforma?</summary><div><p>No. Firmar solo permite llevar el tema a Asamblea. Ahí se pueden proponer cambios, expresar desacuerdos y votar libremente.</p><p><a class="button accent" href="formulario.html">Entendido, sí firmo para Asamblea</a></p></div></details>
+
+      <div class="cta-inline">
+        <p><strong>¿Tu duda principal ya quedó resuelta?</strong> El siguiente paso no es aprobar la reforma: es pedir que se discuta formalmente con todos los vecinos.</p>
+        <a class="button accent" href="formulario.html">Sí firmo</a>
+      </div>
     </section>
 
     <section id="descargas">
@@ -807,6 +888,16 @@
           <strong>Plano Montse 3.0 autorizado</strong><br>
           <span>PDF · 32.0 MB</span>
         </a>
+      </div>
+      <div class="cta-panel">
+        <div>
+          <h3>Después de revisar el material, deja tu postura</h3>
+          <p>Puedes firmar para que el tema llegue a Asamblea o enviar una observación concreta para integrarla al documento consolidado.</p>
+        </div>
+        <div class="actions">
+          <a class="button accent" href="formulario.html">Sí firmo</a>
+          <a class="button secondary" href="formulario.html">Enviar comentario</a>
+        </div>
       </div>
     </section>
 

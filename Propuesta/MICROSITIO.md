@@ -78,7 +78,8 @@ Portada principal del micrositio.
 Debe incluir:
 
 - Encabezado con mensaje principal.
-- Boton local `Enviar comentario` apuntando a `formulario.html`.
+- CTA principal para firmar o manifestar interes en llevar el tema a Asamblea, apuntando a `formulario.html`.
+- Boton secundario para enviar dudas, observaciones o ajustes, tambien apuntando a `formulario.html`.
 - Lectura rapida.
 - Seccion `Explora por concepto`, independiente de la biblioteca completa.
 - Comparativo "Antes / despues" en tarjetas, no en tabla, para mejor lectura en celular.
@@ -89,6 +90,64 @@ Debe incluir:
 - FAQ con busqueda.
 - Seccion `Descargas`.
 - Biblioteca completa agrupada por capitulos.
+
+## Logica de conversion y participacion
+
+El micrositio tiene dos objetivos simultaneos:
+
+1. Explicar la propuesta sin obligar a leer el documento completo.
+2. Convertir el interes inicial en una accion concreta: firmar o dejar postura para que el tema llegue a Asamblea.
+
+La logica de participacion debe mantener una distincion clara:
+
+- Firmar o llenar el formulario no aprueba la propuesta.
+- La firma solo ayuda a llevar el tema a Asamblea.
+- La Asamblea es el espacio donde se hacen preguntas, se proponen cambios, se expresan desacuerdos y se vota.
+
+Por eso los CTAs no deben sonar como aprobacion definitiva. Deben usar frases como:
+
+```text
+Si, quiero llevarlo a Asamblea
+Si firmo para Asamblea
+Tengo una observacion
+Enviar duda o ajuste
+```
+
+Evitar CTAs ambiguos o demasiado fuertes como:
+
+```text
+Aprobar propuesta
+Votar a favor ahora
+Acepto la reforma
+```
+
+## CTAs estrategicos
+
+La portada debe repetir la accion principal en momentos donde el lector ya recibio suficiente contexto:
+
+- En el encabezado, como CTA primario.
+- Despues de `Lee esto en 5 minutos`, cuando ya se aclaro que firmar no aprueba.
+- Despues de `Antes / despues`, cuando se entiende el beneficio practico.
+- Dentro o despues de la FAQ, especialmente junto a la pregunta `Firmar significa aprobar la reforma?`.
+- Despues de `Descargas`, para quien reviso el material y ya esta listo para dejar postura.
+
+Todos esos CTAs deben apuntar a:
+
+```text
+formulario.html
+```
+
+La pagina `formulario.html` se encarga de redirigir al Google Form. Esto permite cambiar el destino del formulario una sola vez sin editar todos los enlaces del sitio.
+
+Los bloques de CTA actuales usan estas clases:
+
+```text
+.button.accent
+.cta-panel
+.cta-inline
+```
+
+La clase `.button.accent` es para la accion principal. Las acciones secundarias deben seguir usando `.button.secondary`.
 
 ### `output/Propuesta/formulario.html`
 
@@ -192,11 +251,25 @@ output/Propuesta/Sole_04_01_FAQ.html
 Reglas de conversion usadas:
 
 - Leer Markdown como UTF-8.
-- Usar el primer encabezado `#` como titulo de la pagina.
+- Usar el primer encabezado `#` como titulo de la pagina cuando exista.
+- Si el Markdown no tiene encabezado `#`, usar como fallback el nombre del archivo limpio:
+  - quitar el prefijo `Sole_XX_YY_`;
+  - reemplazar `_` por espacios;
+  - conservar espacios existentes.
 - Convertir encabezados, parrafos, listas, blockquotes, tablas simples y enlaces.
 - Ignorar marcas internas como `:::`, `:::pagebreak`, `:::card-propuesta`.
 - Cada pagina generada debe tener un enlace superior de regreso a `index.html`.
 - El estilo de paginas internas debe ser simple, legible y consistente con la portada.
+
+Ejemplos de titulo limpio:
+
+```text
+Sole_02_03_Los_tres_pilares.md -> Los tres pilares
+Sole_04_01_FAQ.md -> FAQ
+Sole_02_12_Nota final.md -> Nota final
+```
+
+Este titulo limpio debe aplicarse tanto al `<title>` del documento como al `<h1>` visible del encabezado de cada pagina interna.
 
 ## Reglas visuales importantes
 
@@ -208,6 +281,29 @@ Reglas de conversion usadas:
 - No depender de internet para estilos, fuentes o scripts.
 - No usar frameworks externos.
 - Todo debe funcionar como HTML estatico.
+
+### Ruta de Asamblea en celular
+
+La seccion `Ruta si la Asamblea aprueba` usa la clase `.steps`.
+
+En escritorio puede mostrarse como una grilla horizontal de cinco pasos. En celular no debe quedar como carrusel horizontal, porque el contenido se pierde o exige desplazamiento lateral.
+
+Regla responsive vigente:
+
+```css
+@media (max-width: 840px) {
+  .steps {
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+  }
+
+  .step {
+    min-height: auto;
+  }
+}
+```
+
+Si se agregan mas pasos, conservar esta lectura vertical en pantallas pequenas.
 
 ## Publicacion recomendada
 
@@ -244,10 +340,20 @@ https://dominio.example/formulario.html
 5. Confirmar que las descargas estan en `output/Propuesta/downloads/`.
 6. Actualizar la seccion `Descargas` si cambiaron nombres o archivos.
 7. Confirmar que `Explora por concepto` relaciona los documentos relevantes con conceptos mayores.
-8. Revisar la portada en celular o con ventana estrecha.
-9. Copiar el contenido de `output/Propuesta/` a `docs/`.
-10. Confirmar que `docs/index.html`, `docs/formulario.html`, `docs/downloads/` y `docs/.nojekyll` existen.
-11. Publicar con GitHub Pages desde `master` y carpeta `/docs`.
+8. Confirmar que los CTAs de firma y observaciones apuntan a `formulario.html`.
+9. Confirmar que las paginas internas no muestran titulos tipo `Sole_XX_YY_slug`; deben mostrar el titulo limpio.
+10. Revisar la portada en celular o con ventana estrecha, especialmente `Ruta si la Asamblea aprueba`.
+11. Copiar el contenido de `output/Propuesta/` a `docs/`.
+12. Confirmar que `docs/index.html`, `docs/formulario.html`, `docs/downloads/` y `docs/.nojekyll` existen.
+13. Publicar con GitHub Pages desde `master` y carpeta `/docs`.
+
+## Cambios documentados en junio 2026
+
+- Se agregaron CTAs estrategicos en la portada para llevar al formulario desde puntos de decision naturales.
+- Se cambio el enfoque del CTA de `Enviar comentario` a `Si firmo / llevarlo a Asamblea`, cuidando aclarar que no equivale a aprobacion.
+- Se corrigio la seccion `Ruta si la Asamblea aprueba` para lectura vertical en celular.
+- Se limpiaron titulos de paginas internas generadas desde Markdown para eliminar prefijos `Sole_XX_YY_` y guiones bajos en `<title>` y `<h1>`.
+- Se mantiene `output/Propuesta/` como salida temporal y `docs/` como carpeta publicada en GitHub Pages.
 
 ## Nota de git
 
